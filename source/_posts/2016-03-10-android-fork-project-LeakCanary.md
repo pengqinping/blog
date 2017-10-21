@@ -1,10 +1,9 @@
 ---
 layout:     post
 title:      "Android LeakCanary"
-subtitle:   "内存泄露分析利器"
 date:       2016-03-10
 author:     "Royal"
-header-color: "#98BE47"
+categories: 技术-Android性能优化
 tags:
     - Android
     - LeakCanary
@@ -75,7 +74,7 @@ tags:
 
 这样就会有一个泄露，TestDataModel的单例对象会持有TestActivity 的 textView对象的引用，如果这个单例无法销毁就会有内存泄露，这个使用只需要进入 TestActivity后在退出leakcanary 就会检测到内存泄露。并且有相关的描述
 
-<img class="shadow" src="{{site.baseurl}}/img/in-post/post-leakcanary/static_class_with_view.jpg" height="350">
+<img class="shadow" src="http://oy2qy52pb.bkt.clouddn.com/ABlog/post/static_class_with_view.jpg" height="350">
 
 2.handler 发送消息在activity destory的时候没有停止，导致activity不能被释放，
 
@@ -98,7 +97,7 @@ tags:
         }
     };
 ```
-<img class="shadow" src="{{site.baseurl}}/img/in-post/post-leakcanary/handler_leak.jpg" height="350">
+<img class="shadow" src="http://oy2qy52pb.bkt.clouddn.com/ABlog/post/handler_leak.jpg" height="350">
 
 <small class="img-hint">赶紧为你的项目添加 leakcanary 检测下是否有内存泄露吧 </small>
 

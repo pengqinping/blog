@@ -1,10 +1,9 @@
 ---
 layout:     post
 title:      "态度"
-subtitle:   "态度决定成败,认识自我摆正态度"
 date:       2016-03-06
 author:     "Royal"
-header-color: "#82B550"
+categories: 领悟
 tags:
     - life
     - 感想

@@ -4,7 +4,7 @@ title:      "Android.EventBus[源码分析]"
 subtitle:   "EventBus发送普通消息的流程"
 date:       2016-04-20
 author:     "Royal"
-header-color: "#98BE47"
+categories: 技术-Android框架
 tags:
     - Android
     - EventBus

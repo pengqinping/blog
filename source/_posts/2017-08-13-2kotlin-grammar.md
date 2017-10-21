@@ -1,10 +1,9 @@
 ---
 layout: post
 title: "2.kotlin grammar"
-header-color: "#AD64b7"
-subtitle:   "Koltin语法了解"
 date:       2017-08-13
 author:     "Royal"
+categories: 技术-Kotlin
 tags: 
     - Kotlin
 ---

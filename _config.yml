@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: RoyalBlogs
+title: Royal的博客
 subtitle:
-description: Record study line
+description: 生命不息奋斗不止
 author: Royal
-language: zh
+language: zh-Hans
 timezone:
 
 # URL
@@ -72,12 +72,28 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo: git@github.com:pengqinping/ABlog.git
-  branch: gh-pages
-  message: exo自动提交
+  ### 屏蔽到github的提交 配置了很多相关的密码和账号信息
+  - type: git
+    repo: git@github.com:pengqinping/ABlog.git
+    branch: gh-pages
+    message: hexo自动提交
+  - type: git 
+    repo: git@git.coding.net:pengqinping/ABlog.git
+    branch: coding-pages
+    message: hexo自动提交
+
+# Add local search
+
+# Add Algolia
+
+algolia:
+  applicationID: '7O2IPBESEB'
+  apiKey: 'ed357841e1ccd9455146f3c98f0b6d24'
+  adminApiKey: 'd784d469d9e4eecd182e6f53119f8e58'
+  indexName: 'ABlog'
+  chunkSize: 5000    
