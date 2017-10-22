@@ -486,8 +486,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ABlog/2016/05/10/2016-05-11-ios-1第一个程序/" rel="next" title="IOS 第一个程序">
-                <i class="fa fa-chevron-left"></i> IOS 第一个程序
+              <a href="/ABlog/2016/11/19/2016-11-19-butterknife840/" rel="next" title="Butterknife 8.4.0 使用">
+                <i class="fa fa-chevron-left"></i> Butterknife 8.4.0 使用
               </a>
             
           </div>
@@ -496,8 +496,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/ABlog/2016/11/19/2016-11-19-butterknife840/" rel="prev" title="Butterknife 8.4.0 使用">
-                Butterknife 8.4.0 使用 <i class="fa fa-chevron-right"></i>
+              <a href="/ABlog/2016/11/19/2016-11-19-grunt/" rel="prev" title="Grunt">
+                Grunt <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -530,7 +530,8 @@
   
     <div class="comments" id="comments">
       
-        <div id="gitment-container"></div>
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display:none"></div>
       
     </div>
 
@@ -892,7 +893,11 @@
       }
 
       
-      renderGitment();
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
       
       </script>
     

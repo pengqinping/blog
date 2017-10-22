@@ -535,8 +535,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/ABlog/2016/11/19/2016-11-19-greendao3/" rel="prev" title="GreenDAO3">
-                GreenDAO3 <i class="fa fa-chevron-right"></i>
+              <a href="/ABlog/2016/11/19/2016-11-19-butterknife840/" rel="prev" title="Butterknife 8.4.0 使用">
+                Butterknife 8.4.0 使用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -569,7 +569,8 @@
   
     <div class="comments" id="comments">
       
-        <div id="gitment-container"></div>
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display:none"></div>
       
     </div>
 
@@ -906,7 +907,11 @@
       }
 
       
-      renderGitment();
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
       
       </script>
     

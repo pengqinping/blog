@@ -87,10 +87,13 @@
 <meta property="og:site_name" content="Royal的博客">
 <meta property="og:description" content="写博客的过程中总喜欢忘记md语法，然后去百度比较浪费时间。这里记录下平时常用的md语法  繁体http://markdown.tw/简体翻译http://www.appinn.com/markdown/  MarkDown思想可读性，无论如何，都是最重要的。一份使用 Markdown 格式撰写的文件应该可以直接以纯文本发布，并且看起来不会像是由许多标签或是格式指令所构成。Markdown 语法受到">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-22T06:23:42.000Z">
+<meta property="og:image" content="http://img.sc115.com/uploads/sc/cjpgs/1410/apic6991_sc115.com.jpg">
+<meta property="og:image" content="http://img.sc115.com/uploads/sc/cjpgs/1410/apic6991_sc115.com.jpg">
+<meta property="og:updated_time" content="2017-10-22T08:24:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Forget Md">
 <meta name="twitter:description" content="写博客的过程中总喜欢忘记md语法，然后去百度比较浪费时间。这里记录下平时常用的md语法  繁体http://markdown.tw/简体翻译http://www.appinn.com/markdown/  MarkDown思想可读性，无论如何，都是最重要的。一份使用 Markdown 格式撰写的文件应该可以直接以纯文本发布，并且看起来不会像是由许多标签或是格式指令所构成。Markdown 语法受到">
+<meta name="twitter:image" content="http://img.sc115.com/uploads/sc/cjpgs/1410/apic6991_sc115.com.jpg">
 
 
 
@@ -509,6 +512,18 @@
 <hr>
 <hr>
 <hr>
+<h3 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h3><p>Markdown 支持两种形式的链接语法： 行内式和参考式两种形式。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">行内式: </div><div class="line">This is [an example](http://example.com/ "Title") inline link.</div><div class="line">[This link](http://example.net/) has no title attribute.</div><div class="line"></div><div class="line">参考式:</div><div class="line">The click goto [first][1]</div><div class="line">The click goto [second][2]</div><div class="line"></div><div class="line">[1]: https://www.baidu.com "百度"</div><div class="line">[2]: https://google.com "Google"</div></pre></td></tr></table></figure></p>
+<p>效果如下<br>This is <a href="http://example.com/" title="Title" target="_blank" rel="external">an example</a> inline link.<br><a href="http://example.net/" target="_blank" rel="external">This link</a> has no title attribute.</p>
+<p>参考式:<br>The click goto <a href="https://www.baidu.com" title="百度" target="_blank" rel="external">first</a><br>The click goto <a href="https://google.com" title="Google" target="_blank" rel="external">second</a></p>
+<h3 id="字体样式"><a href="#字体样式" class="headerlink" title="字体样式"></a>字体样式</h3><p>斜体：<code>*</code>和<code>_</code><br>加粗体: <code>**</code> 和 <code>__</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">斜体 *Good*</div><div class="line">斜体 _Good_</div><div class="line">加粗 **Good**</div><div class="line">加粗 __Good__</div><div class="line"></div><div class="line">如果你的 * 和 _ 两边都有空白的话，它们就只会被当成普通的符号。</div><div class="line">mmm * Good * </div><div class="line"></div><div class="line">如果需要`*` 使用 `\*` 来显示</div><div class="line">\*this is a so much money\*</div></pre></td></tr></table></figure>
+<p>斜体 <em>Good</em><br>斜体 <em>Good</em><br>加粗 <strong>Good</strong><br>加粗 <strong>Good</strong></p>
+<p>mmm <em> Good </em> </p>
+<p>*this is a so much money*</p>
+<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><p>三个`符号<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">`print()`</div></pre></td></tr></table></figure></p>
+<p><code>print()</code></p>
+<h3 id="图片引用"><a href="#图片引用" class="headerlink" title="图片引用"></a>图片引用</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Markdown 使用一种和链接很相似的语法来标记图片，同样也允许两种样式： 行内式和参考式。</div><div class="line">![我的博客](http://img.sc115.com/uploads/sc/cjpgs/1410/apic6991_sc115.com.jpg)</div><div class="line">![我的博客](http://img.sc115.com/uploads/sc/cjpgs/1410/apic6991_sc115.com.jpg "My Blogs")</div></pre></td></tr></table></figure>
+<p>显示效果：<br><img src="http://img.sc115.com/uploads/sc/cjpgs/1410/apic6991_sc115.com.jpg" alt="我的博客"><br><img src="http://img.sc115.com/uploads/sc/cjpgs/1410/apic6991_sc115.com.jpg" alt="我的博客" title="My Blogs"></p>
 
       
     </div>
@@ -597,7 +612,8 @@
   
     <div class="comments" id="comments">
       
-        <div id="gitment-container"></div>
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display:none"></div>
       
     </div>
 
@@ -744,7 +760,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MarkDown思想"><span class="nav-number">1.</span> <span class="nav-text">MarkDown思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#兼容Html"><span class="nav-number">2.</span> <span class="nav-text">兼容Html</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊字符转换"><span class="nav-number">3.</span> <span class="nav-text">特殊字符转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区块元素"><span class="nav-number">4.</span> <span class="nav-text">区块元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标题-利用-（最高阶标题）和-（第二阶标题）"><span class="nav-number">4.1.</span> <span class="nav-text">标题 利用 = （最高阶标题）和 - （第二阶标题）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标题-利用-（最高阶标题）"><span class="nav-number">4.2.</span> <span class="nav-text">标题 利用 # （最高阶标题）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#区块引用"><span class="nav-number">4.3.</span> <span class="nav-text">区块引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#区块效果展示区："><span class="nav-number">4.4.</span> <span class="nav-text">区块效果展示区：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表"><span class="nav-number">5.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#列表包含段落"><span class="nav-number">5.1.</span> <span class="nav-text">列表包含段落</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列表包含引用"><span class="nav-number">5.2.</span> <span class="nav-text">列表包含引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列表包含代码块"><span class="nav-number">5.3.</span> <span class="nav-text">列表包含代码块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果行首出现数组-点的组合100-需要做特殊处理"><span class="nav-number">5.4.</span> <span class="nav-text">如果行首出现数组+点的组合100. 需要做特殊处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分割线"><span class="nav-number">6.</span> <span class="nav-text">分割线</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MarkDown思想"><span class="nav-number">1.</span> <span class="nav-text">MarkDown思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#兼容Html"><span class="nav-number">2.</span> <span class="nav-text">兼容Html</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊字符转换"><span class="nav-number">3.</span> <span class="nav-text">特殊字符转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区块元素"><span class="nav-number">4.</span> <span class="nav-text">区块元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标题-利用-（最高阶标题）和-（第二阶标题）"><span class="nav-number">4.1.</span> <span class="nav-text">标题 利用 = （最高阶标题）和 - （第二阶标题）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标题-利用-（最高阶标题）"><span class="nav-number">4.2.</span> <span class="nav-text">标题 利用 # （最高阶标题）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#区块引用"><span class="nav-number">4.3.</span> <span class="nav-text">区块引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#区块效果展示区："><span class="nav-number">4.4.</span> <span class="nav-text">区块效果展示区：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表"><span class="nav-number">5.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#列表包含段落"><span class="nav-number">5.1.</span> <span class="nav-text">列表包含段落</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列表包含引用"><span class="nav-number">5.2.</span> <span class="nav-text">列表包含引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列表包含代码块"><span class="nav-number">5.3.</span> <span class="nav-text">列表包含代码块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果行首出现数组-点的组合100-需要做特殊处理"><span class="nav-number">5.4.</span> <span class="nav-text">如果行首出现数组+点的组合100. 需要做特殊处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分割线"><span class="nav-number">6.</span> <span class="nav-text">分割线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#超链接"><span class="nav-number">7.</span> <span class="nav-text">超链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字体样式"><span class="nav-number">8.</span> <span class="nav-text">字体样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码块"><span class="nav-number">9.</span> <span class="nav-text">代码块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片引用"><span class="nav-number">10.</span> <span class="nav-text">图片引用</span></a></li></ol></div>
             
 
           </div>
@@ -959,7 +975,11 @@
       }
 
       
-      renderGitment();
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
       
       </script>
     
