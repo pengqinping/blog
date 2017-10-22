@@ -19,5 +19,7 @@ hexo new post
 
 
 ### 问题解决
-1 .Testing HEXO_ALGOLIA_INDEXING_KEY permissions.
+1. Testing HEXO_ALGOLIA_INDEXING_KEY permissions.
    配置下 Search-Only API Key的权限就可以了，不要自己新建key
+
+2. 新增gitment评论，
