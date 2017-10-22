@@ -320,6 +320,403 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://pengqinping.github.io/ABlog/ABlog/2017/10/22/Forget-Md/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Royal">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/ABlog/images/avatar-pqp.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Royal的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/ABlog/2017/10/22/Forget-Md/" itemprop="url">Forget Md</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-22T09:59:25+08:00">
+                2017-10-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/ABlog/categories/工具使用/" itemprop="url" rel="index">
+                    <span itemprop="name">工具使用</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/ABlog/2017/10/22/Forget-Md/" class="leancloud_visitors" data-flag-title="Forget Md">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>写博客的过程中总喜欢忘记md语法，然后去百度比较浪费时间。这里记录下平时常用的md语法</p>
+<blockquote>
+<p><a href="http://markdown.tw/" target="_blank" rel="external">繁体http://markdown.tw/</a><br><a href="http://www.appinn.com/markdown/" target="_blank" rel="external">简体翻译http://www.appinn.com/markdown/</a></p>
+</blockquote>
+<h3 id="MarkDown思想"><a href="#MarkDown思想" class="headerlink" title="MarkDown思想"></a>MarkDown思想</h3><p>可读性，无论如何，都是最重要的。一份使用 Markdown 格式撰写的文件应该可以直接以纯文本发布，并且看起来不会像是由许多标签或是格式指令所构成。Markdown 语法受到一些既有 text-to-HTML 格式的影响，包括 <code>Setext</code>、<code>atx</code>、<code>Textile</code>、<code>reStructuredText</code>、<code>Grutatext</code> 和 <code>EtText</code>，而最大灵感来源其实是纯文本电子邮件的格式。</p>
+<p>总之， Markdown 的语法全由一些符号所组成，这些符号经过精挑细选，其作用一目了然。比如：在文字两旁加上星号，看起来就像<code>*强调*</code>。Markdown 的列表看起来，嗯，就是列表。Markdown 的区块引用看起来就真的像是引用一段文字，就像你曾在电子邮件中见过的那样。</p>
+<h3 id="兼容Html"><a href="#兼容Html" class="headerlink" title="兼容Html"></a>兼容Html</h3><p>直接编写 html标签在markdown 无需其他标志，要制约的只有一些 HTML 区块元素――比如 <code>&lt;div&gt;</code>、<code>&lt;table&gt;</code>、<code>&lt;pre&gt;</code>、<code>&lt;p&gt;</code> 等标签，必须在前后加上空行与其它内容区隔开，还要求它们的开始标签与结尾标签不能用制表符或空格来缩进。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">This is a regular paragraph.</div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>Foo<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line"></div><div class="line">This is another regular paragraph.</div></pre></td></tr></table></figure>
+<p><strong>请注意</strong>，在 HTML 区块标签间的 Markdown 格式语法将不会被处理。比如，你在 HTML 区块内使用 Markdown 样式的<code>*强调*</code>会没有效果。</p>
+<h3 id="特殊字符转换"><a href="#特殊字符转换" class="headerlink" title="特殊字符转换"></a>特殊字符转换</h3><p><code>&lt;</code>和<code>&amp;</code>特殊字符的处理，HTMl中如果你需要显示 <code>&lt;</code>和<code>&amp;</code>必须使用他们的实体 <code>&amp;lt;</code>和<code>&amp;amp;</code>来表示<br>在md中可以直接使用 &lt; &amp; 包括在代码块中,例如<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">4 <span class="tag">&lt; <span class="attr">5</span> </span></div><div class="line"><span class="tag"><span class="attr">AT</span>&amp;<span class="attr">T</span></span></div></pre></td></tr></table></figure></p>
+<h3 id="区块元素"><a href="#区块元素" class="headerlink" title="区块元素"></a>区块元素</h3><blockquote>
+<p>一个 Markdown 段落是由一个或多个连续的文本行组成，它的前后要有一个以上的空行（空行的定义是显示上看起来像是空的，便会被视为空行。比方说，若某一行只包含空格和制表符，则该行也会被视为空行）。普通段落不该用空格或制表符来缩进。</p>
+</blockquote>
+<h4 id="标题-利用-（最高阶标题）和-（第二阶标题）"><a href="#标题-利用-（最高阶标题）和-（第二阶标题）" class="headerlink" title="标题 利用 = （最高阶标题）和 - （第二阶标题）"></a>标题 利用 <code>=</code> （最高阶标题）和 <code>-</code> （第二阶标题）</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">底部双横线</div><div class="line">=======</div><div class="line"></div><div class="line">底部单横线</div><div class="line">-------</div></pre></td></tr></table></figure>
+<h4 id="标题-利用-（最高阶标题）"><a href="#标题-利用-（最高阶标题）" class="headerlink" title="标题 利用 # （最高阶标题）"></a>标题 利用 <code>#</code> （最高阶标题）</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 表示标题1</div><div class="line">## 表示标题2</div><div class="line">###### 标题6</div></pre></td></tr></table></figure>
+<h4 id="区块引用"><a href="#区块引用" class="headerlink" title="区块引用"></a>区块引用</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">a. 每行都添加 `&gt;`</div><div class="line">&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet</div><div class="line">&gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.</div><div class="line"></div><div class="line">b. 段落的第一行添加</div><div class="line">&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet</div><div class="line">consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.</div><div class="line">m.......</div><div class="line"></div><div class="line">c. 多层段落</div><div class="line">&gt; This is the first level of quoting.</div><div class="line">&gt; </div><div class="line">&gt; &gt; This is nested blockquote</div><div class="line">&gt; Back to the first level</div></pre></td></tr></table></figure>
+<h4 id="区块效果展示区："><a href="#区块效果展示区：" class="headerlink" title="区块效果展示区："></a>区块效果展示区：</h4><p>a. 每行都添加 <code>&gt;</code></p>
+<blockquote>
+<p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet<br>consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.</p>
+</blockquote>
+<p>b. 段落的第一行添加</p>
+<blockquote>
+<p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet<br>consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.<br>m…….</p>
+</blockquote>
+<p>c. 多层段落</p>
+<blockquote>
+<p>This is the first level of quoting.</p>
+<blockquote>
+<p>This is nested blockquote<br>Back to the first level</p>
+</blockquote>
+</blockquote>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>标记符号有 <code>*</code>,<code>+</code>,<code>-</code>,<code>数组.</code>,<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">* First</div><div class="line">* Second</div><div class="line">* Threed</div><div class="line"></div><div class="line">+ Red</div><div class="line">+ Green</div><div class="line">+ Bue</div><div class="line"></div><div class="line">1. Bird</div><div class="line">2. McHale</div><div class="line">3. Parish</div></pre></td></tr></table></figure></p>
+<p>列表效果展示如下：</p>
+<ul>
+<li>First</li>
+<li>Second</li>
+<li>Threed</li>
+</ul>
+<ul>
+<li>Red</li>
+<li>Green</li>
+<li>Bue</li>
+</ul>
+<ol>
+<li>Bird</li>
+<li>McHale</li>
+<li>Parish</li>
+</ol>
+<h4 id="列表包含段落"><a href="#列表包含段落" class="headerlink" title="列表包含段落"></a>列表包含段落</h4><p>列表项目可以包含多个段落，每个项目下的段落都必须缩进<strong>4</strong>个空格或是<strong>1</strong>个制表符：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">1.    This is a list item with two paragraphs. Lorem ipsum dolor</div><div class="line">      sit amet, consectetuer adipiscing elit. Aliquam hendrerit</div><div class="line">      mi posuere lectus.</div><div class="line">      </div><div class="line">      Vestibulum enim wisi, viverra nec, fringilla in, laoreet</div><div class="line">      vitae, risus. Donec sit amet nisl. Aliquam semper ipsum</div><div class="line">      sit amet velit.</div><div class="line"></div><div class="line">2.    Suspendisse id sem consectetuer libero luctus adipiscing.</div></pre></td></tr></table></figure></p>
+<p>效果展示如下：</p>
+<ol>
+<li><p>This is a list item with two paragraphs. Lorem ipsum dolor<br>sit amet, consectetuer adipiscing elit. Aliquam hendrerit<br>mi posuere lectus.</p>
+<p>Vestibulum enim wisi, viverra nec, fringilla in, laoreet<br>vitae, risus. Donec sit amet nisl. Aliquam semper ipsum<br>sit amet velit.</p>
+</li>
+<li><p>Suspendisse id sem consectetuer libero luctus adipiscing.</p>
+</li>
+</ol>
+<h4 id="列表包含引用"><a href="#列表包含引用" class="headerlink" title="列表包含引用"></a>列表包含引用</h4><p>如果要在列表项目内放进引用，那 <code>&gt;</code> 就需要缩进,缩进规则<strong>4</strong>个空格和<strong>1</strong>个tab：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">* A list item with a block</div><div class="line">    &gt; This is a block quote</div><div class="line">    &gt; This is a block quote</div></pre></td></tr></table></figure></p>
+<p>效果演示如下：</p>
+<ul>
+<li>A list item with a block<blockquote>
+<p>This is a block quote<br>This is a block quote</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="列表包含代码块"><a href="#列表包含代码块" class="headerlink" title="列表包含代码块"></a>列表包含代码块</h4><p>如果要放代码区块的话，该区块就需要缩进两次，也就是<strong>8</strong>个空格或是<strong>2</strong>个制表符：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">* A list item with a blockquote</div><div class="line">        </div><div class="line">        This is a code in the list item</div></pre></td></tr></table></figure></p>
+<p>效果演示如下：</p>
+<ul>
+<li><p>A list item with a blockquote</p>
+<pre><code>This is a code in the list item
+</code></pre></li>
+</ul>
+<h4 id="如果行首出现数组-点的组合100-需要做特殊处理"><a href="#如果行首出现数组-点的组合100-需要做特殊处理" class="headerlink" title="如果行首出现数组+点的组合100. 需要做特殊处理"></a>如果行首出现数组+点的组合<code>100.</code> 需要做特殊处理</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">1986\. What a great season.</div></pre></td></tr></table></figure>
+<h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><p>一行中可以使用3个或者3个以上的<code>*</code>,<code>-</code>,<code>_</code> 来进行一个风格线<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">***</div><div class="line">---</div><div class="line">____</div></pre></td></tr></table></figure></p>
+<p>效果演示如下：</p>
+<hr>
+<hr>
+<hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://pengqinping.github.io/ABlog/ABlog/2017/10/21/Jekyll博客转Hexo实践/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Royal">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/ABlog/images/avatar-pqp.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Royal的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/ABlog/2017/10/21/Jekyll博客转Hexo实践/" itemprop="url">Jekyll博客转Hexo实践</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-21T21:15:41+08:00">
+                2017-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/ABlog/categories/Hexo-博客/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo-博客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/ABlog/2017/10/21/Jekyll博客转Hexo实践/" class="leancloud_visitors" data-flag-title="Jekyll博客转Hexo实践">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本来不准备对这次的切换做个总结的，网上的教程确实都很详情了，不过还是想记录一下这个过程和相关的操作，切换的话一路都很顺利,关键hexo还有中文。还是记录下以备不时之需</p>
+<h3 id="环境备注"><a href="#环境备注" class="headerlink" title="环境备注"></a>环境备注</h3><blockquote>
+<p>整改前: mac + jekyll 部署到 github pages 上面 配置有(多说)<br>整改后: mac + hexo 部署到 github pages 和 conding pages  配置有(阅读统计，图片改为外链七牛，百度统计)</p>
+</blockquote>
+<h3 id="工具清单"><a href="#工具清单" class="headerlink" title="工具清单"></a>工具清单</h3><blockquote>
+<p>git,node,npm,hexo,sublime text,</p>
+</blockquote>
+<h3 id="相关地址"><a href="#相关地址" class="headerlink" title="相关地址"></a>相关地址</h3><p>a. hexo官网，有详细的博客搭建教程<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">https://hexo.io/zh-cn/docs/</a><br>b. next主题教程,主题关联详细配置<a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">http://theme-next.iissnan.com/getting-started.html</a><br>c. 百度统计登录<a href="https://tongji.baidu.com/web/welcome/login" target="_blank" rel="external">https://tongji.baidu.com/web/welcome/login</a><br>d. next主题下配置POST的阅读数<a href="https://notes.wanghao.work/2015-10-21-为NexT主题添加文章阅读量统计功能.html" target="_blank" rel="external">https://notes.wanghao.work/2015-10-21-为NexT主题添加文章阅读量统计功能.html</a> ，leancloud注册地址<a href="https://leancloud.cn/" target="_blank" rel="external">https://leancloud.cn/</a><br>e. 博客搜索<a href="https://www.algolia.com/" target="_blank" rel="external">https://www.algolia.com/</a><br>f. 七牛存储<a href="https://www.qiniu.com/" target="_blank" rel="external">https://www.qiniu.com/</a></p>
+<h3 id="Hexo-deploy"><a href="#Hexo-deploy" class="headerlink" title="Hexo deploy"></a>Hexo deploy</h3><p>这个命令确实很好用只会把编译好的静态页面进行传递到page的配置库，而源代码你可以保存在本地也可以保存在某个私有配置库如果你不想开放源代码的话，<br>a. 服务器上面创建配置库，并且初始化和创建好分支, github上面分支gh-pages ,coding上面分支 coding-pages.<br>b. 如果使用ssh协议的话，需要配置公钥用来在deploy进行代码的推送，配置方法<a href="https://help.github.com/articles/connecting-to-github-with-ssh/" target="_blank" rel="external">Github配置</a>, <a href="https://coding.net/user/account/setting/keys" target="_blank" rel="external">Coding配置</a><br>c. Hexo中配置deploy的</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- type: git</div><div class="line">  repo: git@github.com:xxxx/blog.git</div><div class="line">  branch: gh-pages</div><div class="line">  message: hexo自动提交</div><div class="line">- type: git </div><div class="line">  repo: git@git.coding.net:xxxx/blog.git</div><div class="line">  branch: coding-pages</div><div class="line">  message: hexo自动提交</div></pre></td></tr></table></figure>
+<p>d.当本地都编译完成后提交代码到pages分支的话直接 hexo deploy</p>
+<h3 id="小问题"><a href="#小问题" class="headerlink" title="小问题"></a>小问题</h3><p>a. next主题教程中菜单的配置中名称和图标是分开的，不过在next5.1.3的版本中图标和菜单的路径是一起配置的，’||’ 前面的是在博客中点击后指向的目录 ‘||’后面的是 awesome 的图标，在编写的过程中一味的按照文档来，傻不拉几的在哪里调试，然后还去看了代码，最后发现注释中有说明。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line">  home: / || home</div><div class="line">  android: /android/ || android</div><div class="line">  about: /about/ || user</div><div class="line">  tags: /tags/ || tags</div><div class="line">  categories: /categories/ || th</div><div class="line">  archives: /archives/ || archive</div></pre></td></tr></table></figure>
+<p>b. algolia 搜索 api key 无法访问 ，在 api key 默认生成的search api key的权限不够<br>首先我们要配置一个环境变量 HEXO_ALGOLIA_INDEXING_KEY=apikey<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export HEXO_ALGOLIA_INDEXING_KEY=apikey</div></pre></td></tr></table></figure></p>
+<p>默认apikey修改权限：在apikey的修改界面，进行权限配置，全部☑️即可</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://pengqinping.github.io/ABlog/ABlog/2017/08/13/2017-08-13-2kotlin-grammar/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -962,163 +1359,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://pengqinping.github.io/ABlog/ABlog/2016/11/19/2016-11-19-greendao3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Royal">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/ABlog/images/avatar-pqp.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Royal的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/ABlog/2016/11/19/2016-11-19-greendao3/" itemprop="url">GreenDAO3</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-19T00:00:00+08:00">
-                2016-11-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/ABlog/categories/技术-Android框架/" itemprop="url" rel="index">
-                    <span itemprop="name">技术-Android框架</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/ABlog/2016/11/19/2016-11-19-greendao3/" class="leancloud_visitors" data-flag-title="GreenDAO3">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="相关网址"><a href="#相关网址" class="headerlink" title="相关网址"></a>相关网址</h4><ul>
-<li>1.<a href="http://greenrobot.org/greendao/documentation/" target="_blank" rel="external">官方文档网址</a></li>
-<li>2.<a href="https://github.com/greenrobot/greenDAO" target="_blank" rel="external">Github上GreenDao地址</a></li>
-<li>3.<a href="http://blog.csdn.net/njweiyukun/article/details/51893092" target="_blank" rel="external">关于GreenDAO 3.0 的使用,网友解释的比较好的博客</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://pengqinping.github.io/ABlog/ABlog/2016/11/19/2016-11-19-butterknife840/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1256,6 +1496,163 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// View UI</span></div><div class="line"><span class="meta">@BindView</span>(R.id.login_progress)</div><div class="line">ProgressBar mProgressView;</div><div class="line"><span class="meta">@BindView</span>(R.id.login_form)</div><div class="line">ScrollView mLoginFormView;</div><div class="line"><span class="meta">@BindView</span>(R.id.email_login_form)</div><div class="line">LinearLayout emailLoginForm;</div><div class="line"><span class="meta">@BindView</span>(R.id.email) AutoCompleteTextView mEmailView;</div><div class="line"><span class="meta">@BindView</span>(R.id.password) EditText mPasswordView;</div><div class="line"><span class="meta">@BindView</span>(R.id.keystore) EditText mKeystore;</div><div class="line"></div><div class="line"><span class="comment">//click event</span></div><div class="line"> <span class="meta">@OnClick</span>(R.id.email_sign_in_button) <span class="function"><span class="keyword">void</span> <span class="title">onEmailSignInButtonClick</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">//TODO implement</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line"> <span class="meta">@OnLongClick</span>(R.id.email_sign_in_button) <span class="function"><span class="keyword">boolean</span> <span class="title">onEmailSignInButtonLongClick</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">//TODO implement</span></div><div class="line">        attemptLogin();</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <h4 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h4><ul>
 <li><code>NullPointException</code> 基本就是版本不一致导致的.</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://pengqinping.github.io/ABlog/ABlog/2016/11/19/2016-11-19-greendao3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Royal">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/ABlog/images/avatar-pqp.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Royal的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/ABlog/2016/11/19/2016-11-19-greendao3/" itemprop="url">GreenDAO3</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-19T00:00:00+08:00">
+                2016-11-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/ABlog/categories/技术-Android框架/" itemprop="url" rel="index">
+                    <span itemprop="name">技术-Android框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/ABlog/2016/11/19/2016-11-19-greendao3/" class="leancloud_visitors" data-flag-title="GreenDAO3">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="相关网址"><a href="#相关网址" class="headerlink" title="相关网址"></a>相关网址</h4><ul>
+<li>1.<a href="http://greenrobot.org/greendao/documentation/" target="_blank" rel="external">官方文档网址</a></li>
+<li>2.<a href="https://github.com/greenrobot/greenDAO" target="_blank" rel="external">Github上GreenDao地址</a></li>
+<li>3.<a href="http://blog.csdn.net/njweiyukun/article/details/51893092" target="_blank" rel="external">关于GreenDAO 3.0 的使用,网友解释的比较好的博客</a></li>
 </ul>
 
           
@@ -1683,345 +2080,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://pengqinping.github.io/ABlog/ABlog/2016/03/27/2016-03-27-RxJava-RxAndroid资料/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Royal">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/ABlog/images/avatar-pqp.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Royal的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/ABlog/2016/03/27/2016-03-27-RxJava-RxAndroid资料/" itemprop="url">RxJava&RxAndroid</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-27T00:00:00+08:00">
-                2016-03-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/ABlog/categories/技术-Rx/" itemprop="url" rel="index">
-                    <span itemprop="name">技术-Rx</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/ABlog/2016/03/27/2016-03-27-RxJava-RxAndroid资料/" class="leancloud_visitors" data-flag-title="RxJava&RxAndroid">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>123123</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://pengqinping.github.io/ABlog/ABlog/2016/03/10/2016-03-10-android-fork-project-LeakCanary/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Royal">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/ABlog/images/avatar-pqp.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Royal的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/ABlog/2016/03/10/2016-03-10-android-fork-project-LeakCanary/" itemprop="url">Android LeakCanary</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-10T00:00:00+08:00">
-                2016-03-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/ABlog/categories/技术-Android性能优化/" itemprop="url" rel="index">
-                    <span itemprop="name">技术-Android性能优化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/ABlog/2016/03/10/2016-03-10-android-fork-project-LeakCanary/" class="leancloud_visitors" data-flag-title="Android LeakCanary">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>很给力的分析工具，基本上能够解决内存泄露的大部分场景，比MAT看起来清晰。</p>
-</blockquote>
-<h4 id="常见的内存泄露的几种场景"><a href="#常见的内存泄露的几种场景" class="headerlink" title="常见的内存泄露的几种场景"></a>常见的内存泄露的几种场景</h4><ol>
-<li>数据库中的<code>Cursor</code>没有关闭;</li>
-<li>广播接收器没有销毁;</li>
-<li>IO 操作没有进行关闭</li>
-<li>Bitmap没有销毁</li>
-<li>context 泄露</li>
-<li>Handler 泄露</li>
-<li>线程泄露</li>
-<li>Adapter 每次都直接 new View 返回。</li>
-</ol>
-<h4 id="LeakCanary-使用："><a href="#LeakCanary-使用：" class="headerlink" title="LeakCanary 使用："></a>LeakCanary 使用：</h4><blockquote>
-<p>首先贴下 github的地址： <a href="https://github.com/square/leakcanary" target="_blank" rel="external">https://github.com/square/leakcanary</a>使用方法参考README.md文件。</p>
-</blockquote>
-<p>有网络的情况下使用就很方便了。like this</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">  debugCompile <span class="string">'com.squareup.leakcanary:leakcanary-android:1.3.1'</span> <span class="comment">// or 1.4-beta1</span></div><div class="line">  releaseCompile <span class="string">'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1'</span> <span class="comment">// or 1.4-beta1</span></div><div class="line">  testCompile <span class="string">'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1'</span> <span class="comment">// or 1.4-beta1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><code>debugCompile</code> 表示只会在debug模式下才会去使用这个依赖，<code>releaseCompile</code> 表示只在发布正式版本的时候区使用这个依赖。这种模式非常方便我们在发布不同的包可以不用修改代码而取消到某些功能。<br>没有网络的开发环境就很辛苦了需要自己下载jar。这里我打包了leakcanary-jar-1.3的包，包括haha 包。<a href="https://github.com/pengqinping/leakcanary-demo/blob/master/download/leakcanary-jar.zip" target="_blank" rel="external">下载</a></p>
-<p>下载之后通过 import library project with jar/aar 即可。</p>
-<h4 id="leak-Canary-案例分析-demo直接使用liaohuqiu的demo"><a href="#leak-Canary-案例分析-demo直接使用liaohuqiu的demo" class="headerlink" title="leak Canary 案例分析 demo直接使用liaohuqiu的demo,"></a>leak Canary 案例分析 demo直接使用<a href="https://github.com/liaohuqiu/leakcanary-demo" target="_blank" rel="external">liaohuqiu</a>的demo,</h4><ol>
-<li>静态持有 activity fragment 等生命周期短的 视图控件</li>
-</ol>
-<p><code>TestActivity.java</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_test);</div><div class="line">        TextView textView = (TextView) findViewById(R.id.test_text_view);</div><div class="line">        TestDataModel.getInstance().setRetainedTextView(textView);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p><code>TestDataModel</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> TestDataModel sInstance;</div><div class="line">   <span class="keyword">private</span> TextView mRetainedTextView;</div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TestDataModel <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (sInstance == <span class="keyword">null</span>) &#123;</div><div class="line">           sInstance = <span class="keyword">new</span> TestDataModel();</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> sInstance;</div><div class="line">   &#125;</div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRetainedTextView</span><span class="params">(TextView textView)</span> </span>&#123;</div><div class="line">       mRetainedTextView = textView;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<p>这样就会有一个泄露，TestDataModel的单例对象会持有TestActivity 的 textView对象的引用，如果这个单例无法销毁就会有内存泄露，这个使用只需要进入 TestActivity后在退出leakcanary 就会检测到内存泄露。并且有相关的描述</p>
-<p><img class="shadow" src="http://oy2qy52pb.bkt.clouddn.com/ABlog/post/static_class_with_view.jpg" height="350"></p>
-<p>2.handler 发送消息在activity destory的时候没有停止，导致activity不能被释放，</p>
-<p><code>HandlerLeakAcivity.java</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">       <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">       setContentView(R.layout.activity_handler_leak);</div><div class="line">       mHandler.postDelayed(loopRunable, <span class="number">4000l</span>);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="keyword">private</span> Handler mHandler = <span class="keyword">new</span> Handler();</div><div class="line"></div><div class="line">   <span class="keyword">private</span> Runnable loopRunable = <span class="keyword">new</span> Runnable() &#123;</div><div class="line">       <span class="meta">@Override</span></div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">           Log.d(<span class="string">"lll"</span>, <span class="string">"loopRunnable is Running"</span>);</div><div class="line">           mHandler.postDelayed(<span class="keyword">this</span>, <span class="number">3000L</span>);</div><div class="line">       &#125;</div><div class="line">   &#125;;</div></pre></td></tr></table></figure>
-<p><img class="shadow" src="http://oy2qy52pb.bkt.clouddn.com/ABlog/post/handler_leak.jpg" height="350"></p>
-<p><small class="img-hint">赶紧为你的项目添加 leakcanary 检测下是否有内存泄露吧 </small></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2076,7 +2134,7 @@
               
                 <a href="/ABlog/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2087,7 +2145,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/ABlog/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2098,7 +2156,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/ABlog/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2324,6 +2382,24 @@
 
 
 
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
 
 
 

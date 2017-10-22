@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Forget Md]]></title>
+    <url>%2FABlog%2F2017%2F10%2F22%2FForget-Md%2F</url>
+    <content type="text"><![CDATA[写博客的过程中总喜欢忘记md语法，然后去百度比较浪费时间。这里记录下平时常用的md语法 繁体http://markdown.tw/简体翻译http://www.appinn.com/markdown/ MarkDown思想可读性，无论如何，都是最重要的。一份使用 Markdown 格式撰写的文件应该可以直接以纯文本发布，并且看起来不会像是由许多标签或是格式指令所构成。Markdown 语法受到一些既有 text-to-HTML 格式的影响，包括 Setext、atx、Textile、reStructuredText、Grutatext 和 EtText，而最大灵感来源其实是纯文本电子邮件的格式。 总之， Markdown 的语法全由一些符号所组成，这些符号经过精挑细选，其作用一目了然。比如：在文字两旁加上星号，看起来就像*强调*。Markdown 的列表看起来，嗯，就是列表。Markdown 的区块引用看起来就真的像是引用一段文字，就像你曾在电子邮件中见过的那样。 兼容Html直接编写 html标签在markdown 无需其他标志，要制约的只有一些 HTML 区块元素――比如 &lt;div&gt;、&lt;table&gt;、&lt;pre&gt;、&lt;p&gt; 等标签，必须在前后加上空行与其它内容区隔开，还要求它们的开始标签与结尾标签不能用制表符或空格来缩进。 123456789This is a regular paragraph.&lt;table&gt; &lt;tr&gt; &lt;td&gt;Foo&lt;/td&gt; &lt;/tr&gt;&lt;/table&gt;This is another regular paragraph. 请注意，在 HTML 区块标签间的 Markdown 格式语法将不会被处理。比如，你在 HTML 区块内使用 Markdown 样式的*强调*会没有效果。 特殊字符转换&lt;和&amp;特殊字符的处理，HTMl中如果你需要显示 &lt;和&amp;必须使用他们的实体 &amp;lt;和&amp;amp;来表示在md中可以直接使用 &lt; &amp; 包括在代码块中,例如124 &lt; 5 AT&amp;T 区块元素 一个 Markdown 段落是由一个或多个连续的文本行组成，它的前后要有一个以上的空行（空行的定义是显示上看起来像是空的，便会被视为空行。比方说，若某一行只包含空格和制表符，则该行也会被视为空行）。普通段落不该用空格或制表符来缩进。 标题 利用 = （最高阶标题）和 - （第二阶标题）12345底部双横线=======底部单横线------- 标题 利用 # （最高阶标题）123# 表示标题1## 表示标题2###### 标题6 区块引用1234567891011121314a. 每行都添加 `&gt;`&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet&gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.b. 段落的第一行添加&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit ametconsectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.m.......c. 多层段落&gt; This is the first level of quoting.&gt; &gt; &gt; This is nested blockquote&gt; Back to the first level 区块效果展示区：a. 每行都添加 &gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit ametconsectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. b. 段落的第一行添加 This is a blockquote with two paragraphs. Lorem ipsum dolor sit ametconsectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.m……. c. 多层段落 This is the first level of quoting. This is nested blockquoteBack to the first level 列表标记符号有 *,+,-,数组.,1234567891011* First* Second* Threed+ Red+ Green+ Bue1. Bird2. McHale3. Parish 列表效果展示如下： First Second Threed Red Green Bue Bird McHale Parish 列表包含段落列表项目可以包含多个段落，每个项目下的段落都必须缩进4个空格或是1个制表符：1234567891. This is a list item with two paragraphs. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus. Donec sit amet nisl. Aliquam semper ipsum sit amet velit.2. Suspendisse id sem consectetuer libero luctus adipiscing. 效果展示如下： This is a list item with two paragraphs. Lorem ipsum dolorsit amet, consectetuer adipiscing elit. Aliquam hendreritmi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreetvitae, risus. Donec sit amet nisl. Aliquam semper ipsumsit amet velit. Suspendisse id sem consectetuer libero luctus adipiscing. 列表包含引用如果要在列表项目内放进引用，那 &gt; 就需要缩进,缩进规则4个空格和1个tab：123* A list item with a block &gt; This is a block quote &gt; This is a block quote 效果演示如下： A list item with a block This is a block quoteThis is a block quote 列表包含代码块如果要放代码区块的话，该区块就需要缩进两次，也就是8个空格或是2个制表符：123* A list item with a blockquote This is a code in the list item 效果演示如下： A list item with a blockquote This is a code in the list item 如果行首出现数组+点的组合100. 需要做特殊处理11986\. What a great season. 分割线一行中可以使用3个或者3个以上的*,-,_ 来进行一个风格线123***---____ 效果演示如下：]]></content>
+      <categories>
+        <category>工具使用</category>
+      </categories>
+      <tags>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Jekyll博客转Hexo实践]]></title>
+    <url>%2FABlog%2F2017%2F10%2F21%2FJekyll%E5%8D%9A%E5%AE%A2%E8%BD%ACHexo%E5%AE%9E%E8%B7%B5%2F</url>
+    <content type="text"><![CDATA[本来不准备对这次的切换做个总结的，网上的教程确实都很详情了，不过还是想记录一下这个过程和相关的操作，切换的话一路都很顺利,关键hexo还有中文。还是记录下以备不时之需 环境备注 整改前: mac + jekyll 部署到 github pages 上面 配置有(多说)整改后: mac + hexo 部署到 github pages 和 conding pages 配置有(阅读统计，图片改为外链七牛，百度统计) 工具清单 git,node,npm,hexo,sublime text, 相关地址a. hexo官网，有详细的博客搭建教程https://hexo.io/zh-cn/docs/b. next主题教程,主题关联详细配置http://theme-next.iissnan.com/getting-started.htmlc. 百度统计登录https://tongji.baidu.com/web/welcome/logind. next主题下配置POST的阅读数https://notes.wanghao.work/2015-10-21-为NexT主题添加文章阅读量统计功能.html ，leancloud注册地址https://leancloud.cn/e. 博客搜索https://www.algolia.com/f. 七牛存储https://www.qiniu.com/ Hexo deploy这个命令确实很好用只会把编译好的静态页面进行传递到page的配置库，而源代码你可以保存在本地也可以保存在某个私有配置库如果你不想开放源代码的话，a. 服务器上面创建配置库，并且初始化和创建好分支, github上面分支gh-pages ,coding上面分支 coding-pages.b. 如果使用ssh协议的话，需要配置公钥用来在deploy进行代码的推送，配置方法Github配置, Coding配置c. Hexo中配置deploy的 12345678- type: git repo: git@github.com:xxxx/blog.git branch: gh-pages message: hexo自动提交- type: git repo: git@git.coding.net:xxxx/blog.git branch: coding-pages message: hexo自动提交 d.当本地都编译完成后提交代码到pages分支的话直接 hexo deploy 小问题a. next主题教程中菜单的配置中名称和图标是分开的，不过在next5.1.3的版本中图标和菜单的路径是一起配置的，’||’ 前面的是在博客中点击后指向的目录 ‘||’后面的是 awesome 的图标，在编写的过程中一味的按照文档来，傻不拉几的在哪里调试，然后还去看了代码，最后发现注释中有说明。 1234567menu: home: / || home android: /android/ || android about: /about/ || user tags: /tags/ || tags categories: /categories/ || th archives: /archives/ || archive b. algolia 搜索 api key 无法访问 ，在 api key 默认生成的search api key的权限不够首先我们要配置一个环境变量 HEXO_ALGOLIA_INDEXING_KEY=apikey1export HEXO_ALGOLIA_INDEXING_KEY=apikey 默认apikey修改权限：在apikey的修改界面，进行权限配置，全部☑️即可]]></content>
+      <categories>
+        <category>Hexo-博客</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Jekyll</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[2.kotlin grammar]]></title>
     <url>%2FABlog%2F2017%2F08%2F13%2F2017-08-13-2kotlin-grammar%2F</url>
     <content type="text"><![CDATA[本文参考地址 包申明1package com.twp.kontlin.demo 函数定义函数定义使用关键字 fun，参数格式为：参数 : 类型 , 语法有点像oc 123456789101112131415161718192021fun sum(a : Int ,b: Int): Int&#123; return a+b;&#125;//表达式作为函数体，返回类型自动推断： a+b 为表达式,作为了函数的返回fun sum1(a: Int, b: Int) = a + b// public 方法则必须明确写出返回类型public fun sum2(a: Int, b: Int): Int = a + b//无返回值的函数(类似Java中的void)：fun printSum(a: Int, b: Int): Unit &#123; println("not public method "+(a + b))&#125;// 如果是返回 Unit类型，则可以省略(对于public方法也是这样)：public fun printSum1(a: Int, b: Int) &#123; println("public method "+(a + b))&#125; lambda123456//lambda表达式使用实例val sumLambda: (Int, Int) -&gt; Int = &#123;x,y -&gt; x+y&#125;val voidLambda: (Int ,Int) -&gt; Unit =&#123;x,y -&gt; x+y ; println(" this is unit return method")&#125;println("lambda:"+sumLambda(10,10));voidLambda(1,2); 常量&amp;变量12345678//常量和变量//变量: var &lt;标识符&gt;:&lt;类型&gt;=&lt;初始化值&gt;val firstval:Int = 100;val secondVal = 200;val thirdVal = "ddd";//常量: val &lt;标识符&gt;:&lt;类型&gt;=&lt;初始化值&gt;var finalVar = 5; 字符模板12345678910111213//字符串模板fun stringMode():Unit &#123; var firstString = 1 // 模板中的简单名称： val s1 = "firstString is $firstString" println(s1) firstString = 2; // 模板中的任意表达式： val s2 = "$&#123;s1.replace("is", "was")&#125;, but now is $firstString" println(s2)&#125;]]></content>
@@ -47,18 +70,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[GreenDAO3]]></title>
-    <url>%2FABlog%2F2016%2F11%2F19%2F2016-11-19-greendao3%2F</url>
-    <content type="text"><![CDATA[相关网址 1.官方文档网址 2.Github上GreenDao地址 3.关于GreenDAO 3.0 的使用,网友解释的比较好的博客]]></content>
-      <categories>
-        <category>技术-Android框架</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>GreenDao</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Butterknife 8.4.0 使用]]></title>
     <url>%2FABlog%2F2016%2F11%2F19%2F2016-11-19-butterknife840%2F</url>
     <content type="text"><![CDATA[相关地址: ButterKnife 官网地址 ButterKnife Github ButterKnife 编译时注解,解释比较详细的一个博客 使用简介: 使用butterKnife之后你会感觉很舒服,结合 Android-studio 的插件 Android Butterknife Zelezny 会更好 不用再输入 findViewById(ResId) getResource(R.[string][color].resId)等代码 ,这个使用的最多 简化事件响应流程 使用流程 这个流程对应的是 com.jakewharton:butterknife:8.4.0 的版本 ,这个库期间更新过好几次配置,我直接描述最新配置,这里一定要注意版本对应,否则会编译报错 1.project 中的 build.gradle 添加 butterknife-gradle-plugin 的8.4.0的版本, 12345678buildscript &#123; repositories &#123; mavenCentral() &#125; dependencies &#123; classpath 'com.jakewharton:butterknife-gradle-plugin:8.4.0' &#125;&#125; 2.在使用的module的build.grale中添加plugin 依赖和库依赖 1apply plugin: 'com.jakewharton.butterknife' 1234dependencies &#123; compile 'com.jakewharton:butterknife:8.4.0' annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'&#125; 3.开始在项目中使用ButterKnife 123456789101112131415161718192021// View UI@BindView(R.id.login_progress)ProgressBar mProgressView;@BindView(R.id.login_form)ScrollView mLoginFormView;@BindView(R.id.email_login_form)LinearLayout emailLoginForm;@BindView(R.id.email) AutoCompleteTextView mEmailView;@BindView(R.id.password) EditText mPasswordView;@BindView(R.id.keystore) EditText mKeystore;//click event @OnClick(R.id.email_sign_in_button) void onEmailSignInButtonClick() &#123; //TODO implement &#125; @OnLongClick(R.id.email_sign_in_button) boolean onEmailSignInButtonLongClick() &#123; //TODO implement attemptLogin(); return true; &#125; 常见错误 NullPointException 基本就是版本不一致导致的.]]></content>
@@ -68,6 +79,18 @@
       <tags>
         <tag>Android</tag>
         <tag>fork Project</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[GreenDAO3]]></title>
+    <url>%2FABlog%2F2016%2F11%2F19%2F2016-11-19-greendao3%2F</url>
+    <content type="text"><![CDATA[相关网址 1.官方文档网址 2.Github上GreenDao地址 3.关于GreenDAO 3.0 的使用,网友解释的比较好的博客]]></content>
+      <categories>
+        <category>技术-Android框架</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>GreenDao</tag>
       </tags>
   </entry>
   <entry>
