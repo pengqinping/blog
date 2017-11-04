@@ -424,9 +424,16 @@
       
         
           
-            <p>123123</p>
+          123123
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/ABlog/2016/03/27/2016-03-27-RxJava-RxAndroid资料/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -577,42 +584,26 @@
       
         
           
-            <blockquote>
-<p>很给力的分析工具，基本上能够解决内存泄露的大部分场景，比MAT看起来清晰。</p>
-</blockquote>
-<h4 id="常见的内存泄露的几种场景"><a href="#常见的内存泄露的几种场景" class="headerlink" title="常见的内存泄露的几种场景"></a>常见的内存泄露的几种场景</h4><ol>
-<li>数据库中的<code>Cursor</code>没有关闭;</li>
-<li>广播接收器没有销毁;</li>
-<li>IO 操作没有进行关闭</li>
-<li>Bitmap没有销毁</li>
-<li>context 泄露</li>
-<li>Handler 泄露</li>
-<li>线程泄露</li>
-<li>Adapter 每次都直接 new View 返回。</li>
-</ol>
-<h4 id="LeakCanary-使用："><a href="#LeakCanary-使用：" class="headerlink" title="LeakCanary 使用："></a>LeakCanary 使用：</h4><blockquote>
-<p>首先贴下 github的地址： <a href="https://github.com/square/leakcanary" target="_blank" rel="external">https://github.com/square/leakcanary</a>使用方法参考README.md文件。</p>
-</blockquote>
-<p>有网络的情况下使用就很方便了。like this</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">  debugCompile <span class="string">'com.squareup.leakcanary:leakcanary-android:1.3.1'</span> <span class="comment">// or 1.4-beta1</span></div><div class="line">  releaseCompile <span class="string">'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1'</span> <span class="comment">// or 1.4-beta1</span></div><div class="line">  testCompile <span class="string">'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1'</span> <span class="comment">// or 1.4-beta1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><code>debugCompile</code> 表示只会在debug模式下才会去使用这个依赖，<code>releaseCompile</code> 表示只在发布正式版本的时候区使用这个依赖。这种模式非常方便我们在发布不同的包可以不用修改代码而取消到某些功能。<br>没有网络的开发环境就很辛苦了需要自己下载jar。这里我打包了leakcanary-jar-1.3的包，包括haha 包。<a href="https://github.com/pengqinping/leakcanary-demo/blob/master/download/leakcanary-jar.zip" target="_blank" rel="external">下载</a></p>
-<p>下载之后通过 import library project with jar/aar 即可。</p>
-<h4 id="leak-Canary-案例分析-demo直接使用liaohuqiu的demo"><a href="#leak-Canary-案例分析-demo直接使用liaohuqiu的demo" class="headerlink" title="leak Canary 案例分析 demo直接使用liaohuqiu的demo,"></a>leak Canary 案例分析 demo直接使用<a href="https://github.com/liaohuqiu/leakcanary-demo" target="_blank" rel="external">liaohuqiu</a>的demo,</h4><ol>
-<li>静态持有 activity fragment 等生命周期短的 视图控件</li>
-</ol>
-<p><code>TestActivity.java</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_test);</div><div class="line">        TextView textView = (TextView) findViewById(R.id.test_text_view);</div><div class="line">        TestDataModel.getInstance().setRetainedTextView(textView);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p><code>TestDataModel</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> TestDataModel sInstance;</div><div class="line">   <span class="keyword">private</span> TextView mRetainedTextView;</div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TestDataModel <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (sInstance == <span class="keyword">null</span>) &#123;</div><div class="line">           sInstance = <span class="keyword">new</span> TestDataModel();</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> sInstance;</div><div class="line">   &#125;</div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRetainedTextView</span><span class="params">(TextView textView)</span> </span>&#123;</div><div class="line">       mRetainedTextView = textView;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<p>这样就会有一个泄露，TestDataModel的单例对象会持有TestActivity 的 textView对象的引用，如果这个单例无法销毁就会有内存泄露，这个使用只需要进入 TestActivity后在退出leakcanary 就会检测到内存泄露。并且有相关的描述</p>
-<p><img class="shadow" src="http://oy2qy52pb.bkt.clouddn.com/ABlog/post/static_class_with_view.jpg" height="350"></p>
-<p>2.handler 发送消息在activity destory的时候没有停止，导致activity不能被释放，</p>
-<p><code>HandlerLeakAcivity.java</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">       <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">       setContentView(R.layout.activity_handler_leak);</div><div class="line">       mHandler.postDelayed(loopRunable, <span class="number">4000l</span>);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="keyword">private</span> Handler mHandler = <span class="keyword">new</span> Handler();</div><div class="line"></div><div class="line">   <span class="keyword">private</span> Runnable loopRunable = <span class="keyword">new</span> Runnable() &#123;</div><div class="line">       <span class="meta">@Override</span></div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">           Log.d(<span class="string">"lll"</span>, <span class="string">"loopRunnable is Running"</span>);</div><div class="line">           mHandler.postDelayed(<span class="keyword">this</span>, <span class="number">3000L</span>);</div><div class="line">       &#125;</div><div class="line">   &#125;;</div></pre></td></tr></table></figure>
-<p><img class="shadow" src="http://oy2qy52pb.bkt.clouddn.com/ABlog/post/handler_leak.jpg" height="350"></p>
-<p><small class="img-hint">赶紧为你的项目添加 leakcanary 检测下是否有内存泄露吧 </small></p>
-
           
+很给力的分析工具，基本上能够解决内存泄露的大部分场景，比MAT看起来清晰。
+
+常见的内存泄露的几种场景
+数据库中的Cursor没有关闭;
+广播接收器没有销毁;
+IO 操作没有进行关闭
+Bitmap没有销毁
+context 泄露
+Handler 泄露
+线程泄露
+Adapter 每次都直接 new V
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/ABlog/2016/03/10/2016-03-10-android-fork-project-LeakCanary/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -763,179 +754,16 @@
       
         
           
-            <h4 id="工作中遇到一个难题"><a href="#工作中遇到一个难题" class="headerlink" title="工作中遇到一个难题"></a>工作中遇到一个难题</h4><blockquote>
-<p>有个进度条显示效果要求进度按照比例计算，但是文字显示效果和背景恰好相反，项目中的效果是前人留下的，现实方式非常随意，直接使用大图完成，导致小屏手机无法显示完整图片，大屏手机显示拉伸，英文状态根本没有，后面接手修改适配真是头疼，做成了.9 模式，但是适配依然蛋疼，最后没有办法终于还是准备重写自定View来完成效果。</p>
-</blockquote>
-<p>最终的效果如下：<br><img src="http://oy2qy52pb.bkt.clouddn.com/ABlog/post/01.png" width="800" height="200"></p>
-<h4 id="实战演练"><a href="#实战演练" class="headerlink" title="实战演练"></a>实战演练</h4><p>下面简要描述下代码的实现，主要分为两个部分，第一个为文字显示效果。第二个为背景显示效果。</p>
-<p>文字显示 <code>Progress.java</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> *      Copyright (C) 2016. 彭钦平</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> *      Licensed under the Apache License, Version 2.0 (the "License");</span></div><div class="line"><span class="comment"> *      you may not use this file except in compliance with the License.</span></div><div class="line"><span class="comment"> *      You may obtain a copy of the License at</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> *           http://www.apache.org/licenses/LICENSE-2.0</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> *      Unless required by applicable law or agreed to in writing, software</span></div><div class="line"><span class="comment"> *      distributed under the License is distributed on an "AS IS" BASIS,</span></div><div class="line"><span class="comment"> *      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div><div class="line"><span class="comment"> *      See the License for the specific language governing permissions and</span></div><div class="line"><span class="comment"> *      limitations under the License.</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">import</span> android.content.Context;</div><div class="line"><span class="keyword">import</span> android.graphics.Canvas;</div><div class="line"><span class="keyword">import</span> android.graphics.Color;</div><div class="line"><span class="keyword">import</span> android.graphics.LinearGradient;</div><div class="line"><span class="keyword">import</span> android.graphics.Matrix;</div><div class="line"><span class="keyword">import</span> android.graphics.Paint;</div><div class="line"><span class="keyword">import</span> android.graphics.Shader;</div><div class="line"><span class="keyword">import</span> android.util.AttributeSet;</div><div class="line"><span class="keyword">import</span> android.widget.TextView;</div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Created by pengqinping on 16/3/7.</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * <span class="doctag">@email</span> Royal.k.peng@gmail.com</span></div><div class="line"><span class="comment"> * <span class="doctag">@description</span></span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Progress</span> <span class="keyword">extends</span> <span class="title">TextView</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Progress</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context);</div><div class="line">        init();</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Progress</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context, attrs);</div><div class="line">        init();</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Progress</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context, attrs, defStyleAttr);</div><div class="line">        init();</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</div><div class="line"><span class="comment">//        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">private</span> LinearGradient mLinearGradient;</div><div class="line">    <span class="keyword">private</span> Matrix mGradientMatrix;</div><div class="line">    <span class="keyword">private</span> Paint mPaint;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mViewWidth = <span class="number">0</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mTranslate = <span class="number">0</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> mAnimating = <span class="keyword">true</span>;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onSizeChanged</span><span class="params">(<span class="keyword">int</span> w, <span class="keyword">int</span> h, <span class="keyword">int</span> oldw, <span class="keyword">int</span> oldh)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onSizeChanged(w, h, oldw, oldh);</div><div class="line">        <span class="comment">/*if (mViewWidth == 0) &#123;</span></div><div class="line"><span class="comment">            mViewWidth = getMeasuredWidth();</span></div><div class="line"><span class="comment">            if (mViewWidth &gt; 0) &#123;</span></div><div class="line"><span class="comment">                mPaint = getPaint();</span></div><div class="line"><span class="comment">                mLinearGradient = new LinearGradient(-mViewWidth, 0, 0, 0,</span></div><div class="line"><span class="comment">                        new int[] &#123;Color.RED, Color.RED,Color.WHITE, Color.WHITE &#125;,</span></div><div class="line"><span class="comment">                        new float[] &#123; 0, 0.5f,0.5f, 1 &#125;, Shader.TileMode.MIRROR);</span></div><div class="line"><span class="comment">                mPaint.setShader(mLinearGradient);</span></div><div class="line"><span class="comment">                mGradientMatrix = new Matrix();</span></div><div class="line"><span class="comment">            &#125;</span></div><div class="line"><span class="comment">        &#125;*/</span></div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDraw(canvas);</div><div class="line">        <span class="comment">/*if (mAnimating &amp;&amp; mGradientMatrix != null) &#123;</span></div><div class="line"><span class="comment">            mTranslate += mViewWidth / 10;</span></div><div class="line"><span class="comment">            if (mTranslate &gt; 2 * mViewWidth) &#123;</span></div><div class="line"><span class="comment">                mTranslate = -mViewWidth;</span></div><div class="line"><span class="comment">            &#125;</span></div><div class="line"><span class="comment">            mGradientMatrix.setTranslate(mTranslate, 0);</span></div><div class="line"><span class="comment">            mLinearGradient.setLocalMatrix(mGradientMatrix);</span></div><div class="line"><span class="comment">            */</span><span class="comment">/*postInvalidateDelayed(50);*/</span><span class="comment">/*</span></div><div class="line"><span class="comment">        &#125;*/</span></div><div class="line">       <span class="comment">/* mPaint = getPaint();</span></div><div class="line"><span class="comment">        mLinearGradient = new LinearGradient(0, 0, getWidth(), getHeight(),</span></div><div class="line"><span class="comment">                new int[]&#123; Color.WHITE, Color.WHITE,Color.parseColor("#f05858"), Color.parseColor("#f05858")&#125;,</span></div><div class="line"><span class="comment">                new float[]&#123;0, 0.5f, 0.5f, 1&#125;, Shader.TileMode.MIRROR);</span></div><div class="line"><span class="comment">        mPaint.setShader(mLinearGradient);*/</span></div><div class="line">    &#125;</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * progress 取值范围 (0-100)</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setProgress</span><span class="params">(<span class="keyword">int</span> progress)</span></span>&#123;</div><div class="line">        mPaint = getPaint();</div><div class="line">        mPaint.setFlags(Paint.ANTI_ALIAS_FLAG);</div><div class="line">        <span class="keyword">if</span>(progress &lt;= <span class="number">0</span>)&#123;</div><div class="line">            <span class="comment">//白底红字 so paint not set shader, and setColor = Color.parseColor("#f05858")</span></div><div class="line">            mPaint.setColor(Color.parseColor(<span class="string">"#f05858"</span>));</div><div class="line">            setTextColor(Color.parseColor(<span class="string">"#f05858"</span>));</div><div class="line">            setText(<span class="string">"开始下载"</span>);</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(progress &gt;= <span class="number">100</span>)&#123;</div><div class="line">            <span class="comment">//红底白字</span></div><div class="line">            mPaint.setColor(Color.WHITE);</div><div class="line">            setTextColor(Color.WHITE);</div><div class="line">            setText(<span class="string">"再次下载"</span>);</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">final</span> <span class="keyword">float</span> precent = (<span class="keyword">float</span>) progress/<span class="number">100f</span>;</div><div class="line">            mLinearGradient = <span class="keyword">new</span> LinearGradient(<span class="number">0</span>, <span class="number">0</span>, getWidth(), <span class="number">0</span>,</div><div class="line">                    <span class="keyword">new</span> <span class="keyword">int</span>[]&#123; Color.WHITE, Color.WHITE,Color.parseColor(<span class="string">"#f05858"</span>), Color.parseColor(<span class="string">"#f05858"</span>)&#125;,</div><div class="line">                    <span class="keyword">new</span> <span class="keyword">float</span>[]&#123;<span class="number">0</span>, precent, precent, <span class="number">1</span>&#125;, Shader.TileMode.MIRROR);</div><div class="line">            mPaint.setShader(mLinearGradient);</div><div class="line">            setText(<span class="string">"继续下载"</span>);</div><div class="line">        &#125;</div><div class="line">        postInvalidateDelayed(<span class="number">50</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>背景显示 <code>ProgressBg.java</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> *      Copyright (C) 2016. 彭钦平</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> *      Licensed under the Apache License, Version 2.0 (the "License");</span></div><div class="line"><span class="comment"> *      you may not use this file except in compliance with the License.</span></div><div class="line"><span class="comment"> *      You may obtain a copy of the License at</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> *           http://www.apache.org/licenses/LICENSE-2.0</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> *      Unless required by applicable law or agreed to in writing, software</span></div><div class="line"><span class="comment"> *      distributed under the License is distributed on an "AS IS" BASIS,</span></div><div class="line"><span class="comment"> *      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div><div class="line"><span class="comment"> *      See the License for the specific language governing permissions and</span></div><div class="line"><span class="comment"> *      limitations under the License.</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">import</span> android.content.Context;</div><div class="line"><span class="keyword">import</span> android.graphics.Canvas;</div><div class="line"><span class="keyword">import</span> android.graphics.Color;</div><div class="line"><span class="keyword">import</span> android.graphics.LinearGradient;</div><div class="line"><span class="keyword">import</span> android.graphics.Paint;</div><div class="line"><span class="keyword">import</span> android.util.AttributeSet;</div><div class="line"><span class="keyword">import</span> android.util.Log;</div><div class="line"><span class="keyword">import</span> android.view.View;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Created by pengqinping on 16/3/8.</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * <span class="doctag">@email</span> Royal.k.peng@gmail.com</span></div><div class="line"><span class="comment"> * <span class="doctag">@description</span></span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProgressBg</span> <span class="keyword">extends</span> <span class="title">View</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ProgressBg</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context);</div><div class="line">        init();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ProgressBg</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context, attrs);</div><div class="line">        init();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ProgressBg</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context, attrs, defStyleAttr);</div><div class="line">        init();</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</div><div class="line">        mPaint = <span class="keyword">new</span> Paint(Paint.ANTI_ALIAS_FLAG);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">private</span> LinearGradient mLinearGradient;</div><div class="line">    <span class="keyword">private</span> Paint mPaint;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDraw(canvas);</div><div class="line">        setBackgroundColor(Color.WHITE);</div><div class="line"><span class="comment">//        mLinearGradient = new LinearGradient(0, 0, getWidth(), getHeight(),</span></div><div class="line"><span class="comment">//                new int[]&#123;Color.WHITE, Color.WHITE, Color.parseColor("#f05858"), Color.parseColor("#f05858")&#125;,</span></div><div class="line"><span class="comment">//                new float[]&#123;0, 0.5f, 0.5f, 1&#125;, Shader.TileMode.REPEAT);</span></div><div class="line"><span class="comment">//        mPaint.setShader(mLinearGradient);</span></div><div class="line">        mPaint.setColor(Color.parseColor(<span class="string">"#f05858"</span>));</div><div class="line">        canvas.drawRect(<span class="number">0f</span>, <span class="number">0f</span>, getWidth()*precent, getHeight(), mPaint);</div><div class="line">        invalidate();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">float</span> precent = <span class="number">0.0f</span>;</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * progress 取值范围 (0-100)</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setProgress</span><span class="params">(<span class="keyword">int</span> progress)</span></span>&#123;</div><div class="line">        Log.i(<span class="string">"precent"</span>,<span class="string">"precent:"</span>+precent);</div><div class="line">        <span class="keyword">if</span>(progress &lt;= <span class="number">0</span>)&#123;</div><div class="line">            <span class="comment">//白底红字 so paint not set shader, and setColor = Color.parseColor("#f05858")</span></div><div class="line">            precent = <span class="number">0.0f</span>;</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(progress &gt;= <span class="number">100</span>)&#123;</div><div class="line">            <span class="comment">//红底白字</span></div><div class="line">            precent = <span class="number">1.0f</span>;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            precent = (<span class="keyword">float</span>) progress/<span class="number">100f</span>;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        invalidate();</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>调用方法 <code>demo.xml</code></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">FrameLayout</span></span></div><div class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>&gt;</span></div><div class="line"></div><div class="line">            <span class="tag">&lt;<span class="name">com.nostra13.universalimageloader.sample.ProgressBg</span></span></div><div class="line"><span class="tag">                <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">                <span class="attr">android:id</span>=<span class="string">"@+id/progress_bg"</span></span></div><div class="line"><span class="tag">                <span class="attr">android:layout_height</span>=<span class="string">"40dp"</span></span></div><div class="line"><span class="tag">                <span class="attr">android:minHeight</span>=<span class="string">"40dp"</span> /&gt;</span></div><div class="line"></div><div class="line">            <span class="tag">&lt;<span class="name">com.nostra13.universalimageloader.sample.Progress</span></span></div><div class="line"><span class="tag">                <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">                <span class="attr">android:layout_height</span>=<span class="string">"40dp"</span></span></div><div class="line"><span class="tag">                <span class="attr">android:id</span>=<span class="string">"@+id/progress_1"</span></span></div><div class="line"><span class="tag">                <span class="attr">android:gravity</span>=<span class="string">"center"</span></span></div><div class="line"><span class="tag">                <span class="attr">android:minHeight</span>=<span class="string">"30dp"</span></span></div><div class="line"><span class="tag">                <span class="attr">android:text</span>=<span class="string">"再次学习"</span></span></div><div class="line"><span class="tag">                <span class="attr">android:textSize</span>=<span class="string">"30sp"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>调用方法 <code>Demo.java</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Handler mHandler = <span class="keyword">new</span> Handler();</div><div class="line">   <span class="keyword">int</span> progress_value = <span class="number">0</span>;</div><div class="line">   Runnable setProgress = <span class="keyword">new</span> Runnable() &#123;</div><div class="line">       <span class="meta">@Override</span></div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">           <span class="keyword">if</span> (progress_value &gt; <span class="number">100</span>) &#123;</div><div class="line">               progress_value = <span class="number">0</span>;</div><div class="line">           &#125;</div><div class="line">           progress.setProgress(progress_value);</div><div class="line">           progressBg.setProgress(progress_value);</div><div class="line">           progress_value = progress_value + <span class="number">2</span>;</div><div class="line">           mHandler.postDelayed(<span class="keyword">this</span>, <span class="number">1000L</span>);</div><div class="line">       &#125;</div><div class="line">   &#125;;</div></pre></td></tr></table></figure>
-<p>具体的进度根据实际的下载来定。</p>
-<p><a href="https://github.com/pengqinping/Android-Universal-Image-Loader/blob/master/downloads/sample-debug.apk" target="_blank" rel="external">demo.apk</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://pengqinping.github.io/ABlog/ABlog/2016/03/06/2016-03-06-travevel-morning-jiaochangwei/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Royal">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/ABlog/images/avatar-pqp.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Royal的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/ABlog/2016/03/06/2016-03-06-travevel-morning-jiaochangwei/" itemprop="url">旅游</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-06T00:00:00+08:00">
-                2016-03-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/ABlog/categories/旅游/" itemprop="url" rel="index">
-                    <span itemprop="name">旅游</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/ABlog/2016/03/06/2016-03-06-travevel-morning-jiaochangwei/" class="leancloud_visitors" data-flag-title="旅游">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="深圳-海边-较场尾"><a href="#深圳-海边-较场尾" class="headerlink" title="深圳-海边-较场尾"></a>深圳-海边-较场尾</h4><blockquote>
-<p> 旅游是一个永久的话题，难道一个机会在深圳的海边度过了一个夜晚，海边的房子也很多错，装修的很精细，晚上还有自助烧烤,玩的很happy. 早上和老婆一起去看了人生中第一次海边的日出。<br> 旅游确实很开心，我对旅游的看法觉得我们应该‘富游’，这次出门的行程安排，车程，住宿，吃饭，都是安排好的，而且基本很方便。省去了很多烦恼。作为程序员的我不喜欢说太多。最后贴图一张来介绍这篇短暂的博客。</p>
-</blockquote>
-<p>早上的海<br><img class="shadow" width="320" src="http://oy2qy52pb.bkt.clouddn.com/ABlog/post/morning-of-sea.jpg"></p>
-
-          
+          工作中遇到一个难题
+有个进度条显示效果要求进度按照比例计算，但是文字显示效果和背景恰好相反，项目中的效果是前人留下的，现实方式非常随意，直接使用大图完成，导致小屏手机无法显示完整图片，大屏手机显示拉伸，英文状态根本没有，后面接手修改适配真是头疼，做成了.9 模式，但是适配依然蛋疼，最后没有办法终于还
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/ABlog/2016/03/08/2016-03-08-android-view-download-progress-with-text/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1086,39 +914,181 @@
       
         
           
-            <blockquote>
-<p>git 是什么？ 百度会不会？强大的东西一定要学会</p>
-</blockquote>
-<h4 id="提交流程"><a href="#提交流程" class="headerlink" title="提交流程"></a>提交流程</h4><ul>
-<li>git add   //从工作目录提交到index区</li>
-<li>git commit -m “comment” //把index区的代码提交到本地库并且添加comment注释</li>
-<li>git push origin masterlocal:masterremote  //把本地库中的Masterlocal 分支推送到服务器上远程库名为origin的masterremote分支</li>
-</ul>
-<h3 id="更新流程"><a href="#更新流程" class="headerlink" title="更新流程"></a>更新流程</h3><ul>
-<li>git fetch   //拉取代码到本地，</li>
-<li>git merge origin/develop  //把origin/develop 分支合并到当前分支。如果不加分支名，会合并和当前分支同名的远程分支到本地。</li>
-<li>git pull == git fetch + git merge // 从服务器拉取并且合并分支。<br>更新最怕的就是更新失败，那些情况下会失败了？很简单 就是服务器有跟新的文件会override你本地的文件时就会失败。就是有同一个文件两个以上操作，这个说得操作而不是人，就是说通过个人两次操作也会更新失败。好吧不要说得太复杂在文章的最后推荐最佳操作。使用最佳操作一般不会有问题。</li>
-</ul>
-<h3 id="冲突解决"><a href="#冲突解决" class="headerlink" title="冲突解决"></a>冲突解决</h3><p>这也许是无数人都害怕的事情，产生冲突的原因就是合并，无非是直接pull 和 git fetch 后 git merge.<br>冲突产生后，使用 git status 看看那些文件冲突了，然后挨个修改，如何修改呢？一般有冲突的文件都有如下格式：<br>‘&lt;&lt;&lt;&lt;&lt;&lt;&lt; header<br>本地改动<br>‘===============<br>服务端改动<br>‘&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin<br>对比两个版本的地方，取舍，然后删除标记符，<br>所有的冲突都解决后使用 git commit -a -m “comment” 提交修改冲突 然后就可以了。</p>
-<h4 id="分支之间-commit-迁移-git-cherry-pick"><a href="#分支之间-commit-迁移-git-cherry-pick" class="headerlink" title="分支之间 commit 迁移 git cherry-pick"></a>分支之间 commit 迁移 git cherry-pick</h4><p>有分支 A ,B  我在 A上面提交了一个commit 但是发现 B 同样这个提交也要添加，告诉你们我不知道这个命令的时候，真心是在B全部修改一遍后commit,要是文件少还好，文件多简直要哭死的节奏。所以找到了这个命令。使用方法：</p>
-<p>git cherry-pick ‘commitId’<br>其中可能会遇到冲突 或者想要放弃修改 在git 命令行有提示。</p>
-<h4 id="最佳实践，"><a href="#最佳实践，" class="headerlink" title="最佳实践，"></a>最佳实践，</h4><ol>
-<li>如果本地距离上次没有做任何改动，git pull </li>
-<li>本地有修改 首先提交到本地， git add ,  git commit 然后 git fetch ,git merge 这个时候有冲突，修改即可 ，这边保证本地修改的代码不会被覆盖。</li>
-</ol>
-<h4 id="git-后悔药"><a href="#git-后悔药" class="headerlink" title="git 后悔药"></a>git 后悔药</h4><ol>
-<li>git checkout – ‘file’  //把工作目录的修改还原为缓冲区中代码。也就是放弃本地修改</li>
-<li>git reset HEAD ‘file’  //把缓冲区的文件还原到没有add之前操作，也就是后退 add 命令的操作</li>
-<li>git reset –hard HEAD //把本地库的提交撤销，会撤销缓冲区，工作目录的所有修改，HEAD 可以为 分支名，commitID … reset 还有很多用法，可以自行百度,满足所以的撤销操作。</li>
-</ol>
-<h4 id="Git-学习建议"><a href="#Git-学习建议" class="headerlink" title="Git 学习建议"></a>Git 学习建议</h4><ol>
-<li><p>多练，在 github上开一个开源项目，使用命令行操作。熟练使用基本命令，文件提价，更新，撤销，分支的创建，切换，暂缓，删除，合拼，日志的查看…  </p>
-</li>
-<li><p>多使用命令行。</p>
-</li>
-</ol>
+          
+git 是什么？ 百度会不会？强大的东西一定要学会
+
+提交流程
+git add   //从工作目录提交到index区
+git commit -m “comment” //把index区的代码提交到本地库并且添加comment注释
+git push origin masterlocal:master
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/ABlog/2016/03/06/2016-03-06-git-概要/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://pengqinping.github.io/ABlog/ABlog/2016/03/06/2016-03-06-travevel-morning-jiaochangwei/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Royal">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/ABlog/images/avatar-pqp.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Royal的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/ABlog/2016/03/06/2016-03-06-travevel-morning-jiaochangwei/" itemprop="url">旅游</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-06T00:00:00+08:00">
+                2016-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/ABlog/categories/旅游/" itemprop="url" rel="index">
+                    <span itemprop="name">旅游</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/ABlog/2016/03/06/2016-03-06-travevel-morning-jiaochangwei/" class="leancloud_visitors" data-flag-title="旅游">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          深圳-海边-较场尾
+ 旅游是一个永久的话题，难道一个机会在深圳的海边度过了一个夜晚，海边的房子也很多错，装修的很精细，晚上还有自助烧烤,玩的很happy. 早上和老婆一起去看了人生中第一次海边的日出。 旅游确实很开心，我对旅游的看法觉得我们应该‘富游’，这次出门的行程安排，车程，住宿，吃饭，都是安排
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/ABlog/2016/03/06/2016-03-06-travevel-morning-jiaochangwei/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1269,21 +1239,19 @@
       
         
           
-            <blockquote>
-<p>时间久的我都忘记了gitpage 中创建一个POST的方法。重提一下：<br>    创建一个post: rake post title=”your post name”,<br>    创建一个page: rake page name=”your page name”</p>
-</blockquote>
-<p>今天想分享一下工作中做事的态度。</p>
-<h4 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h4><p>工作态度一直是件很重要的事情，能够看出一个人的人品性格，为人处事的态度。我经常在早上会思考我近期一段时间的工作态度，那些方面自己做的好，那些做的不好。为什么好？为什么不好？在讨论态度前我觉得可以先讨论下如果认识自己。还依稀记得初中有这么一门课认识自己，当时的想法态单纯，认为认识自己就是知道我叫什么在那个班读书，家住哪里。在现在看来我觉得初中书上讨论这个问题有点早至少在那个年纪是不适合的，为什么这么说？我虽然工作不久但是在我观察的同事中在工作中没有很好的定位自己的角色，也许是不想也许是不懂。至少我工作和几年后才明白那么一点道理。</p>
-<h4 id="认识自我"><a href="#认识自我" class="headerlink" title="认识自我"></a>认识自我</h4><p>所以认识自己真的是个很重要的事情，怎么认识自己了？这里我分享一些自己的想法，我不是专家只是一个普通的码农，首先认识自己处理同事、领导、异性之间关系的方式；再认识自己面对难题、思考问题的思路；最后认识自己学习知识，工作的步骤。通过方方面面认识的目的是什么？我们不仅仅是要知道自己，还要知道自己的缺点，自己的优点，那些可以改进的地方，那些做的不怎么好的怎么修改一些能够完美。那我来说在刚参加工作那会我反思到了我的一个缺点就是没有自己的立场，人云亦云。可是怎么办了要怎么改了？后来我就学习别人那些在说话做事反面有立场的人时怎么想得，怎么处理事情的，怎么表达自己的立场的。通过慢慢的锻炼，我现在不管是做事还是说话都有自己的立场，明白自己的想法和思路。这样的例子在我身上还有很多，可能是社会经验比较少，所以缺点比较多。认识自我不是一天两天的事情，而是要周期性的考虑回顾自己的生活工作。</p>
-<h4 id="定位自己"><a href="#定位自己" class="headerlink" title="定位自己"></a>定位自己</h4><p>为什么我介绍工作态度要大篇幅的介绍认识自我，我认为在认识到自己才能在工作中摆正自己的态度，才能在团队中找到自己的位置。那么我们在工作中应该持有什么样的态度了？我不敢再这里说一套标准，只能说分享一些自己的态度给大家，至少在技术提升上会有帮助的。</p>
-<ul>
-<li>1.事做好：不管是什么事情，只要自己接手做了，就要做好，保证没有问题，比如在写程序这种事情中，我们经常接手别人的代码，肯定有很多代码看不顺眼，或者有很多问题，这个时候只要有时间和能力一定要尽力去做好，即使是修改别人的代码。</li>
-<li>2.珍惜时间：工作中不是一直到很忙特别是像程序员这个行业，经常有些时候比较空闲，这个时候是看看网页，玩玩手机，还是看看别人好的代码，学习新知识，很多时候我们都会选择舒服的事情做，😄。时间对我们来说是很珍贵的，一定要珍惜。</li>
-<li>3.积极主动：工作事情基本上都是分配的，不要认为做完自己的事就万事大吉了。多看看整个系统的结构，各个模块的功能。困难的事情主动担。遇到问题不过用一句我不会来对付，找到难点然后找解决方案，只有不想做事的人，没有人做不好的事。相信方法总比问题多。</li>
-<li>4.做事120%：这个是我第一个比较合格的项目经理告诉的，第一次听到这句话的时候可能还没有体会到想我现在领略的这个多，总之告我们做事多考虑，多往前走两步，不要别人推一步走一步。当然态度还有很多其他很多方方面面。我相信能够坚持上面的4条你的工作一定会很合格，能够在技术这条路上成长。</li>
-</ul>
-
           
+时间久的我都忘记了gitpage 中创建一个POST的方法。重提一下：    创建一个post: rake post title=”your post name”,    创建一个page: rake page name=”your page name”
+
+今天想分享一下工作中做事的态度。
+疑问工
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/ABlog/2016/03/06/2016-03-06-life-态度/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1434,173 +1402,30 @@
       
         
           
-            <blockquote>
-<p>This document is not completed and will be updated anytime.</p>
-</blockquote>
-<h2 id="Catagory"><a href="#Catagory" class="headerlink" title="Catagory"></a>Catagory</h2><ol>
-<li><a href="#unix">Unix</a><ol>
-<li><a href="#bell-labs">Bell Labs</a></li>
-<li><a href="#xenix">Xenix</a></li>
-<li><a href="#bsd">BSD</a></li>
-<li><a href="#freebsd--apple">FreeBSD &amp; Apple</a></li>
-<li><a href="#nextstep">NeXTStep</a></li>
-<li><a href="#darwin">Darwin</a></li>
-<li><a href="#posix">POSIX</a></li>
-</ol>
-</li>
-<li><a href="#unix-like">Unix-like</a><ol>
-<li><a href="#single-unix-specification">Single Unix Specification</a></li>
-<li><a href="#apple-ios">Apple iOS</a></li>
-<li><a href="#xnu-kernel">XNU Kernel</a></li>
-</ol>
-</li>
-<li><a href="#linux">Linux</a><ol>
-<li><a href="#linux-kernel">Linux Kernel</a></li>
-<li><a href="#gnu-project">GNU Project</a></li>
-<li><a href="#android">Android</a></li>
-<li><a href="#android-kernel">Android Kernel</a></li>
-<li><a href="#android-rom">Android ROM</a></li>
-<li><a href="#chrome-os">Chrome OS</a></li>
-<li><a href="#chromium-os">Chromium OS</a></li>
-</ol>
-</li>
-</ol>
-<hr>
-<h2 id="Unix"><a href="#Unix" class="headerlink" title="Unix"></a>Unix</h2><blockquote>
-<p>Unix is a <strong>family</strong> of multitasking, multiuser computer OS.</p>
-</blockquote>
-<p>Derive from the original <strong>AT&amp;T Unix</strong>, Developed in the 1970s at <strong>Bell Labs</strong> (贝尔实验室), initially intended for use inside the <strong>Bell System</strong>.</p>
-<ul>
-<li><h4 id="Bell-Labs"><a href="#Bell-Labs" class="headerlink" title="Bell Labs"></a>Bell Labs</h4>Bell 和 AT&amp;A 在那时已经是一家了，可以看到那时的通信公司真是一线 IT 公司呢。<br><strong>C 语言也是 Bell Labs 的产物</strong>，从一开始就是为了用于 Unix 而设计出来的。所以 Unix （在 73 年用 C 重写）在高校流行后，C 语言也获得了广泛支持。</li>
-</ul>
-<p>AT&amp;T licensed Unix to outside parties(第三方) from the late 1970s, leading to a variety of both <strong>academic</strong> (最有有名的 BSD ) and <strong>commercial</strong> (Microsoft Xenix, IBM AIX, SunOS Solaris)</p>
-<ul>
-<li><h4 id="Xenix"><a href="#Xenix" class="headerlink" title="Xenix"></a>Xenix</h4><p>微软 1979 年从 AT&amp;A 授权来的 Unix OS，配合着 x86 成为当时最受欢迎的 Unix 发行版。后来 M$ 和 IBM 合作开发 OS/2 操作系统后放弃，后来最终转向 <strong>Windows NT</strong>。</p>
-</li>
-<li><h4 id="BSD"><a href="#BSD" class="headerlink" title="BSD"></a>BSD</h4><p><strong>Barkeley Software Distribution</strong>, also called Berkeley Unix. Today the term “BSD” is used to refer to any of the BSD descendants(后代) which together form a branch of the family of Unix-like OS.(共同组成了一个分支)</p>
-<ul>
-<li><strong>BSD 最大的贡献是在 BSD 中率先增加了虚拟存储器和 Internet 协议</strong>，其 TCP/IP(IPv4 only) 代码仍然在现代 OS 上使用（ Microsoft Windows and most of the foundation of Apple’s OS X and iOS ）</li>
-<li>BSD 后来发展出了众多开源后代，包括 FreeBSD, OpenBSD, NetBSD 等等……很多闭源的 vendor Unix 也都从 BSD 衍生而来。</li>
-</ul>
-</li>
-<li><h4 id="FreeBSD-amp-Apple"><a href="#FreeBSD-amp-Apple" class="headerlink" title="FreeBSD &amp; Apple"></a>FreeBSD &amp; Apple</h4><p>FreeBSD 不但是 Open Source BSD 中占有率最高的，还直接影响了 Apple Inc : NeXT Computer 的团队在 FreeBSD 上衍生出了 NeXTSTEP 操作系统，这货后来在 Apple 时期演化成了 <strong>Darwin</strong> ，这个“达尔文”居然还是个开源系统，而且是 the Core of <strong>Mac OS X</strong> and <strong>iOS</strong>.</p>
-</li>
-<li><h4 id="NeXTSTEP"><a href="#NeXTSTEP" class="headerlink" title="NeXTSTEP"></a>NeXTSTEP</h4><p>An <strong>object-oriented</strong>, multitasking OS. Low-level C but High-level OC language and runtime the first time, combined with an <strong>OO aplication layer</strong> and including several “kits”.<br>大家都知道 NeXT 是 Steve Jobs 被 forced out of Apple 后和 a few of his coworkers 创办的，所以 <strong>NeXTSTEP 绝对是证明 Jobs 实力的作品。</strong></p>
-</li>
-<li><h4 id="Darwin"><a href="#Darwin" class="headerlink" title="Darwin"></a>Darwin</h4><p><a href="http://en.wikipedia.org/wiki/Darwin_(operating_system\" target="_blank" rel="external">Darwin</a>), the core set of components upon which Mac OS X and iOS based, mostly POSIX compatible, but has never, by itself, been certified as being compatible with any version of <strong>POSIX</strong>. (OS X, since Leopard, has been certified as compatible with the Single UNIX Specification version 3)<br><strong>所以说 Mac OS X 算是很正统 Unix 的了</strong></p>
-</li>
-<li><h4 id="POSIX"><a href="#POSIX" class="headerlink" title="POSIX"></a>POSIX</h4><p>可移植操作系统接口, Portable Operating System Interface, is a family of standards specified by the IEEE from maintaining compatibility between OS, defines the API along with Command Line Shells and utility interfaces, for software comaptibility with variants of Unix and other OS.</p>
-<ul>
-<li>Fully POSIX compliant:<ul>
-<li>OS X</li>
-<li>QNX OS (BlackBerry)</li>
-</ul>
-</li>
-<li>Mostly complicant:<ul>
-<li>Linux</li>
-<li>OpenBSD/FreeBSD</li>
-<li>Darwin (Core of <strong>iOS</strong> &amp; OS X)</li>
-<li><strong>Android</strong></li>
-</ul>
-</li>
-<li>Complicant via compatibility feature （通过兼容功能实现兼容）<ul>
-<li>Windows NT Kernel<ul>
-<li>Windows Server 2000, 2003, 2008, 2008 R2, 2012</li>
-</ul>
-</li>
-<li>Symbian OS (with PIPS)<ul>
-<li>Symbian was a closed-source OS.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="Unix-like"><a href="#Unix-like" class="headerlink" title="Unix-like"></a>Unix-like</h2><blockquote>
-<p>A Unix-like (sometimes referred to as UN<em>X or </em>nix) operating system is one that behaves in a manner similar to a Unix system, while not necessarily conforming to or being certified to any version of the <strong>Single UNIX Specification</strong>.</p>
-</blockquote>
-<p>There is no standard for defining the term.<br>其实 Unix-like 是个相对模糊的概念：</p>
-<ul>
-<li>最狭义的 Unix 单指 Bell Labs’s Unix</li>
-<li>稍广义的 Unix 指代所有 Licensed Unix, 即通过了 SUS 的 Unix-like ，比如 OS X</li>
-<li>最广义的 Unix 即所有 Unix-like 系统，无论它是否通过过任何 SUS，包括 Linux，BSD Family 等</li>
-</ul>
-<h4 id="Single-UNIX-Specification"><a href="#Single-UNIX-Specification" class="headerlink" title="Single UNIX Specification"></a>Single UNIX Specification</h4><p>The Single UNIX Specification (SUS) is the collective name of a family of standards for computer OS, compliance with which is required to <strong>qualify for the name “Unix”</strong>, like <strong>POSIX</strong>.</p>
-<h4 id="Apple-iOS"><a href="#Apple-iOS" class="headerlink" title="Apple iOS"></a>Apple iOS</h4><p>iOS is a <strong>Unix-like OS based on Darwin(BSD)</strong> and OS X, which share some frameworks including Core Foundation, Founadtion and the Darwin foundation with OS X, but, Unix-like shell access is not avaliable for users and restricted for apps, <strong>making iOS not fully Unix-compatible either.</strong></p>
-<p>The iOS kernal is <strong>XNU</strong>, the kernal of Darwin.</p>
-<h4 id="XNU-Kernel"><a href="#XNU-Kernel" class="headerlink" title="XNU Kernel"></a>XNU Kernel</h4><p>XNU, the acronym(首字母缩写) for <strong><em>X is Not Unix</em></strong>, which is the <strong>Computer OS Kernel</strong> developed at Apple Inc since Dec 1996 for use in the Mac OS X and released as free open source software as part of Darwin.</p>
-<hr>
-<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><blockquote>
-<p>Linux is a Unix-like and mostly POSIX-compliant computer OS.</p>
-</blockquote>
-<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Unix_timeline.en.svg/800px-Unix_timeline.en.svg.png" alt="Unix_timeline"></p>
-<h4 id="Linux-Kernel"><a href="#Linux-Kernel" class="headerlink" title="Linux Kernel"></a>Linux Kernel</h4><p>严格来讲，术语 Linux 只表示 <a href="http://en.wikipedia.org/wiki/Linux_kernel" target="_blank" rel="external">Linux Kernel</a> 操作系统内核本身，比如说 Android is Based on Linux (Kernel). Linus 编写的也只是这一部分，一个免费的 Unix-like Kernel，并不属于 GNU Project 的一部分。</p>
-<p>但通常把 Linux 作为 Linux Kernel 与大量配合使用的 GNU Project Software Kit (包括 Bash, Lib, Compiler, 以及后期的 GUI etc) 所组合成的 OS 的统称。（包括各类 Distribution 发行版）</p>
-<p>这类操作系统也被称为 <strong>GNU/Linux</strong></p>
-<h4 id="GNU-Project"><a href="#GNU-Project" class="headerlink" title="GNU Project"></a>GNU Project</h4><p>The GNU Project is a <strong>free software, mass collaboration</strong> project, which based on the following freedom rights:</p>
-<ul>
-<li>Users are free to run the software, share (copy, distribute), study and modify it.</li>
-<li>GNU software guarantees these freedom-rights legally (via its license).</li>
-<li>So it is not only FREE but, more important, FREEDOM.</li>
-</ul>
-<p>In order to ensure that the <em>entire</em> software of a computer grants its users all freedom rights (use, share, study, modify), even the most fundamental and important part, <strong>the operating system</strong>, needed to be written.</p>
-<p>This OS is decided to called <strong>GNU (a recursive acronym meaning “GNU is not Unix”)</strong>. By 1992, the GNU Project had completed all of the major OS components except for their kernel, <em>GNU Hurd</em>.</p>
-<p>With the release of the third-party <strong>Linux Kernel</strong>, started independently by <em>Linus Torvalds</em> in 1991 and released under the GPLv0.12 in 1992, for the first time it was possible to run an OS <strong>composed completely of free software</strong>.</p>
-<p>Though the Linux kernel is not part of the GNU project, it was developed using GCC and other GNU programming tools and was released as free software under the GPL.</p>
-<p>Anyway, there eventually comes to the <strong>GNU/Linux</strong></p>
-<ul>
-<li><strong>GPL</strong>: GNU General Public License</li>
-<li><strong>GCC</strong>: GNU Compiler Collection</li>
-</ul>
-<p>其他与 GPL 相关的自由/开源软件公共许可证：</p>
-<ul>
-<li><a href="http://en.wikipedia.org/wiki/Mozilla_Public_License" target="_blank" rel="external">Mozilla Public License</a></li>
-<li><a href="http://en.wikipedia.org/wiki/MIT_License" target="_blank" rel="external">MIT License</a></li>
-<li><a href="http://en.wikipedia.org/wiki/BSD_licenses" target="_blank" rel="external">BSD Public License</a><ul>
-<li>GPL 强制后续版本必须是自由软件，而 BSD 的后续可以选择继续开源或者封闭</li>
-</ul>
-</li>
-<li><a href="http://en.wikipedia.org/wiki/Apache_License" target="_blank" rel="external">Apache License</a></li>
-</ul>
-<p><img src="http://dl2.iteye.com/upload/attachment/0047/4142/d770c85a-49b7-3c7f-8ae2-cbb6451e00d8.png" alt="Public License"></p>
-<h4 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h4><p>Android is a mobile OS based on <strong>Linux Kernel</strong>, so it’s definitely <strong>Unix-like</strong>.  </p>
-<p><strong>Linux is under GPL so Android has to be open source</strong>.<br>Android’s source code is released by Google under open source licenses, although most Android devices ultimately ship with a combination of open source and proprietary software, including proprietary software developed and licensed by Google <em>(GMS are all proprietary)</em>  </p>
-<h4 id="Android-Kernel"><a href="#Android-Kernel" class="headerlink" title="Android Kernel"></a>Android Kernel</h4><p>Android’s kernel is based on one of the Linux kernel’s long-term support (LTS) branches.   </p>
-<p><strong>Android’s variant of the Linux kernel</strong> has further architectural changes that are implemented by Google outside the typical Linux kernel development cycle, and, certain features that Google contributed back to the Linux kernel. Google maintains a public code repo that contains their experimental work to re-base Android off the latest stable Linux versions.</p>
-<p>Android Kernel 大概是 Linux Kernel 最得意的分支了，Android 也是 Linux 最流行的发行版。不过，也有一些 Google 工程师认为 Android is not Linux in the traditional Unix-like Linux distribution sense. 总之这类东西就算有各种协议也还是很难说清楚，在我理解里 Android Kernel 大概就是 fork Linux Kernel 之后改动和定制比较深的例子。</p>
-<h4 id="Android-ROM"><a href="#Android-ROM" class="headerlink" title="Android ROM"></a>Android ROM</h4><p>既然提到 Android 就不得不提提 Android ROM</p>
-<p>ROM 的本义实际上是只读内存：  </p>
-<p><strong>Read-only memory</strong> (ROM) is a class of storage medium used in computers and other electronic devices. Data stored in ROM can only be modified slowly, with difficulty, or not at all, so it is <strong>mainly used to distribute firmware (固件)</strong> (software that is very closely tied to specific hardware, and unlikely to need frequent updates).</p>
-<p>ROM 在发展的过程中不断进化，从只读演变成了可编程可擦除，并最终演化成了 Flash  </p>
-<ul>
-<li>PROM (Programmable read-only memory)</li>
-<li>EPROM (Erasable programmable read-only memory)</li>
-<li>EEPROM (Electrically erasable programmable read-only memory)<ul>
-<li>Flash memory (闪存)</li>
-</ul>
-</li>
-</ul>
-<p>Flash 的出现是历史性的，它不但可以作为 ROM 使用，又因其极高的读写速度和稳定性，先后发展成为U盘（USB flash drives）、移动设备主要内置存储，和虐机械硬盘几条街的固态硬盘（SSD），可以说这货基本统一了高端存储市场的技术规格。</p>
-<p>所以我们平时习惯说的 ROM 其实还是来源于老单片机时代，那时的 ROM 真的是写了就很难（需要上电复位）、甚至无法修改，所以那时往 ROM 里烧下去的程序就被称作 firmware ，固件。久而久之，虽然技术发展了，固件仍然指代那些不常需要更新的软件，而 ROM 这个词也就这么沿用下来了。</p>
-<p>所以在 wiki 里是没有 Android ROM 这个词条的，只有 <a href="http://en.wikipedia.org/wiki/List_of_custom_Android_firmwares" target="_blank" rel="external">List of custom Android firmwares</a></p>
-<blockquote>
-<p>A custom firmware, also known as a custom ROM, ROM, or custom OS, is an aftermarket distribution of the Android operating system. They are based on the Android Open Source Project (AOSP), hence most are open-sourced releases, unlike proprietary modifications by device manufacturers.</p>
-</blockquote>
-<p>各类 Android ROM 在 Android 词类下也都是属于 <strong>Forks and distributions</strong> 一类的。</p>
-<p>所以我说，其实各类 Android ROM 也好，fork Android 之流的 YunOS、FireOS 也好，改了多少东西，碰到多深的 codebase ……<strong>其实 ROM 和 Distribution OS 的界限是很模糊的</strong>，为什么 Android 就不可以是移动时代的 Linux ，为什么 Devlik/ART 就不能是移动时代的 GCC 呢？</p>
-<h4 id="Chrome-OS"><a href="#Chrome-OS" class="headerlink" title="Chrome OS"></a>Chrome OS</h4><p>Chrome OS is an operating system based on the <strong>Linux kernel</strong> and designed by Google to work with web applications and installed applications.</p>
-<p>虽然目前只是个 Web Thin Client OS ，但是 RoadMap 非常酷……</p>
-<ul>
-<li><strong>Chrome Packaged Application</strong> (Support working offline and installed)</li>
-<li><strong>Android App Runtime</strong> (run Android applications natively…fxxking awesome)</li>
-</ul>
-<p>平复一下激动的心情，还是回到正题来：</p>
-<h4 id="Chromium-OS"><a href="#Chromium-OS" class="headerlink" title="Chromium OS"></a>Chromium OS</h4><p>Chrome OS is based on Chromium OS, which is the open-source development version of Chrome OS, which is a <strong>Linux distribution</strong> designed by Google.</p>
-<p>For Detail, Chromium OS based on <a href="http://en.wikipedia.org/wiki/Gentoo_Linux" target="_blank" rel="external">Gentoo Linux</a>, emm…</p>
-
           
+This document is not completed and will be updated anytime.
+
+Catagory
+Unix
+Bell Labs
+Xenix
+BSD
+FreeBSD &amp; Apple
+NeXTStep
+Darwin
+POSIX
+
+
+Unix-like
+
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/ABlog/2015/04/14/2015-04-14-unix-linux-note/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
