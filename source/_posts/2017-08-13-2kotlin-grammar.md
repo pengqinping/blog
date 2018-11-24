@@ -7,7 +7,9 @@ categories: 技术-Kotlin
 tags: 
     - Kotlin
 ---
-[本文参考地址](http://www.runoob.com/kotlin/kotlin-basic-syntax.html)
+[本文参考地址 http://www.runoob.com/kotlin/kotlin-basic-syntax.html](http://www.runoob.com/kotlin/kotlin-basic-syntax.html)
+[本文参考地址  https://www.kotlincn.net/docs/tutorials/getting-started.html](http://www.runoob.com/kotlin/kotlin-basic-syntax.html)
+
 
 ## 包申明
 
