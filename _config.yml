@@ -78,22 +78,34 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   ### 屏蔽到github的提交 配置了很多相关的密码和账号信息
-  # - type: git
-  #   repo: git@github.com:pengqinping/ABlog.git
-  #   branch: gh-pages
-  #   message: hexo自动提交
+  - type: git
+    repo: git@github.com:pengqinping/ABlog.git
+    branch: gh-pages
+    message: hexo自动提交
   - type: git 
     repo: git@git.coding.net:pengqinping/ABlog.git
     branch: coding-pages
     message: hexo自动提交
 
 # Add local search
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
 
 # Add Algolia
-
 algolia:
   applicationID: '7O2IPBESEB'
   apiKey: 'ed357841e1ccd9455146f3c98f0b6d24'
   adminApiKey: 'd784d469d9e4eecd182e6f53119f8e58'
   indexName: 'ABlog'
   chunkSize: 5000    
+
+
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: true
+  exclude_codeblock: false
