@@ -507,7 +507,7 @@
             
                 <span class="post-meta-item-text">评论数：</span>
                 <a href="/ABlog/2016/05/10/2016-05-11-ios-1第一个程序/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/ABlog/2016/05/10/2016-05-11-ios-1第一个程序/" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/ABlog/2016/05/10/2016-05-11-ios-1第一个程序/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -801,9 +801,6 @@
 
   
     <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
     </div>
 
   
@@ -1219,41 +1216,41 @@
   
 
   
+  
+
+  
+
+<script src="cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script>
+
 
 
   
-    <!-- LOCAL: You can save these files to your site and update links -->
 
-  
-  <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitmint.browser.js"></script>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css">
-<!-- END LOCAL -->
+<script src="cdnjs.cloudflare.com/ajax/libs/valine/1.3.4/Valine.min.js"></script>
 
 <script>
-  function renderGitment() {
-    var gitment = new Gitmint({
-      id: window.location.pathname,
-      owner: 'pengqinping',
-      repo: 'ABlog',
-      
-        lang: '' || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-      
-      oauth: {
-      
-      
-        client_secret: '31f17e16d771e68bba3bc6efaf065a81c36125a6',
-      
-        client_id: 'b0364ba7c0efd1a26886'
-      }
-    });
-    gitment.render('gitment-container');
-  }
-
-  
-    renderGitment();
-  
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: '9wWHXQuF5WbeMymYm9RiCkP8-gzGzoHsz',
+    appKey: 'He1X8AhmlR2EBQSzSfxw4aCD',
+    placeholder: 'Please say something',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
 </script>
+
+
+
 
   
 
