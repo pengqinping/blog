@@ -1,5 +1,11 @@
 ### 操作说明
-1. 编译代码全部提交到 master 分支，使用 hexo deploy 自动推送到 gh-pages/condig-pages 分支, 不能自己手动进行推送代码到 生成网页的分支
+1. hexo init 初始化项目
+2. hexo new page "First Page" 创建一个文章
+3. hexo server 启动本地服务查看效果
+4. hexo generate 文件部署前需要生成
+5. hexo deploy 部署到git仓库，
+6. 部署和生成可以一起 hexo generate --deploy  ||  hexo deploy --generate  || 简写（ hexo g -d | hexo d -g）
+说明：编译代码全部提交到 master 分支，使用 hexo deploy 自动推送到 gh-pages/condig-pages 分支, 不能自己手动进行推送代码到 生成网页的分支
 
  
 ### 相关命名
