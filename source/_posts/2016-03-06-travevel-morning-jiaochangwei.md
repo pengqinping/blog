@@ -13,4 +13,4 @@ tags:
 >  旅游确实很开心，我对旅游的看法觉得我们应该‘富游’，这次出门的行程安排，车程，住宿，吃饭，都是安排好的，而且基本很方便。省去了很多烦恼。作为程序员的我不喜欢说太多。最后贴图一张来介绍这篇短暂的博客。
 
 早上的海
-<img class="shadow" width="320" src="http://oy2qy52pb.bkt.clouddn.com/ABlog/post/morning-of-sea.jpg" />
+{% asset_img morning-of-sea.jpg 320 sea %}

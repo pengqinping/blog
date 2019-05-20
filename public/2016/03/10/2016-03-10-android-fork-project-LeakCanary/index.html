@@ -104,13 +104,13 @@
 <meta property="og:site_name" content="Royal的博客">
 <meta property="og:description" content="很给力的分析工具，基本上能够解决内存泄露的大部分场景，比MAT看起来清晰。  常见的内存泄露的几种场景 数据库中的Cursor没有关闭; 广播接收器没有销毁; IO 操作没有进行关闭 Bitmap没有销毁 context 泄露 Handler 泄露 线程泄露 Adapter 每次都直接 new View 返回。  LeakCanary 使用： 首先贴下 github的地址： https://gi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://oy2qy52pb.bkt.clouddn.com/ABlog/post/static_class_with_view.jpg">
-<meta property="og:image" content="http://oy2qy52pb.bkt.clouddn.com/ABlog/post/handler_leak.jpg">
-<meta property="og:updated_time" content="2019-05-19T07:24:21.746Z">
+<meta property="og:image" content="http://pengqinping.github.io/ABlog/2016/03/10/2016-03-10-android-fork-project-LeakCanary/static_class_with_view.jpg">
+<meta property="og:image" content="http://pengqinping.github.io/ABlog/2016/03/10/2016-03-10-android-fork-project-LeakCanary/handler_leak.jpg">
+<meta property="og:updated_time" content="2019-05-20T16:26:42.464Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android LeakCanary">
 <meta name="twitter:description" content="很给力的分析工具，基本上能够解决内存泄露的大部分场景，比MAT看起来清晰。  常见的内存泄露的几种场景 数据库中的Cursor没有关闭; 广播接收器没有销毁; IO 操作没有进行关闭 Bitmap没有销毁 context 泄露 Handler 泄露 线程泄露 Adapter 每次都直接 new View 返回。  LeakCanary 使用： 首先贴下 github的地址： https://gi">
-<meta name="twitter:image" content="http://oy2qy52pb.bkt.clouddn.com/ABlog/post/static_class_with_view.jpg">
+<meta name="twitter:image" content="http://pengqinping.github.io/ABlog/2016/03/10/2016-03-10-android-fork-project-LeakCanary/static_class_with_view.jpg">
 
 
 
@@ -473,7 +473,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-19 15:24:21" itemprop="dateModified" datetime="2019-05-19T15:24:21+08:00">2019-05-19</time>
+                <time title="修改时间：2019-05-21 00:26:42" itemprop="dateModified" datetime="2019-05-21T00:26:42+08:00">2019-05-21</time>
               
             
           </span>
@@ -605,11 +605,11 @@
 <p><code>TestDataModel</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> TestDataModel sInstance;</span><br><span class="line">   <span class="keyword">private</span> TextView mRetainedTextView;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TestDataModel <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (sInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">           sInstance = <span class="keyword">new</span> TestDataModel();</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> sInstance;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRetainedTextView</span><span class="params">(TextView textView)</span> </span>&#123;</span><br><span class="line">       mRetainedTextView = textView;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <p>这样就会有一个泄露，TestDataModel的单例对象会持有TestActivity 的 textView对象的引用，如果这个单例无法销毁就会有内存泄露，这个使用只需要进入 TestActivity后在退出leakcanary 就会检测到内存泄露。并且有相关的描述</p>
-<p><img class="shadow" src="http://oy2qy52pb.bkt.clouddn.com/ABlog/post/static_class_with_view.jpg" height="350"></p>
+<img src="/ABlog/2016/03/10/2016-03-10-android-fork-project-LeakCanary/static_class_with_view.jpg" width="350" title="handler_leak">
 <p>2.handler 发送消息在activity destory的时候没有停止，导致activity不能被释放，</p>
 <p><code>HandlerLeakAcivity.java</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">       setContentView(R.layout.activity_handler_leak);</span><br><span class="line">       mHandler.postDelayed(loopRunable, <span class="number">4000l</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span> Handler mHandler = <span class="keyword">new</span> Handler();</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span> Runnable loopRunable = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">           Log.d(<span class="string">"lll"</span>, <span class="string">"loopRunnable is Running"</span>);</span><br><span class="line">           mHandler.postDelayed(<span class="keyword">this</span>, <span class="number">3000L</span>);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;;</span><br></pre></td></tr></table></figure>
-<p><img class="shadow" src="http://oy2qy52pb.bkt.clouddn.com/ABlog/post/handler_leak.jpg" height="350"></p>
+<img src="/ABlog/2016/03/10/2016-03-10-android-fork-project-LeakCanary/handler_leak.jpg" width="350" title="handler_leak">
 <p><small class="img-hint">赶紧为你的项目添加 leakcanary 检测下是否有内存泄露吧 </small></p>
 
       
@@ -795,7 +795,7 @@
                 
                   <a href="/ABlog/archives/">
                 
-                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -842,7 +842,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -909,7 +909,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1042,7 +1042,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">57k</span>
+    <span title="站点总字数">48k</span>
   
 
   
@@ -1051,7 +1051,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">52 分钟</span>
+    <span title="站点阅读时长">44 分钟</span>
   
 </div>
 
