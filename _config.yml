@@ -34,7 +34,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -96,9 +96,9 @@ search:
 
 # Add Algolia
 algolia:
-  applicationID: '7O2IPBESEB'
-  apiKey: 'ed357841e1ccd9455146f3c98f0b6d24'
-  adminApiKey: 'd784d469d9e4eecd182e6f53119f8e58'
+  applicationID: '7B9SBAUUZF'
+  apiKey: 'c86be27189386e5c5c18c9998e070f4f'
+  adminApiKey: 'd536de57aeacd3675a049f58bd5645a7'
   indexName: 'ABlog'
   chunkSize: 5000    
 

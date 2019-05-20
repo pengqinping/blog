@@ -15,7 +15,8 @@ tags:
 
 1. 打开 Preferences -> Setting - User（设置 - 用户）
 2. 添加配置 "word_wrap" : true
-3. 具体配置截图如下 <img class="shadow" width="320" src="http://oy2qy52pb.bkt.clouddn.com/ABlog/post/sublime_text_auto_word.png" />
+3. 具体配置截图如下 {% asset_img sublime_text_auto_word.png 400 200 sumlime %}
+
 
 
 
