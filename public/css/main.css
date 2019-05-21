@@ -155,7 +155,7 @@ body {
   position: relative;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 14px;
-  line-height: 2;
+  line-height: 1.5;
   color: #555;
   background: #fff;
 }
@@ -2883,7 +2883,7 @@ hr {
   display: none;
 }
 .posts-expand .post {
-  margin-top: 120px;
+  margin-top: 20px;
 }
 .posts-expand .post:first-child {
   margin-top: 0;
