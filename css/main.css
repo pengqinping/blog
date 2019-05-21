@@ -10,8 +10,8 @@ main {
   display: block;
 }
 h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
+  font-size: 1.8em;
+  margin: 0 0;
 }
 hr {
   box-sizing: content-box; /* 1 */
@@ -155,7 +155,7 @@ body {
   position: relative;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.7;
   color: #555;
   background: #fff;
 }
@@ -175,7 +175,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 20px 0 15px;
+  margin: px;
   padding: 0;
   font-weight: bold;
   line-height: 1.5;
@@ -266,7 +266,7 @@ h6 code {
   }
 }
 p {
-  margin: 0 0 20px 0;
+  margin: 0 0 0px 0;
 }
 a,
 span.exturl {
@@ -1055,7 +1055,7 @@ pre .javascript .function {
   }
 }
 .comments {
-  margin: 60px 20px 0;
+  margin: 20px 10px 0;
 }
 .back-to-top {
   box-sizing: border-box;
@@ -1551,7 +1551,7 @@ pre .javascript .function {
   margin-left: 5px;
 }
 .posts-expand .post-meta {
-  margin: 3px 0 60px 0;
+  margin: 3px 0 20px 0;
   color: #999;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 12px;
@@ -1600,7 +1600,7 @@ pre .javascript .function {
   }
 }
 .post-button {
-  margin-top: 40px;
+  margin-top: 0px;
 }
 .posts-expand .post-tags {
   margin-top: 40px;
@@ -1809,6 +1809,16 @@ pre .javascript .function {
 .rtl.post-title {
   font-family: UKIJ Ekran;
 }
+.reading-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #37c6c0;
+}
 .sidebar {
   position: fixed;
   right: 0;
@@ -1934,7 +1944,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffbeff;
+  background: #3090d7;
 }
 .feed-link,
 .chat {
@@ -2675,7 +2685,7 @@ a {
   border-bottom-color: #ccc;
 }
 hr {
-  margin: 20px 0;
+  margin: 8px 0;
   height: 2px;
 }
 .main-inner {
@@ -2883,14 +2893,14 @@ hr {
   display: none;
 }
 .posts-expand .post {
-  margin-top: 20px;
+  margin-top: 40px;
 }
 .posts-expand .post:first-child {
   margin-top: 0;
 }
 .posts-expand .post-meta {
-  margin-top: 5px;
-  margin-bottom: 20px;
+  margin-top: 4px;
+  margin-bottom: 8px;
 }
 .posts-expand .post-title {
   position: relative;
@@ -2930,10 +2940,10 @@ hr {
   background: #ccc;
 }
 .posts-expand .post-nav {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 .post-button {
-  margin-top: 20px;
+  margin-top: 0px;
   text-align: left;
 }
 .post-button a {
