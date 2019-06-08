@@ -22,5 +22,15 @@
     "hexo-symbols-count-time": "^0.6.0",
     "hexo-wordcount": "^6.0.1",
     "save": "^2.4.0"
+  },
+  "scripts": {
+    "start": "hexo clean && hexo server",
+    "deploy": "hexo generate --deploy",
+    "prepush": "echo \" Begin Auto Push \" ",
+    "push": "git status && git add . && read -p \"please input commit info:\" commitInfo && git commit -m \"$commitInfo\" && git pull && git push",
+    "postpush": "echo \" End Auto Push \" ",
+    "prepage": "echo \" already set post_asset_folder = true \" ",
+    "page": "read -p \"please input page title:\" pageName && hexo new page \"$pageName\" ",
+    "post": " read -p \"please input post title:\" postName && hexo new post \"$postName\" "
   }
 }

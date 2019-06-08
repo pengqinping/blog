@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "2.kotlin grammar"
+title: "2.Kotlin基础语法"
 date:       2017-08-13
 author:     "Royal"
 categories: 技术-Kotlin
@@ -198,7 +198,7 @@ Byte    |  8
 ### 数字
 在 Java 平台数字是物理存储为 JVM 的原生类型，除非我们需要一个可空的引用（如 Int?）或泛型。 后者情况下会把数字装箱。
 在 Kotlin 中，**三个等号 === 表示比较对象地址，两个 == 表示比较两个值大小。**
-```html
+```java
 fun main(args: Array<String>) {
     val a: Int = 10000
     val b: Int = 10000
@@ -215,7 +215,7 @@ fun main(args: Array<String>) {
 ```
 
 因此较小的类型不能隐式转换为较大的类型。 这意味着在不进行显式转换的情况下我们不能把 Byte 型值赋给一个 Int 变量。
-```
+```java
 val b: Byte = 1 // OK, 字面值是静态检测的
 val i: Int = b // 错误
 //我们可以显式转换来拓宽数字
