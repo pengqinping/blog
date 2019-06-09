@@ -24,7 +24,7 @@
     "save": "^2.4.0"
   },
   "scripts": {
-    "start": "hexo clean && hexo server",
+    "start": "hexo clean && hexo server -p 4001",
     "deploy": "hexo generate --deploy",
     "prepush": "echo \" Begin Auto Push \" ",
     "push": "git status && git add . && read -p \"please input commit info:\" commitInfo && git commit -m \"$commitInfo\" && git pull && git push",

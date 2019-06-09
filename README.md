@@ -11,7 +11,18 @@
 * 框架: Hexo
 * 主题样式: next 
 
+## 使用NPM进行了命令管理
+
+|Command|Describe|
+|:--|:--|
+|`npm start` == `hexo serve -p 4001` |启动本地服务|
+|`npm run deploy` == `hexo generate --deploy` |把build 生成的文件 public 发布到 远程的 coding-pages 和 gh-pages|
+|`npm run push` |自动提交 ,在运行后，等待输入的地方 输入提交日志即可自动提交 |
+|`npm run page` |生成page页面 等待输入的地方需要输入标题|
+|`npm run post` |生成Post页面 等待输入的地方需要输入标题|
+
 ## Hexo相关命令 
+
 |Command|Describe|
 |:--|:--|
 |`hexo init`|初始化项目|
@@ -29,3 +40,11 @@
 |:--|:--|
 |One|First|
 ```
+
+## 问题记录
+
+### Next主题切换Repo
+|Title|Record|
+|:--|:--|
+| 问题描述 | Next 主题 一般是clone 下来的 一般会有 .git 目录，所以不会被跟踪到我们项目,导致 项目的 主题样式在提交的时候不会提交，一旦你换了电脑和目录那就麻烦了。|
+|Next 切换到项目的 repo| 1. 删除 /themes/next/.git 文件夹 <br> 2. 在 项目 repo 目录下执行 `git rm  -r -cached /next `<br> 3. 把Next 加入到项目 repo `git add next/`|
