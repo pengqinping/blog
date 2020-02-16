@@ -44,21 +44,21 @@
 
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/ABlog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
 
-<link rel="stylesheet" href="/css/main.css?v=7.1.1">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+<link rel="stylesheet" href="/ABlog/css/main.css?v=7.1.1">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/ABlog/images/apple-touch-icon-next.png?v=7.1.1">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ABlog/images/favicon-32x32-next.png?v=7.1.1">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+  <link rel="icon" type="image/png" sizes="16x16" href="/ABlog/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/ABlog/images/logo.svg?v=7.1.1" color="#222">
 
 
 
@@ -69,7 +69,7 @@
 <script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '/ABlog/',
     scheme: 'Mist',
     version: '7.1.1',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
@@ -104,13 +104,13 @@
 <meta property="og:site_name" content="Royal的博客">
 <meta property="og:description" content="很给力的分析工具，基本上能够解决内存泄露的大部分场景，比MAT看起来清晰。  常见的内存泄露的几种场景 数据库中的Cursor没有关闭; 广播接收器没有销毁; IO 操作没有进行关闭 Bitmap没有销毁 context 泄露 Handler 泄露 线程泄露 Adapter 每次都直接 new View 返回。  LeakCanary 使用： 首先贴下 github的地址： https://gi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://pengqinping.github.io/2016/03/10/2016-03-10-android-fork-project-LeakCanary/static_class_with_view.jpg">
-<meta property="og:image" content="http://pengqinping.github.io/2016/03/10/2016-03-10-android-fork-project-LeakCanary/handler_leak.jpg">
+<meta property="og:image" content="http://pengqinping.github.io/ABlog/2016/03/10/2016-03-10-android-fork-project-LeakCanary/static_class_with_view.jpg">
+<meta property="og:image" content="http://pengqinping.github.io/ABlog/2016/03/10/2016-03-10-android-fork-project-LeakCanary/handler_leak.jpg">
 <meta property="og:updated_time" content="2019-05-20T16:26:42.464Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android LeakCanary">
 <meta name="twitter:description" content="很给力的分析工具，基本上能够解决内存泄露的大部分场景，比MAT看起来清晰。  常见的内存泄露的几种场景 数据库中的Cursor没有关闭; 广播接收器没有销毁; IO 操作没有进行关闭 Bitmap没有销毁 context 泄露 Handler 泄露 线程泄露 Adapter 每次都直接 new View 返回。  LeakCanary 使用： 首先贴下 github的地址： https://gi">
-<meta name="twitter:image" content="http://pengqinping.github.io/2016/03/10/2016-03-10-android-fork-project-LeakCanary/static_class_with_view.jpg">
+<meta name="twitter:image" content="http://pengqinping.github.io/ABlog/2016/03/10/2016-03-10-android-fork-project-LeakCanary/static_class_with_view.jpg">
 
 
 
@@ -195,7 +195,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/ABlog/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Royal的博客</span>
         <span class="logo-line-after"><i></i></span>
@@ -234,7 +234,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/ABlog/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
         
@@ -251,7 +251,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/ABlog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
 
   </li>
         
@@ -268,7 +268,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/ABlog/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
 
   </li>
         
@@ -285,7 +285,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/ABlog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
         
@@ -302,7 +302,7 @@
 
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/ABlog/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
 
@@ -398,12 +398,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://pengqinping.github.io/ABlog/2016/03/10/2016-03-10-android-fork-project-LeakCanary/">
+    <link itemprop="mainEntityOfPage" href="http://pengqinping.github.io/ABlog/ABlog/2016/03/10/2016-03-10-android-fork-project-LeakCanary/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Royal">
       <meta itemprop="description" content="生命不息奋斗不止">
-      <meta itemprop="image" content="/images/avatar-pqp.jpg">
+      <meta itemprop="image" content="/ABlog/images/avatar-pqp.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -475,7 +475,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术-Android性能优化/" itemprop="url" rel="index"><span itemprop="name">技术-Android性能优化</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/ABlog/categories/技术-Android性能优化/" itemprop="url" rel="index"><span itemprop="name">技术-Android性能优化</span></a></span>
 
                 
                 
@@ -494,8 +494,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2016/03/10/2016-03-10-android-fork-project-LeakCanary/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2016/03/10/2016-03-10-android-fork-project-LeakCanary/" itemprop="commentCount"></span>
+                <a href="/ABlog/2016/03/10/2016-03-10-android-fork-project-LeakCanary/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/ABlog/2016/03/10/2016-03-10-android-fork-project-LeakCanary/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -503,7 +503,7 @@
 
           
           
-            <span id="/2016/03/10/2016-03-10-android-fork-project-LeakCanary/" class="leancloud_visitors" data-flag-title="Android LeakCanary">
+            <span id="/ABlog/2016/03/10/2016-03-10-android-fork-project-LeakCanary/" class="leancloud_visitors" data-flag-title="Android LeakCanary">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -590,11 +590,11 @@
 <p><code>TestDataModel</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> TestDataModel sInstance;</span><br><span class="line">   <span class="keyword">private</span> TextView mRetainedTextView;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TestDataModel <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (sInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">           sInstance = <span class="keyword">new</span> TestDataModel();</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> sInstance;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRetainedTextView</span><span class="params">(TextView textView)</span> </span>&#123;</span><br><span class="line">       mRetainedTextView = textView;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <p>这样就会有一个泄露，TestDataModel的单例对象会持有TestActivity 的 textView对象的引用，如果这个单例无法销毁就会有内存泄露，这个使用只需要进入 TestActivity后在退出leakcanary 就会检测到内存泄露。并且有相关的描述</p>
-<img src="/2016/03/10/2016-03-10-android-fork-project-LeakCanary/static_class_with_view.jpg" width="350" title="handler_leak">
+<img src="/ABlog/2016/03/10/2016-03-10-android-fork-project-LeakCanary/static_class_with_view.jpg" width="350" title="handler_leak">
 <p>2.handler 发送消息在activity destory的时候没有停止，导致activity不能被释放，</p>
 <p><code>HandlerLeakAcivity.java</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">       setContentView(R.layout.activity_handler_leak);</span><br><span class="line">       mHandler.postDelayed(loopRunable, <span class="number">4000l</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span> Handler mHandler = <span class="keyword">new</span> Handler();</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span> Runnable loopRunable = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">           Log.d(<span class="string">"lll"</span>, <span class="string">"loopRunnable is Running"</span>);</span><br><span class="line">           mHandler.postDelayed(<span class="keyword">this</span>, <span class="number">3000L</span>);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;;</span><br></pre></td></tr></table></figure>
-<img src="/2016/03/10/2016-03-10-android-fork-project-LeakCanary/handler_leak.jpg" width="350" title="handler_leak">
+<img src="/ABlog/2016/03/10/2016-03-10-android-fork-project-LeakCanary/handler_leak.jpg" width="350" title="handler_leak">
 <p><small class="img-hint">赶紧为你的项目添加 leakcanary 检测下是否有内存泄露吧 </small></p>
 
       
@@ -626,7 +626,7 @@
         
       
       <div style="display: inline-block">
-        <img src="/images/wechatpay.png" alt="Royal 微信支付">
+        <img src="/ABlog/images/wechatpay.png" alt="Royal 微信支付">
         <p>微信支付</p>
       </div>
     
@@ -635,7 +635,7 @@
         
       
       <div style="display: inline-block">
-        <img src="/images/alipay.jpg" alt="Royal 支付宝">
+        <img src="/ABlog/images/alipay.jpg" alt="Royal 支付宝">
         <p>支付宝</p>
       </div>
     
@@ -676,11 +676,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
+            <a href="/ABlog/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
           
-            <a href="/tags/LeakCanary/" rel="tag"><i class="fa fa-tag"></i> LeakCanary</a>
+            <a href="/ABlog/tags/LeakCanary/" rel="tag"><i class="fa fa-tag"></i> LeakCanary</a>
           
-            <a href="/tags/fork-Project/" rel="tag"><i class="fa fa-tag"></i> fork Project</a>
+            <a href="/ABlog/tags/fork-Project/" rel="tag"><i class="fa fa-tag"></i> fork Project</a>
           
         </div>
       
@@ -693,7 +693,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/08/2016-03-08-android-view-download-progress-with-text/" rel="next" title="Android 自定义进度条">
+              <a href="/ABlog/2016/03/08/2016-03-08-android-view-download-progress-with-text/" rel="next" title="Android 自定义进度条">
                 <i class="fa fa-chevron-left"></i> Android 自定义进度条
               </a>
             
@@ -703,7 +703,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/04/20/2016-04-20-android-eventbus-1-register分析/" rel="prev" title="Android.EventBus[源码分析]">
+              <a href="/ABlog/2016/04/20/2016-04-20-android-eventbus-1-register分析/" rel="prev" title="Android.EventBus[源码分析]">
                 Android.EventBus[源码分析] <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -767,7 +767,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/avatar-pqp.jpg" alt="Royal">
+              <img class="site-author-image" itemprop="image" src="/ABlog/images/avatar-pqp.jpg" alt="Royal">
             
               <p class="site-author-name" itemprop="name">Royal</p>
               <div class="site-description motion-element" itemprop="description">生命不息奋斗不止</div>
@@ -778,7 +778,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/ABlog/archives/">
                 
                     <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">日志</span>
@@ -792,7 +792,7 @@
                 <div class="site-state-item site-state-categories">
                   
                     
-                      <a href="/categories/">
+                      <a href="/ABlog/categories/">
                     
                   
                     
@@ -835,7 +835,7 @@
                 <div class="site-state-item site-state-tags">
                   
                     
-                      <a href="/tags/">
+                      <a href="/ABlog/tags/">
                     
                   
                     
@@ -1132,46 +1132,46 @@
 
 
   
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  <script src="/ABlog/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/ABlog/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="/ABlog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
   
-  <script src="/lib/reading_progress/reading_progress.js"></script>
-
-
-  
-
-
-  <script src="/js/utils.js?v=7.1.1"></script>
-
-  <script src="/js/motion.js?v=7.1.1"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/schemes/muse.js?v=7.1.1"></script>
-
-
-
-
-  
-  <script src="/js/scrollspy.js?v=7.1.1"></script>
-<script src="/js/post-details.js?v=7.1.1"></script>
-
+  <script src="/ABlog/lib/reading_progress/reading_progress.js"></script>
 
 
   
 
 
-  <script src="/js/next-boot.js?v=7.1.1"></script>
+  <script src="/ABlog/js/utils.js?v=7.1.1"></script>
+
+  <script src="/ABlog/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/ABlog/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/ABlog/js/scrollspy.js?v=7.1.1"></script>
+<script src="/ABlog/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/ABlog/js/next-boot.js?v=7.1.1"></script>
 
 
   
@@ -1228,7 +1228,7 @@
     } else if (/json$/i.test(search_path)) {
       isXml = false;
     }
-    var path = "/" + search_path;
+    var path = "/ABlog/" + search_path;
     // monitor main search box;
 
     var onPopupClose = function (e) {
@@ -1543,14 +1543,14 @@
   
   
   
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+  <link rel="stylesheet" href="/ABlog/lib/algolia-instant-search/instantsearch.min.css">
 
   
   
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  <script src="/ABlog/lib/algolia-instant-search/instantsearch.min.js"></script>
   
 
-  <script src="/js/algolia-search.js?v=7.1.1"></script>
+  <script src="/ABlog/js/algolia-search.js?v=7.1.1"></script>
 
 
 
