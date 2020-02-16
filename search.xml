@@ -105,18 +105,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Grunt]]></title>
-    <url>%2F2016%2F11%2F19%2F2016-11-19-grunt%2F</url>
-    <content type="text"><![CDATA[相关知识 Grunt JavaScript 世界的构建工具 这是学习JavaScript 的必备技能 .关于NPM的知识有兴趣的可以了解,不了解也没有关系,按照命令执行就行了. 官网介绍 环境搭建,快速开始 实例,我以这个博客为例,其中用到了GruntFile 来编译压缩Js,css 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677module.exports = function(grunt) &#123; // Project configuration. grunt.initConfig(&#123; pkg: grunt.file.readJSON('package.json'), uglify: &#123; main: &#123; src: 'js/hux-blog.js', dest: 'js/hux-blog.min.js' &#125; &#125;, less: &#123; expanded: &#123; options: &#123; paths: ["css"] &#125;, files: &#123; // general less/hux-blog.less to css/hux-blog.css file. "css/hux-blog.css": "less/hux-blog.less" &#125; &#125;, minified: &#123; options: &#123; paths: ["css"], cleancss: true, compress: true //去掉空格和换行 &#125;, files: &#123; "css/hux-blog.min.css": "less/hux-blog.less" &#125; &#125; &#125;, //添加编译文件顶部注释 banner: '/*!\n' + ' * &lt;%= pkg.title %&gt; v&lt;%= pkg.version %&gt; (&lt;%= pkg.homepage %&gt;)\n' + ' * Copyright &lt;%= grunt.template.today("yyyy") %&gt; &lt;%= pkg.author %&gt;\n' + ' */\n', usebanner: &#123; dist: &#123; options: &#123; position: 'top', banner: '&lt;%= banner %&gt;' &#125;, files: &#123; src: ['css/hux-blog.css', 'css/hux-blog.min.css', 'js/hux-blog.min.js'] &#125; &#125; &#125;, watch: &#123; scripts: &#123; files: ['js/hux-blog.js'], tasks: ['uglify'], options: &#123; spawn: false, &#125;, &#125;, less: &#123; files: ['less/*.less'], tasks: ['less'], options: &#123; spawn: false, &#125; &#125;, &#125;, &#125;); // Load the plugins. grunt.loadNpmTasks('grunt-contrib-uglify'); grunt.loadNpmTasks('grunt-contrib-less'); grunt.loadNpmTasks('grunt-banner'); grunt.loadNpmTasks('grunt-contrib-watch'); // Default task(s). grunt.registerTask('default', ['uglify', 'less', 'usebanner']); grunt.registerTask('lessMinicss','less:minified');&#125;; grunt.registerTask(‘lessMinicss’,’less:minified’); 举例,定义一个 task lessMinicss 然后会执行我们 less下面的minified 这个是grunt中的less插件,针对less语法的编译为css文件和对css文件的压缩.]]></content>
-      <categories>
-        <category>技术-JS</category>
-      </categories>
-      <tags>
-        <tag>Grunt</tag>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[GreenDAO3]]></title>
     <url>%2F2016%2F11%2F19%2F2016-11-19-greendao3%2F</url>
     <content type="text"><![CDATA[相关网址 1.官方文档网址 2.Github上GreenDao地址 3.关于GreenDAO 3.0 的使用,网友解释的比较好的博客]]></content>
@@ -126,6 +114,18 @@
       <tags>
         <tag>Android</tag>
         <tag>GreenDao</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Grunt]]></title>
+    <url>%2F2016%2F11%2F19%2F2016-11-19-grunt%2F</url>
+    <content type="text"><![CDATA[相关知识 Grunt JavaScript 世界的构建工具 这是学习JavaScript 的必备技能 .关于NPM的知识有兴趣的可以了解,不了解也没有关系,按照命令执行就行了. 官网介绍 环境搭建,快速开始 实例,我以这个博客为例,其中用到了GruntFile 来编译压缩Js,css 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677module.exports = function(grunt) &#123; // Project configuration. grunt.initConfig(&#123; pkg: grunt.file.readJSON('package.json'), uglify: &#123; main: &#123; src: 'js/hux-blog.js', dest: 'js/hux-blog.min.js' &#125; &#125;, less: &#123; expanded: &#123; options: &#123; paths: ["css"] &#125;, files: &#123; // general less/hux-blog.less to css/hux-blog.css file. "css/hux-blog.css": "less/hux-blog.less" &#125; &#125;, minified: &#123; options: &#123; paths: ["css"], cleancss: true, compress: true //去掉空格和换行 &#125;, files: &#123; "css/hux-blog.min.css": "less/hux-blog.less" &#125; &#125; &#125;, //添加编译文件顶部注释 banner: '/*!\n' + ' * &lt;%= pkg.title %&gt; v&lt;%= pkg.version %&gt; (&lt;%= pkg.homepage %&gt;)\n' + ' * Copyright &lt;%= grunt.template.today("yyyy") %&gt; &lt;%= pkg.author %&gt;\n' + ' */\n', usebanner: &#123; dist: &#123; options: &#123; position: 'top', banner: '&lt;%= banner %&gt;' &#125;, files: &#123; src: ['css/hux-blog.css', 'css/hux-blog.min.css', 'js/hux-blog.min.js'] &#125; &#125; &#125;, watch: &#123; scripts: &#123; files: ['js/hux-blog.js'], tasks: ['uglify'], options: &#123; spawn: false, &#125;, &#125;, less: &#123; files: ['less/*.less'], tasks: ['less'], options: &#123; spawn: false, &#125; &#125;, &#125;, &#125;); // Load the plugins. grunt.loadNpmTasks('grunt-contrib-uglify'); grunt.loadNpmTasks('grunt-contrib-less'); grunt.loadNpmTasks('grunt-banner'); grunt.loadNpmTasks('grunt-contrib-watch'); // Default task(s). grunt.registerTask('default', ['uglify', 'less', 'usebanner']); grunt.registerTask('lessMinicss','less:minified');&#125;; grunt.registerTask(‘lessMinicss’,’less:minified’); 举例,定义一个 task lessMinicss 然后会执行我们 less下面的minified 这个是grunt中的less插件,针对less语法的编译为css文件和对css文件的压缩.]]></content>
+      <categories>
+        <category>技术-JS</category>
+      </categories>
+      <tags>
+        <tag>Grunt</tag>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
