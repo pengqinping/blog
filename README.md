@@ -11,6 +11,12 @@
 * 框架: Hexo
 * 主题样式: next 
 
+
+## 由于 coding.net 改版，每个静态网站都是用 域名来区分，不存在目录的概念
+* master 分支: e.coding.net 上面的部署
+* github 分支: github.com 上面的部署
+* 优先在 master修改，然后合并到github分支， github中的_config.xml
+
 ## 使用NPM进行了命令管理
 
 |Command|Describe|
@@ -27,11 +33,10 @@
 |:--|:--|
 |`hexo init`|初始化项目|
 |`hexo new page` "First Page"  | 创建一篇名字为 First Page 的文章 |
-|`hexo server `| 启动本地服务器，并且打开index.html || `hexo generate` | 编译为静态网站, 生成静态页面文件全部放在public文件夹下面|
+|`hexo server `| 启动本地服务器，并且打开index.html | | `hexo generate` | 编译为静态网站, 生成静态页面文件全部放在public文件夹下面|
 | `hexo deploy` | 部署到git仓库 ，把静态网站上传到|
-| `hexo generate --deploy` or `hexo deploy --generate ` | 部署和生成可以一起  简写（ `hexo g -d | hexo d -g`）| 
+| `hexo generate --deploy` or `hexo deploy --generate ` | 部署和生成可以一起  简写（ `hexo g -d | hexo d -g`）| |
 | `hexo new post `| 创建一个新的页面 ，类似目录页面 |
-
 ## 常用模板
 ### 表格
 
