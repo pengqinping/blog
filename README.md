@@ -12,10 +12,10 @@
 * 主题样式: next 
 
 
-## 由于 coding.net 改版，每个静态网站都是用 域名来区分，不存在目录的概念
-* master 分支: e.coding.net 上面的部署
-* github 分支: github.com 上面的部署
-* 优先在 master修改，然后合并到github分支， github中的_config.xml
+## 调整博客部署
+* `master` 开发分支: 只会推送到 `gitee.com` 不推送到 `github`
+* `gp-page` page服务配置， 在 `_config.yml` 文件中配置把  `public` 目录进行部署
+* `gitee-page` page服务配置， 在 `_config.yml` 文件中配置把  `public` 目录进行部署
 
 ## 使用NPM进行了命令管理
 
