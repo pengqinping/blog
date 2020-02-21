@@ -12,8 +12,8 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://pengqinping.github.io/ABlog
-root: /
+url: http://pengqinping.github.io/blog
+root: /blog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
@@ -79,10 +79,17 @@ theme: next
 deploy:
   ### 屏蔽到github的提交 配置了很多相关的密码和账号信息
   - type: git 
-    repo: git@e.coding.net:pengqinping/Blog/ABlog.git
+    repo: git@e.coding.net:pengqinping/Blog/blog.git
     branch: coding-pages
     message: hexo自动提交
-
+  - type: git 
+    repo: git@gitee.com:pengqinping/blog.git
+    branch: gitee-pages
+    message: hexo自动提交
+  - type: git 
+    repo: git@github.com:pengqinping/blog.git
+    branch: gh-pages
+    message: hexo自动提交
 # Add local search
 search:
   path: search.xml
