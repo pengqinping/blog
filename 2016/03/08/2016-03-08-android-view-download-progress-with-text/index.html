@@ -44,21 +44,21 @@
 
 
 
-<link rel="stylesheet" href="/ABlog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
 
-<link rel="stylesheet" href="/ABlog/css/main.css?v=7.1.1">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/ABlog/images/apple-touch-icon-next.png?v=7.1.1">
+<link rel="stylesheet" href="/blog/css/main.css?v=7.1.1">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/ABlog/images/favicon-32x32-next.png?v=7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=7.1.1">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/ABlog/images/favicon-16x16-next.png?v=7.1.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=7.1.1">
 
 
-  <link rel="mask-icon" href="/ABlog/images/logo.svg?v=7.1.1" color="#222">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=7.1.1" color="#222">
 
 
 
@@ -69,7 +69,7 @@
 <script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/ABlog/',
+    root: '/blog/',
     scheme: 'Mist',
     version: '7.1.1',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
@@ -100,16 +100,16 @@
 <meta name="keywords" content="Android,view">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 自定义进度条">
-<meta property="og:url" content="http://pengqinping.github.io/ABlog/2016/03/08/2016-03-08-android-view-download-progress-with-text/index.html">
+<meta property="og:url" content="http://pengqinping.github.io/blog/2016/03/08/2016-03-08-android-view-download-progress-with-text/index.html">
 <meta property="og:site_name" content="Royal的博客">
 <meta property="og:description" content="工作中遇到一个难题 有个进度条显示效果要求进度按照比例计算，但是文字显示效果和背景恰好相反，项目中的效果是前人留下的，现实方式非常随意，直接使用大图完成，导致小屏手机无法显示完整图片，大屏手机显示拉伸，英文状态根本没有，后面接手修改适配真是头疼，做成了.9 模式，但是适配依然蛋疼，最后没有办法终于还是准备重写自定View来完成效果。  最终的效果如下： 实战演练下面简要描述下代码的实现，主要分为两">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://pengqinping.github.io/ABlog/2016/03/08/2016-03-08-android-view-download-progress-with-text/01.png">
+<meta property="og:image" content="http://pengqinping.github.io/blog/2016/03/08/2016-03-08-android-view-download-progress-with-text/01.png">
 <meta property="og:updated_time" content="2019-05-20T16:33:42.028Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 自定义进度条">
 <meta name="twitter:description" content="工作中遇到一个难题 有个进度条显示效果要求进度按照比例计算，但是文字显示效果和背景恰好相反，项目中的效果是前人留下的，现实方式非常随意，直接使用大图完成，导致小屏手机无法显示完整图片，大屏手机显示拉伸，英文状态根本没有，后面接手修改适配真是头疼，做成了.9 模式，但是适配依然蛋疼，最后没有办法终于还是准备重写自定View来完成效果。  最终的效果如下： 实战演练下面简要描述下代码的实现，主要分为两">
-<meta name="twitter:image" content="http://pengqinping.github.io/ABlog/2016/03/08/2016-03-08-android-view-download-progress-with-text/01.png">
+<meta name="twitter:image" content="http://pengqinping.github.io/blog/2016/03/08/2016-03-08-android-view-download-progress-with-text/01.png">
 
 
 
@@ -117,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="http://pengqinping.github.io/ABlog/2016/03/08/2016-03-08-android-view-download-progress-with-text/">
+  <link rel="canonical" href="http://pengqinping.github.io/blog/2016/03/08/2016-03-08-android-view-download-progress-with-text/">
 
 
 
@@ -194,7 +194,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/ABlog/" class="brand" rel="start">
+      <a href="/blog/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Royal的博客</span>
         <span class="logo-line-after"><i></i></span>
@@ -233,7 +233,7 @@
 
     
 
-    <a href="/ABlog/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/blog/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
         
@@ -250,7 +250,7 @@
 
     
 
-    <a href="/ABlog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
 
   </li>
         
@@ -267,7 +267,7 @@
 
     
 
-    <a href="/ABlog/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/blog/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
 
   </li>
         
@@ -284,7 +284,7 @@
 
     
 
-    <a href="/ABlog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
         
@@ -301,7 +301,7 @@
 
     
 
-    <a href="/ABlog/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/blog/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
 
@@ -397,12 +397,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://pengqinping.github.io/ABlog/ABlog/2016/03/08/2016-03-08-android-view-download-progress-with-text/">
+    <link itemprop="mainEntityOfPage" href="http://pengqinping.github.io/blog/blog/2016/03/08/2016-03-08-android-view-download-progress-with-text/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Royal">
       <meta itemprop="description" content="生命不息奋斗不止">
-      <meta itemprop="image" content="/ABlog/images/avatar-pqp.jpg">
+      <meta itemprop="image" content="/blog/images/avatar-pqp.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -474,7 +474,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/ABlog/categories/技术-AndroidView/" itemprop="url" rel="index"><span itemprop="name">技术-AndroidView</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/blog/categories/技术-AndroidView/" itemprop="url" rel="index"><span itemprop="name">技术-AndroidView</span></a></span>
 
                 
                 
@@ -493,8 +493,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/ABlog/2016/03/08/2016-03-08-android-view-download-progress-with-text/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/ABlog/2016/03/08/2016-03-08-android-view-download-progress-with-text/" itemprop="commentCount"></span>
+                <a href="/blog/2016/03/08/2016-03-08-android-view-download-progress-with-text/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/blog/2016/03/08/2016-03-08-android-view-download-progress-with-text/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -502,7 +502,7 @@
 
           
           
-            <span id="/ABlog/2016/03/08/2016-03-08-android-view-download-progress-with-text/" class="leancloud_visitors" data-flag-title="Android 自定义进度条">
+            <span id="/blog/2016/03/08/2016-03-08-android-view-download-progress-with-text/" class="leancloud_visitors" data-flag-title="Android 自定义进度条">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -564,7 +564,7 @@
         <h4 id="工作中遇到一个难题"><a href="#工作中遇到一个难题" class="headerlink" title="工作中遇到一个难题"></a>工作中遇到一个难题</h4><blockquote>
 <p>有个进度条显示效果要求进度按照比例计算，但是文字显示效果和背景恰好相反，项目中的效果是前人留下的，现实方式非常随意，直接使用大图完成，导致小屏手机无法显示完整图片，大屏手机显示拉伸，英文状态根本没有，后面接手修改适配真是头疼，做成了.9 模式，但是适配依然蛋疼，最后没有办法终于还是准备重写自定View来完成效果。</p>
 </blockquote>
-<p>最终的效果如下：<br><img src="/ABlog/2016/03/08/2016-03-08-android-view-download-progress-with-text/01.png" width="400" height="200" title="download"></p>
+<p>最终的效果如下：<br><img src="/blog/2016/03/08/2016-03-08-android-view-download-progress-with-text/01.png" width="400" height="200" title="download"></p>
 <h4 id="实战演练"><a href="#实战演练" class="headerlink" title="实战演练"></a>实战演练</h4><p>下面简要描述下代码的实现，主要分为两个部分，第一个为文字显示效果。第二个为背景显示效果。</p>
 <p>文字显示 <code>Progress.java</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      Copyright (C) 2016. 彭钦平</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      Licensed under the Apache License, Version 2.0 (the "License");</span></span><br><span class="line"><span class="comment"> *      you may not use this file except in compliance with the License.</span></span><br><span class="line"><span class="comment"> *      You may obtain a copy of the License at</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *           http://www.apache.org/licenses/LICENSE-2.0</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      Unless required by applicable law or agreed to in writing, software</span></span><br><span class="line"><span class="comment"> *      distributed under the License is distributed on an "AS IS" BASIS,</span></span><br><span class="line"><span class="comment"> *      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></span><br><span class="line"><span class="comment"> *      See the License for the specific language governing permissions and</span></span><br><span class="line"><span class="comment"> *      limitations under the License.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Canvas;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Color;</span><br><span class="line"><span class="keyword">import</span> android.graphics.LinearGradient;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Matrix;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Paint;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Shader;</span><br><span class="line"><span class="keyword">import</span> android.util.AttributeSet;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by pengqinping on 16/3/7.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@email</span> Royal.k.peng@gmail.com</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Progress</span> <span class="keyword">extends</span> <span class="title">TextView</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Progress</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context);</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Progress</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs);</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Progress</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs, defStyleAttr);</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> LinearGradient mLinearGradient;</span><br><span class="line">    <span class="keyword">private</span> Matrix mGradientMatrix;</span><br><span class="line">    <span class="keyword">private</span> Paint mPaint;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mViewWidth = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mTranslate = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> mAnimating = <span class="keyword">true</span>;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onSizeChanged</span><span class="params">(<span class="keyword">int</span> w, <span class="keyword">int</span> h, <span class="keyword">int</span> oldw, <span class="keyword">int</span> oldh)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onSizeChanged(w, h, oldw, oldh);</span><br><span class="line">        <span class="comment">/*if (mViewWidth == 0) &#123;</span></span><br><span class="line"><span class="comment">            mViewWidth = getMeasuredWidth();</span></span><br><span class="line"><span class="comment">            if (mViewWidth &gt; 0) &#123;</span></span><br><span class="line"><span class="comment">                mPaint = getPaint();</span></span><br><span class="line"><span class="comment">                mLinearGradient = new LinearGradient(-mViewWidth, 0, 0, 0,</span></span><br><span class="line"><span class="comment">                        new int[] &#123;Color.RED, Color.RED,Color.WHITE, Color.WHITE &#125;,</span></span><br><span class="line"><span class="comment">                        new float[] &#123; 0, 0.5f,0.5f, 1 &#125;, Shader.TileMode.MIRROR);</span></span><br><span class="line"><span class="comment">                mPaint.setShader(mLinearGradient);</span></span><br><span class="line"><span class="comment">                mGradientMatrix = new Matrix();</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">        &#125;*/</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDraw(canvas);</span><br><span class="line">        <span class="comment">/*if (mAnimating &amp;&amp; mGradientMatrix != null) &#123;</span></span><br><span class="line"><span class="comment">            mTranslate += mViewWidth / 10;</span></span><br><span class="line"><span class="comment">            if (mTranslate &gt; 2 * mViewWidth) &#123;</span></span><br><span class="line"><span class="comment">                mTranslate = -mViewWidth;</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">            mGradientMatrix.setTranslate(mTranslate, 0);</span></span><br><span class="line"><span class="comment">            mLinearGradient.setLocalMatrix(mGradientMatrix);</span></span><br><span class="line"><span class="comment">            */</span><span class="comment">/*postInvalidateDelayed(50);*/</span><span class="comment">/*</span></span><br><span class="line"><span class="comment">        &#125;*/</span></span><br><span class="line">       <span class="comment">/* mPaint = getPaint();</span></span><br><span class="line"><span class="comment">        mLinearGradient = new LinearGradient(0, 0, getWidth(), getHeight(),</span></span><br><span class="line"><span class="comment">                new int[]&#123; Color.WHITE, Color.WHITE,Color.parseColor("#f05858"), Color.parseColor("#f05858")&#125;,</span></span><br><span class="line"><span class="comment">                new float[]&#123;0, 0.5f, 0.5f, 1&#125;, Shader.TileMode.MIRROR);</span></span><br><span class="line"><span class="comment">        mPaint.setShader(mLinearGradient);*/</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * progress 取值范围 (0-100)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setProgress</span><span class="params">(<span class="keyword">int</span> progress)</span></span>&#123;</span><br><span class="line">        mPaint = getPaint();</span><br><span class="line">        mPaint.setFlags(Paint.ANTI_ALIAS_FLAG);</span><br><span class="line">        <span class="keyword">if</span>(progress &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="comment">//白底红字 so paint not set shader, and setColor = Color.parseColor("#f05858")</span></span><br><span class="line">            mPaint.setColor(Color.parseColor(<span class="string">"#f05858"</span>));</span><br><span class="line">            setTextColor(Color.parseColor(<span class="string">"#f05858"</span>));</span><br><span class="line">            setText(<span class="string">"开始下载"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(progress &gt;= <span class="number">100</span>)&#123;</span><br><span class="line">            <span class="comment">//红底白字</span></span><br><span class="line">            mPaint.setColor(Color.WHITE);</span><br><span class="line">            setTextColor(Color.WHITE);</span><br><span class="line">            setText(<span class="string">"再次下载"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">final</span> <span class="keyword">float</span> precent = (<span class="keyword">float</span>) progress/<span class="number">100f</span>;</span><br><span class="line">            mLinearGradient = <span class="keyword">new</span> LinearGradient(<span class="number">0</span>, <span class="number">0</span>, getWidth(), <span class="number">0</span>,</span><br><span class="line">                    <span class="keyword">new</span> <span class="keyword">int</span>[]&#123; Color.WHITE, Color.WHITE,Color.parseColor(<span class="string">"#f05858"</span>), Color.parseColor(<span class="string">"#f05858"</span>)&#125;,</span><br><span class="line">                    <span class="keyword">new</span> <span class="keyword">float</span>[]&#123;<span class="number">0</span>, precent, precent, <span class="number">1</span>&#125;, Shader.TileMode.MIRROR);</span><br><span class="line">            mPaint.setShader(mLinearGradient);</span><br><span class="line">            setText(<span class="string">"继续下载"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        postInvalidateDelayed(<span class="number">50</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -606,7 +606,7 @@
         
       
       <div style="display: inline-block">
-        <img src="/ABlog/images/wechatpay.png" alt="Royal 微信支付">
+        <img src="/blog/images/wechatpay.png" alt="Royal 微信支付">
         <p>微信支付</p>
       </div>
     
@@ -615,7 +615,7 @@
         
       
       <div style="display: inline-block">
-        <img src="/ABlog/images/alipay.jpg" alt="Royal 支付宝">
+        <img src="/blog/images/alipay.jpg" alt="Royal 支付宝">
         <p>支付宝</p>
       </div>
     
@@ -643,7 +643,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://pengqinping.github.io/ABlog/2016/03/08/2016-03-08-android-view-download-progress-with-text/" title="Android 自定义进度条">http://pengqinping.github.io/ABlog/2016/03/08/2016-03-08-android-view-download-progress-with-text/</a>
+    <a href="http://pengqinping.github.io/blog/2016/03/08/2016-03-08-android-view-download-progress-with-text/" title="Android 自定义进度条">http://pengqinping.github.io/blog/2016/03/08/2016-03-08-android-view-download-progress-with-text/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -656,9 +656,9 @@
       
         <div class="post-tags">
           
-            <a href="/ABlog/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
+            <a href="/blog/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
           
-            <a href="/ABlog/tags/view/" rel="tag"><i class="fa fa-tag"></i> view</a>
+            <a href="/blog/tags/view/" rel="tag"><i class="fa fa-tag"></i> view</a>
           
         </div>
       
@@ -671,7 +671,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/ABlog/2016/03/06/2016-03-06-git-概要/" rel="next" title="Git 概要">
+              <a href="/blog/2016/03/06/2016-03-06-git-概要/" rel="next" title="Git 概要">
                 <i class="fa fa-chevron-left"></i> Git 概要
               </a>
             
@@ -681,7 +681,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/ABlog/2016/03/10/2016-03-10-android-fork-project-LeakCanary/" rel="prev" title="Android LeakCanary">
+              <a href="/blog/2016/03/10/2016-03-10-android-fork-project-LeakCanary/" rel="prev" title="Android LeakCanary">
                 Android LeakCanary <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -745,7 +745,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/ABlog/images/avatar-pqp.jpg" alt="Royal">
+              <img class="site-author-image" itemprop="image" src="/blog/images/avatar-pqp.jpg" alt="Royal">
             
               <p class="site-author-name" itemprop="name">Royal</p>
               <div class="site-description motion-element" itemprop="description">生命不息奋斗不止</div>
@@ -756,7 +756,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/ABlog/archives/">
+                  <a href="/blog/archives/">
                 
                     <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">日志</span>
@@ -770,7 +770,7 @@
                 <div class="site-state-item site-state-categories">
                   
                     
-                      <a href="/ABlog/categories/">
+                      <a href="/blog/categories/">
                     
                   
                     
@@ -813,7 +813,7 @@
                 <div class="site-state-item site-state-tags">
                   
                     
-                      <a href="/ABlog/tags/">
+                      <a href="/blog/tags/">
                     
                   
                     
@@ -1110,46 +1110,46 @@
 
 
   
-  <script src="/ABlog/lib/jquery/index.js?v=2.1.3"></script>
+  <script src="/blog/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  <script src="/ABlog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  <script src="/ABlog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
   
-  <script src="/ABlog/lib/reading_progress/reading_progress.js"></script>
-
-
-  
-
-
-  <script src="/ABlog/js/utils.js?v=7.1.1"></script>
-
-  <script src="/ABlog/js/motion.js?v=7.1.1"></script>
-
-
-
-  
-  
-
-
-  <script src="/ABlog/js/schemes/muse.js?v=7.1.1"></script>
-
-
-
-
-  
-  <script src="/ABlog/js/scrollspy.js?v=7.1.1"></script>
-<script src="/ABlog/js/post-details.js?v=7.1.1"></script>
-
+  <script src="/blog/lib/reading_progress/reading_progress.js"></script>
 
 
   
 
 
-  <script src="/ABlog/js/next-boot.js?v=7.1.1"></script>
+  <script src="/blog/js/utils.js?v=7.1.1"></script>
+
+  <script src="/blog/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/blog/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/blog/js/scrollspy.js?v=7.1.1"></script>
+<script src="/blog/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/blog/js/next-boot.js?v=7.1.1"></script>
 
 
   
@@ -1206,7 +1206,7 @@
     } else if (/json$/i.test(search_path)) {
       isXml = false;
     }
-    var path = "/ABlog/" + search_path;
+    var path = "/blog/" + search_path;
     // monitor main search box;
 
     var onPopupClose = function (e) {
@@ -1521,14 +1521,14 @@
   
   
   
-  <link rel="stylesheet" href="/ABlog/lib/algolia-instant-search/instantsearch.min.css">
+  <link rel="stylesheet" href="/blog/lib/algolia-instant-search/instantsearch.min.css">
 
   
   
-  <script src="/ABlog/lib/algolia-instant-search/instantsearch.min.js"></script>
+  <script src="/blog/lib/algolia-instant-search/instantsearch.min.js"></script>
   
 
-  <script src="/ABlog/js/algolia-search.js?v=7.1.1"></script>
+  <script src="/blog/js/algolia-search.js?v=7.1.1"></script>
 
 
 
