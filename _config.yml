@@ -79,10 +79,6 @@ theme: next
 deploy:
   ### 屏蔽到github的提交 配置了很多相关的密码和账号信息
   - type: git 
-    repo: git@e.coding.net:pengqinping/Blog/blog.git
-    branch: coding-pages
-    message: hexo自动提交
-  - type: git 
     repo: git@gitee.com:pengqinping/blog.git
     branch: gitee-pages
     message: hexo自动提交

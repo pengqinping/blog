@@ -1,5 +1,5 @@
 ---
-title: Kotlin-Class
+title: Kotlin的class
 author: RoyalPeng
 date: 2017-11-05 21:05:25
 categories: 技术-Kotlin
