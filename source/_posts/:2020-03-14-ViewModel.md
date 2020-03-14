@@ -1,7 +1,8 @@
 ---
 title: ViewModel
-author: RoyalPeng
+author: 认知弱点
 date: 2020-03-14 10:08:29
+excerpt: "ViewModel 是怎样被创建的？"
 categories: Android-Jetpack
 tags: 
     - ViewModel 

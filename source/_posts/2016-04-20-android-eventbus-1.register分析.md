@@ -3,12 +3,13 @@ layout:     post
 title:      "Android.EventBus[源码分析]"
 subtitle:   "EventBus发送普通消息的流程"
 date:       2016-04-20
-author:     "Royal"
+author:     认知弱点
 categories: 技术-Android框架
 tags:
     - Android
     - EventBus
     - fork Project
+excerpt: "EventBus源码分析"
 ---
 
 > Eventbus: Android optimized event bus that simplifies communication between Activities, Fragments, Threads, Services, etc. Less code, better quality.

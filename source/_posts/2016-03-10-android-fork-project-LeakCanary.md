@@ -2,12 +2,13 @@
 layout:     post
 title:      "Android LeakCanary"
 date:       2016-03-10
-author:     "Royal"
+author:     认知弱点
 categories: 技术-Android性能优化
 tags:
     - Android
     - LeakCanary
     - fork Project
+excerpt: "LeakCanary 使用教程"
 ---
 > 很给力的分析工具，基本上能够解决内存泄露的大部分场景，比MAT看起来清晰。
 

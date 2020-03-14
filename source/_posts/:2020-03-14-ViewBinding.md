@@ -1,10 +1,12 @@
 ---
 title: ViewBinding
-author: RoyalPeng
+author: 认知弱点
 date: 2020-03-14 10:24:08
 categories: Android-Jetpack
+excerpt: "MVVM之DataBinding 使用指南"
 tags:
     - ViewBinding
+
 ---
 # DataBinding 
 * Google文档 https://developer.android.google.cn/topic/libraries/data-binding

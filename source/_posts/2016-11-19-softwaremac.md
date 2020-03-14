@@ -3,8 +3,9 @@ layout: post
 title: "SublimeT text 3"
 header-color: "#FBC562"
 date:       2016-11-19rake
-author:     "Royal"
+author:     认知弱点
 categories: 工具使用
+excerpt: "Sublime Text 3 配置 Code Snippet"
 tags: 
     - Sublime Text
     - Mac tools

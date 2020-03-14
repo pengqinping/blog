@@ -2,11 +2,12 @@
 layout:     post
 title:      "态度"
 date:       2016-03-06
-author:     "Royal"
+author:     认知弱点
 categories: 领悟
 tags:
     - life
     - 感想
+excerpt: "思考"
 ---
 
 > 时间久的我都忘记了gitpage 中创建一个POST的方法。重提一下：

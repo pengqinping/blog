@@ -1,10 +1,12 @@
 ---
 title: Jekyll博客转Hexo实践
+author:     "认知弱点"
 date: 2017-10-21 21:15:41
 categories: Hexo-博客
 tags:
   - Hexo
   - Jekyll
+excerpt: "Jekyll 博客使用"  
 ---
 
 本来不准备对这次的切换做个总结的，网上的教程确实都很详情了，不过还是想记录一下这个过程和相关的操作，切换的话一路都很顺利,关键hexo还有中文。还是记录下以备不时之需

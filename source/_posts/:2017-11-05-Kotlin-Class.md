@@ -1,9 +1,10 @@
 ---
 title: Kotlin的class
-author: RoyalPeng
+author: 认知弱点
 date: 2017-11-05 21:05:25
 categories: 技术-Kotlin
 tags: Kotlin
+excerpt: "Kotlin Class"  
 ---
 
 ### 类

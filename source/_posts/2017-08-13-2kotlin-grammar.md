@@ -2,8 +2,9 @@
 layout: post
 title: "2.Kotlin基础语法"
 date:       2017-08-13
-author:     "Royal"
+author:     认知弱点
 categories: 技术-Kotlin
+excerpt: "Kotlin基本使用"
 tags: 
     - Kotlin
 ---
