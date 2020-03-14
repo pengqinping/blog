@@ -4,6 +4,8 @@
     <list default="true" id="da105916-e309-4836-8e07-92c9e3379eb9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/db.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +50,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Code/Web-Js/study_css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -125,6 +127,13 @@
       <workItem from="1579311062211" duration="104000" />
       <workItem from="1579311186087" duration="212000" />
       <workItem from="1579334564456" duration="817000" />
+      <workItem from="1584154664497" duration="28000" />
+      <workItem from="1584154732664" duration="149000" />
+      <workItem from="1584154951312" duration="181000" />
+      <workItem from="1584155169643" duration="504000" />
+      <workItem from="1584155967637" duration="90000" />
+      <workItem from="1584156160443" duration="207000" />
+      <workItem from="1584156738899" duration="233000" />
     </task>
     <servers />
   </component>
@@ -173,9 +182,14 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
-    <state x="221" y="76" key="SettingsEditor" timestamp="1579311166308">
-      <screen x="0" y="23" width="1440" height="828" />
+    <state x="428" y="160" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1584154680955">
+      <screen x="0" y="23" width="1440" height="823" />
     </state>
+    <state x="428" y="160" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1440.823@0.23.1440.823" timestamp="1584154680955" />
+    <state x="221" y="76" key="SettingsEditor" timestamp="1584156969459">
+      <screen x="0" y="23" width="1440" height="823" />
+    </state>
+    <state x="221" y="76" key="SettingsEditor/0.23.1440.823@0.23.1440.823" timestamp="1584156969459" />
     <state x="221" y="76" key="SettingsEditor/0.23.1440.828@0.23.1440.828" timestamp="1579311166308" />
   </component>
   <component name="masterDetails">

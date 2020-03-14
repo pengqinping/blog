@@ -11,7 +11,6 @@
 * 框架: Hexo
 * 主题样式: next 
 
-
 ## 调整博客部署
 * `master` 开发分支: 只会推送到 `gitee.com` 不推送到 `github`
 * `gp-page` page服务配置， 在 `_config.yml` 文件中配置把  `public` 目录进行部署
