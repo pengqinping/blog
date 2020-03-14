@@ -7,7 +7,7 @@ title: 认知弱点
 subtitle: 知之为知之，不知为不知
 description: 生命不息, 奋斗不止
 author: 认知弱点
-language: zh-Hans 
+language: zh-CN
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -71,7 +71,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: nextT
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
