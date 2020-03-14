@@ -15,6 +15,7 @@ tags:
 databinding 相对比较简单
 
 1. **app** 开启 `dataBinding` 支持 `buidle.gradle`
+
 ```groovy
 android {
     dataBinding {
@@ -23,6 +24,7 @@ android {
 }
 ```
 2. **定义xml文件支持dataBinding 以list_fragment.xml 为例**
+
 ```xml
 <!-- 关键是layout 包裹，只有Layout包裹 DataBinding才会去识别 -->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
