@@ -1,7 +1,8 @@
 ---
 title: {{ title }}
 date: {{ date }}
-author: RoyalPeng
+author: 认知弱点
 categories: 
 tags:
+excerpt: ""
 ---
