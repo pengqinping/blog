@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Helvetica Neue,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif:300,300italic,400,400italic,700,700italic|Menlo,Monaco,Microsoft YaHei,Arial,sans-serif:300,300italic,400,400italic,700,700italic|Menlo,Monaco,Consolas,Courier New,monospace:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pengqinping.gitee.io","root":"/blog/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"button","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"appID":"7B9SBAUUZF","apiKey":"c86be27189386e5c5c18c9998e070f4f","indexName":"ABlog","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="MVVM之DataBinding 使用指南">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ViewBinding">
+<meta property="og:url" content="http://pengqinping.gitee.io/blog/2020/03/14/ViewBinding/index.html">
+<meta property="og:site_name" content="认知弱点">
+<meta property="og:description" content="MVVM之DataBinding 使用指南">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-14T02:24:08.000Z">
+<meta property="article:modified_time" content="2020-03-14T15:26:20.388Z">
+<meta property="article:author" content="认知弱点">
+<meta property="article:tag" content="ViewBinding">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://pengqinping.gitee.io/blog/2020/03/14/ViewBinding/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ViewBinding | 认知弱点</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c41e3ad08c900f1a8cd62441f1d17c58";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">认知弱点</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">知之为知之，不知为不知</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="tags fa-fw"></i>标签<span class="badge">26</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="th fa-fw"></i>分类<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="archive fa-fw"></i>归档<span class="badge">22</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/blog/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+      
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pengqinping.gitee.io/blog/2020/03/14/ViewBinding/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/head.jpg">
+      <meta itemprop="name" content="认知弱点">
+      <meta itemprop="description" content="生命不息, 奋斗不止">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="认知弱点">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ViewBinding
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-14 10:24:08 / 修改时间：23:26:20" itemprop="dateCreated datePublished" datetime="2020-03-14T10:24:08+08:00">2020-03-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Android-Jetpack/" itemprop="url" rel="index"><span itemprop="name">Android-Jetpack</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/blog/2020/03/14/ViewBinding/" class="post-meta-item leancloud_visitors" data-flag-title="ViewBinding" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/blog/2020/03/14/ViewBinding/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/blog/2020/03/14/ViewBinding/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1>DataBinding</h1>
+<ul>
+<li>
+<p>Google文档 <a href="https://developer.android.google.cn/topic/libraries/data-binding" target="_blank" rel="noopener">https://developer.android.google.cn/topic/libraries/data-binding</a></p>
+</li>
+<li>
+<p>项目涉及代码库 <a href="https://gitee.com/pengqinping/architecture-components-samples/tree/master/BasicSample" target="_blank" rel="noopener">https://gitee.com/pengqinping/architecture-components-samples/tree/master/BasicSample</a></p>
+</li>
+<li>
+<p>dataBinding <a href="https://gitee.com/pengqinping/databinding-samples" target="_blank" rel="noopener">https://gitee.com/pengqinping/databinding-samples</a></p>
+</li>
+</ul>
+<p>databinding 相对比较简单</p>
+<ol>
+<li><strong>app</strong> 开启 <code>dataBinding</code> 支持 <code>buidle.gradle</code></li>
+</ol>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    dataBinding &#123;</span><br><span class="line">        enabled = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><strong>定义xml文件支持dataBinding 以list_fragment.xml 为例</strong></li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 关键是layout 包裹，只有Layout包裹 DataBinding才会去识别 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">layout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">variable</span></span></span><br><span class="line"><span class="tag">            <span class="attr">name</span>=<span class="string">"isLoading"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">type</span>=<span class="string">"boolean"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- ...  somecode --&gt;</span></span><br><span class="line"> </span><br><span class="line">   <span class="tag">&lt;<span class="name">androidx.appcompat.widget.AppCompatEditText</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/products_search_box"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:hint</span>=<span class="string">"@string/search_products_hint"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">ImageButton</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/products_search_btn"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"48dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"48dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:contentDescription</span>=<span class="string">"@string/cd_search_products"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:srcCompat</span>=<span class="string">"@drawable/ic_search_black_24dp"</span>/&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- ...  somecode --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>dataBinding 工具会在编译的时候 ListFragmentBinding.java 文件 里面有描述 布局的代码<br>
+目录 app/buidl/generated/data_binding_base_class_source_out/{debug}/out/{packagname}/databinding/xxx.java</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//列举一小部分</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">ListFragmentBinding</span> <span class="keyword">extends</span> <span class="title">ViewDataBinding</span> </span>&#123;</span><br><span class="line">   <span class="meta">@NonNull</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">final</span> AppCompatEditText productsSearchBox;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@NonNull</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">final</span> ImageButton productsSearchBtn;</span><br><span class="line">  <span class="comment">// ... some code</span></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>在 fragment 实例化对象 , 并且使用</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> ListFragmentBinding mBinding;</span><br><span class="line"><span class="meta">@Nullable</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,</span></span></span><br><span class="line"><span class="function"><span class="params">        @Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    mBinding = DataBindingUtil.inflate(inflater, R.layout.list_fragment, container, <span class="keyword">false</span>);</span><br><span class="line">    <span class="comment">//... some code</span></span><br><span class="line">    <span class="keyword">return</span> mBinding.getRoot();</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onViewCreated</span><span class="params">(@NonNull View view, @Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onViewCreated(view, savedInstanceState);</span><br><span class="line">    <span class="comment">// 通过 binding 对象直接引用</span></span><br><span class="line">    mBinding.productsSearchBtn.setOnClickListener(v -&gt; &#123;</span><br><span class="line">        Editable query = mBinding.productsSearchBox.getText();</span><br><span class="line">        viewModel.setQuery(query);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在布局里面写Viewmodel就不多介绍了，写过 vue angularjs 前端的 这些很好理解， 数据绑定的概念</p>
+<h2 id="BaseObservableField-和-ViewModel-在-数据绑定中的引用"><a class="header-anchor" href="#BaseObservableField-和-ViewModel-在-数据绑定中的引用">¶</a>BaseObservableField 和 ViewModel 在 数据绑定中的引用</h2>
+<ul>
+<li>项目地址 <a href="https://gitee.com/pengqinping/databinding-samples/tree/master" target="_blank" rel="noopener">https://gitee.com/pengqinping/databinding-samples/tree/master</a></li>
+</ul>
+<p><strong>1. 用ObservableInt演示</strong></p>
+<ul>
+<li>a.在Activity定义 ObservableInt</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">ObservableFieldProfile</span></span>(</span><br><span class="line">    <span class="keyword">val</span> name: String,</span><br><span class="line">    <span class="keyword">val</span> lastName: String,</span><br><span class="line">    <span class="keyword">val</span> likes: ObservableInt</span><br><span class="line">)</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">val</span> observableFieldProfile = ObservableFieldProfile(<span class="string">"Ada"</span>, <span class="string">"Lovelace"</span>, ObservableInt(<span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>b.在布局定义引用</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">layout</span></span></span><br><span class="line"><span class="tag"><span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag"><span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span></span><br><span class="line"><span class="tag"><span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">import</span> <span class="attr">type</span>=<span class="string">"com.example.android.databinding.basicsample.R"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">import</span> <span class="attr">type</span>=<span class="string">"com.example.android.databinding.basicsample.util.ConverterUtil"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 定义名词和类型 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">variable</span></span></span><br><span class="line"><span class="tag">        <span class="attr">name</span>=<span class="string">"user"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">type</span>=<span class="string">"com.example.android.databinding.basicsample.data.ObservableFieldProfile"</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 设置文本 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">xml</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"@&#123;user.name&#125;"</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 设置表达式 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">xml</span> </span></span><br><span class="line"><span class="tag">        <span class="attr">app:srcCompat</span>=<span class="string">"@&#123;user.likes &amp;lt; 4 ? R.drawable.ic_person_black_96dp : R.drawable.ic_whatshot_black_96dp &#125;"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 类型转换 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">xml</span> </span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"@&#123;Integer.toString(user.likes)&#125;"</span></span></span><br><span class="line"><span class="tag">    /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 会自动调用 Activity 中的 fun OnLink 函数，Google 不推荐这么干，所以最好使用ViewModel --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">android:onClick</span>=<span class="string">"onLike"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>C. 绑定及赋值</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">val</span> binding: ObservableFieldProfileBinding =</span><br><span class="line">            DataBindingUtil.setContentView(<span class="keyword">this</span>, R.layout.observable_field_profile)</span><br><span class="line">    binding.user = observableFieldProfile</span><br></pre></td></tr></table></figure>
+<p>1.这个BaseObservableField只适合简单逻辑，加入判断比较复杂就很难受了<br>
+2.普通的BaseObservableFiled 对象改变值是需要手动去set更新的</p>
+<p><strong>2. ViewModel+LiveData演示</strong><br>
+看了ViewModel 你可能会喜欢上使用这个东西</p>
+<ul>
+<li>a. 定义ViewModel 和 LiveData演示</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProfileLiveDataViewModel</span> : <span class="type">ViewModel</span></span>() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> _name = MutableLiveData(<span class="string">"Ada"</span>) <span class="comment">// LiveData ，数据发生变化会自动更新布局，不用在重新拿View 去set数据</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> _lastName = MutableLiveData(<span class="string">"Lovelace"</span>)</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> _likes =  MutableLiveData(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 这里转了一次，主要是避免 在其他地方操作 这边变量，对外自提供 可读操作，内部实现可写操作</span></span><br><span class="line">    <span class="keyword">val</span> name: LiveData&lt;String&gt; = _name</span><br><span class="line">    <span class="keyword">val</span> lastName: LiveData&lt;String&gt; = _lastName</span><br><span class="line">    <span class="keyword">val</span> likes: LiveData&lt;<span class="built_in">Int</span>&gt; = _likes</span><br><span class="line"></span><br><span class="line">    <span class="comment">// popularity is exposed as LiveData using a Transformation instead of a @Bindable property.</span></span><br><span class="line">    <span class="comment">// 数据转换</span></span><br><span class="line">    <span class="keyword">val</span> popularity: LiveData&lt;Popularity&gt; = Transformations.map(_likes) &#123;</span><br><span class="line">        <span class="keyword">when</span> &#123;</span><br><span class="line">            it &gt; <span class="number">9</span> -&gt; Popularity.STAR</span><br><span class="line">            it &gt; <span class="number">4</span> -&gt; Popularity.POPULAR</span><br><span class="line">            <span class="keyword">else</span> -&gt; Popularity.NORMAL</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// xml 中 函数调用</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">onLike</span><span class="params">()</span></span> &#123;</span><br><span class="line">        _likes.value = (_likes.value ?: <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>b. 在布局中引入ViewModel</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">variable</span></span></span><br><span class="line"><span class="tag">        <span class="attr">name</span>=<span class="string">"viewmodel"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">type</span>=<span class="string">"com.example.android.databinding.basicsample.data.ProfileLiveDataViewModel"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 变量 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">xml</span>  <span class="attr">android:text</span>=<span class="string">"@&#123;viewmodel.lastName&#125;"</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 事件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">xml</span> <span class="attr">android:onClick</span>=<span class="string">"@&#123;() -&gt; viewmodel.onLike()&#125;"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>c. 在Activity中绑定</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Obtain binding</span></span><br><span class="line"><span class="keyword">val</span> binding: ViewmodelProfileBinding =</span><br><span class="line">        DataBindingUtil.setContentView(<span class="keyword">this</span>, R.layout.viewmodel_profile)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Bind layout with ViewModel</span></span><br><span class="line">binding.viewmodel = viewModel</span><br><span class="line"></span><br><span class="line"><span class="comment">// LiveData needs the lifecycle owner</span></span><br><span class="line">binding.lifecycleOwner = <span class="keyword">this</span></span><br></pre></td></tr></table></figure>
+<h2 id="官方还介绍了一种-替换LiveData-方式，-Bindable"><a class="header-anchor" href="#官方还介绍了一种-替换LiveData-方式，-Bindable">¶</a>官方还介绍了一种 替换LiveData 方式， @Bindable</h2>
+<ul>
+<li><a href="https://developer.android.google.cn/topic/libraries/data-binding/observability" target="_blank" rel="noopener">https://developer.android.google.cn/topic/libraries/data-binding/observability</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>喝杯咖啡吧</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/blog/images/wechatpay.png" alt="认知弱点 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/blog/images/alipay.jpg" alt="认知弱点 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>认知弱点
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://pengqinping.gitee.io/blog/2020/03/14/ViewBinding/" title="ViewBinding">http://pengqinping.gitee.io/blog/2020/03/14/ViewBinding/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/ViewBinding/" rel="tag"># ViewBinding</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2020/03/14/LiveData/" rel="prev" title="LiveData">
+      <i class="fa fa-chevron-left"></i> LiveData
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2020/03/14/Paging/" rel="next" title="Paging">
+      Paging <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">DataBinding</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BaseObservableField-和-ViewModel-在-数据绑定中的引用"><span class="nav-number">1.1.</span> <span class="nav-text">BaseObservableField 和 ViewModel 在 数据绑定中的引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#官方还介绍了一种-替换LiveData-方式，-Bindable"><span class="nav-number">1.2.</span> <span class="nav-text">官方还介绍了一种 替换LiveData 方式， @Bindable</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="认知弱点"
+      src="/blog/images/head.jpg">
+  <p class="site-author-name" itemprop="name">认知弱点</p>
+  <div class="site-description" itemprop="description">生命不息, 奋斗不止</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/pengqinping" title="GitHub → https://gitee.com/pengqinping" rel="noopener" target="_blank"><i class="github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/pengqinping/" title="Weibo → https://weibo.com/pengqinping/" rel="noopener" target="_blank"><i class="weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.douban.com/people/130646662" title="豆瓣 → https://www.douban.com/people/130646662" rel="noopener" target="_blank"><i class="globe fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.zhihu.com/people/pengqinping" title="知乎 → http://www.zhihu.com/people/pengqinping" rel="noopener" target="_blank"><i class="globe fa-fw"></i></a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="link fa-fw"></i>
+      收藏
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/zh-cn/" title="https://hexo.io/zh-cn/" rel="noopener" target="_blank">Hexo</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://theme-next.org/" title="https://theme-next.org/" rel="noopener" target="_blank">Next</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://gitee.com/" title="https://gitee.com/" rel="noopener" target="_blank">Gitee</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.android.google.cn/" title="https://developer.android.google.cn/" rel="noopener" target="_blank">GoogleCN</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://fontawesome.com/v4.7.0/icons/" title="https://fontawesome.com/v4.7.0/icons/" rel="noopener" target="_blank">Fontawesome</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/" title="https://github.com/" rel="noopener" target="_blank">Github</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://leetcode-cn.com/" title="https://leetcode-cn.com/" rel="noopener" target="_blank">Leetcode</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://maven.aliyun.com/mvn/search" title="https://maven.aliyun.com/mvn/search" rel="noopener" target="_blank">AliYun</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://time.geekbang.org/" title="https://time.geekbang.org/" rel="noopener" target="_blank">极客学院</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">认知弱点拥有版权，请注明出处转载。</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">75k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:08</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/muse.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+<script src="/blog/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
+<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
+<script src="/blog/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : '9wWHXQuF5WbeMymYm9RiCkP8-gzGzoHsz',
+      appKey     : 'He1X8AhmlR2EBQSzSfxw4aCD',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

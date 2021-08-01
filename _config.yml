@@ -108,8 +108,9 @@ symbols_count_time:
   total_time: true
   exclude_codeblock: false
 
-markdown: 
- render:
+# Markdown-it config
+markdown:
+  render:
     html: true
     xhtmlOut: false
     breaks: true

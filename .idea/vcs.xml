@@ -4,5 +4,6 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/themes/next/source/lib/algolia-instant-search" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/themes/next/source/lib/reading_progress" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/themes/nextT" vcs="Git" />
   </component>
 </project>

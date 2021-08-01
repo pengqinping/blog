@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da105916-e309-4836-8e07-92c9e3379eb9" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.deploy_git" beforeDir="false" afterPath="$PROJECT_DIR$/.deploy_git" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/db.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/nextT" beforeDir="false" afterPath="$PROJECT_DIR$/themes/nextT" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,6 +137,8 @@
       <workItem from="1584156160443" duration="207000" />
       <workItem from="1584156738899" duration="233000" />
       <workItem from="1588392949105" duration="438000" />
+      <workItem from="1625060031312" duration="36000" />
+      <workItem from="1625060090311" duration="66000" />
     </task>
     <servers />
   </component>
@@ -181,15 +187,10 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
-    <state x="428" y="160" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1584154680955">
-      <screen x="0" y="23" width="1440" height="823" />
+    <state x="229" y="70" key="SettingsEditor" timestamp="1625060148019">
+      <screen x="0" y="25" width="1440" height="818" />
     </state>
-    <state x="428" y="160" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1440.823@0.23.1440.823" timestamp="1584154680955" />
-    <state x="221" y="76" key="SettingsEditor" timestamp="1584156969459">
-      <screen x="0" y="23" width="1440" height="823" />
-    </state>
-    <state x="221" y="76" key="SettingsEditor/0.23.1440.823@0.23.1440.823" timestamp="1584156969459" />
-    <state x="221" y="76" key="SettingsEditor/0.23.1440.828@0.23.1440.828" timestamp="1579311166308" />
+    <state x="229" y="70" key="SettingsEditor/0.25.1440.818@0.25.1440.818" timestamp="1625060148019" />
   </component>
   <component name="masterDetails">
     <states>
