@@ -144,10 +144,10 @@ plantuml:
   # where your dot binary
   GraphvizDotFile: "/usr/local/bin/dot"
   # where your jar
-  PlantJar: "/Users/pengqinping/Developer/plantUML/plantuml-nodot.1.2021.9.jar",
+  PlantJar: "/Users/pengqinping/Developer/plantUML/plantuml-nodot.1.2021.9.jar"
 
   # common options: svg/png
-  outputFormat: "png"
+  outputFormat: "svg"
 
   # class-name for element style. The default style is center-aligned block
   className: "plantuml"
