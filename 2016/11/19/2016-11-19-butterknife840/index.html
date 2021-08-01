@@ -292,14 +292,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="相关地址">相关地址:</h4>
+        <h4 id="相关地址"><a class="header-anchor" href="#相关地址">¶</a>相关地址:</h4>
 <hr>
 <ul>
 <li><a href="http://jakewharton.github.io/butterknife/" target="_blank" rel="noopener">ButterKnife 官网地址</a></li>
 <li><a href="https://github.com/JakeWharton/butterknife" target="_blank" rel="noopener">ButterKnife Github</a></li>
 <li><a href="http://dev.qq.com/topic/578753c0c9da73584b025875" target="_blank" rel="noopener">ButterKnife 编译时注解,解释比较详细的一个博客</a></li>
 </ul>
-<h4 id="使用简介">使用简介:</h4>
+<h4 id="使用简介"><a class="header-anchor" href="#使用简介">¶</a>使用简介:</h4>
 <hr>
 <blockquote>
 <p>使用butterKnife之后你会感觉很舒服,结合 <strong>Android-studio</strong> 的插件 <strong>Android Butterknife Zelezny</strong> 会更好</p>
@@ -308,7 +308,7 @@
 <li>不用再输入 <code>findViewById(ResId)</code> <code>getResource(R.[string][color].resId)</code>等代码 ,这个使用的最多</li>
 <li>简化事件响应流程</li>
 </ol>
-<h4 id="使用流程">使用流程</h4>
+<h4 id="使用流程"><a class="header-anchor" href="#使用流程">¶</a>使用流程</h4>
 <hr>
 <blockquote>
 <p>这个流程对应的是 <strong>com.jakewharton:butterknife:8.4.0</strong> 的版本 ,这个库期间更新过好几次配置,我直接描述最新配置,这里一定要注意版本对应,否则会编译报错</p>
@@ -326,7 +326,7 @@
 <li>3.开始在项目中使用<strong>ButterKnife</strong></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// View UI</span></span><br><span class="line"><span class="meta">@BindView</span>(R.id.login_progress)</span><br><span class="line">ProgressBar mProgressView;</span><br><span class="line"><span class="meta">@BindView</span>(R.id.login_form)</span><br><span class="line">ScrollView mLoginFormView;</span><br><span class="line"><span class="meta">@BindView</span>(R.id.email_login_form)</span><br><span class="line">LinearLayout emailLoginForm;</span><br><span class="line"><span class="meta">@BindView</span>(R.id.email) AutoCompleteTextView mEmailView;</span><br><span class="line"><span class="meta">@BindView</span>(R.id.password) EditText mPasswordView;</span><br><span class="line"><span class="meta">@BindView</span>(R.id.keystore) EditText mKeystore;</span><br><span class="line"></span><br><span class="line"><span class="comment">//click event</span></span><br><span class="line"> <span class="meta">@OnClick</span>(R.id.email_sign_in_button) <span class="function"><span class="keyword">void</span> <span class="title">onEmailSignInButtonClick</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//TODO implement</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> <span class="meta">@OnLongClick</span>(R.id.email_sign_in_button) <span class="function"><span class="keyword">boolean</span> <span class="title">onEmailSignInButtonLongClick</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//TODO implement</span></span><br><span class="line">        attemptLogin();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="常见错误">常见错误</h4>
+<h4 id="常见错误"><a class="header-anchor" href="#常见错误">¶</a>常见错误</h4>
 <ul>
 <li><code>NullPointException</code> 基本就是版本不一致导致的.</li>
 </ul>
@@ -386,8 +386,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/blog/2016/11/19/2016-11-19-greendao3/" rel="prev" title="GreenDAO3">
-      <i class="fa fa-chevron-left"></i> GreenDAO3
+    <a href="/blog/2016/11/19/2016-11-19-grunt/" rel="prev" title="Grunt">
+      <i class="fa fa-chevron-left"></i> Grunt
     </a></div>
       <div class="post-nav-item">
     <a href="/blog/2017/08/13/2017-08-13-2kotlin-grammar/" rel="next" title="2.Kotlin基础语法">
@@ -556,7 +556,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

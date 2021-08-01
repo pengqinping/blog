@@ -299,7 +299,7 @@
         <blockquote>
 <p>很给力的分析工具，基本上能够解决内存泄露的大部分场景，比MAT看起来清晰。</p>
 </blockquote>
-<h4 id="常见的内存泄露的几种场景">常见的内存泄露的几种场景</h4>
+<h4 id="常见的内存泄露的几种场景"><a class="header-anchor" href="#常见的内存泄露的几种场景">¶</a>常见的内存泄露的几种场景</h4>
 <ol>
 <li>数据库中的<code>Cursor</code>没有关闭;</li>
 <li>广播接收器没有销毁;</li>
@@ -310,7 +310,7 @@
 <li>线程泄露</li>
 <li>Adapter 每次都直接 new View 返回。</li>
 </ol>
-<h4 id="LeakCanary-使用：">LeakCanary 使用：</h4>
+<h4 id="LeakCanary-使用："><a class="header-anchor" href="#LeakCanary-使用：">¶</a>LeakCanary 使用：</h4>
 <blockquote>
 <p>首先贴下 github的地址： <a href="https://github.com/square/leakcanary" target="_blank" rel="noopener">https://github.com/square/leakcanary</a>使用方法参考README.md文件。</p>
 </blockquote>
@@ -319,7 +319,7 @@
 <p><code>debugCompile</code> 表示只会在debug模式下才会去使用这个依赖，<code>releaseCompile</code> 表示只在发布正式版本的时候区使用这个依赖。这种模式非常方便我们在发布不同的包可以不用修改代码而取消到某些功能。<br>
 没有网络的开发环境就很辛苦了需要自己下载jar。这里我打包了leakcanary-jar-1.3的包，包括haha 包。<a href="https://github.com/pengqinping/leakcanary-demo/blob/master/download/leakcanary-jar.zip" target="_blank" rel="noopener">下载</a></p>
 <p>下载之后通过 import library project with jar/aar 即可。</p>
-<h4 id="leak-Canary-案例分析-demo直接使用liaohuqiu的demo">leak Canary 案例分析 demo直接使用<a href="https://github.com/liaohuqiu/leakcanary-demo" target="_blank" rel="noopener">liaohuqiu</a>的demo,</h4>
+<h4 id="leak-Canary-案例分析-demo直接使用liaohuqiu的demo"><a class="header-anchor" href="#leak-Canary-案例分析-demo直接使用liaohuqiu的demo">¶</a>leak Canary 案例分析 demo直接使用<a href="https://github.com/liaohuqiu/leakcanary-demo" target="_blank" rel="noopener">liaohuqiu</a>的demo,</h4>
 <ol>
 <li>静态持有 activity fragment 等生命周期短的 视图控件</li>
 </ol>
@@ -561,7 +561,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

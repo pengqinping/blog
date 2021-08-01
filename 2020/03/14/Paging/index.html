@@ -298,9 +298,9 @@
 <li>Gitee项目：<a href="https://gitee.com/pengqinping/architecture-components-samples/tree/master/PagingSample" target="_blank" rel="noopener">https://gitee.com/pengqinping/architecture-components-samples/tree/master/PagingSample</a> (developer 改 maven repo 为 ali )</li>
 </ul>
 <div style="background:#fff5f5; color:#ff502c; display:block; font-size: 14px; margin: 16px 0;padding: 10px; border-radius:5px;border: 1px #f97d64 dashed"> 开始前先问自己几个问题：<br>1. 官方介绍说是用来做按需加载？那么和以前的 自己写的分页加载(根据页面判断数据是加在data列表的头还是尾)有什么区别<br>2. Paging 解决的问题是什么？ 优势是什么？</div>
-<h2 id="代码分析">代码分析</h2>
+<h2 id="代码分析"><a class="header-anchor" href="#代码分析">¶</a>代码分析</h2>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 继承于列表，那就是当做 data列表用</span></span><br><span class="line"><span class="comment">// 加入了 刷新，开始，介绍 三种类型，每种类型都对应下面的五种状态</span></span><br><span class="line"><span class="comment">// 这不是分页熟悉的逻辑吗，只不过以前是封装在View层的，</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">PagedList</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractList</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">enum</span> LoadType &#123; REFRESH, START, END &#125;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">enum</span> LoadState &#123; IDLE, LOADING, DONE, ERROR, RETRYABLE_ERROR &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 构造器</span></span><br><span class="line">PagedList(<span class="meta">@NonNull</span> PagedStorage&lt;T&gt; storage,</span><br><span class="line">        <span class="meta">@NonNull</span> Executor mainThreadExecutor,</span><br><span class="line">        <span class="meta">@NonNull</span> Executor backgroundThreadExecutor,</span><br><span class="line">        <span class="meta">@Nullable</span> BoundaryCallback&lt;T&gt; boundaryCallback,</span><br><span class="line">        <span class="meta">@NonNull</span> Config config) &#123;</span><br><span class="line">    mStorage = storage; <span class="comment">// ContiguousPageList 和 TiledPagedList 默认值都是 new PagedStorage&lt;V&gt;() </span></span><br><span class="line">    mMainThreadExecutor = mainThreadExecutor; <span class="comment">// ui线程池 默认值  ArchTaskExecutor.getMainThreadExecutor()</span></span><br><span class="line">    mBackgroundThreadExecutor = backgroundThreadExecutor; <span class="comment">// 耗时线程池 默认值： ArchTaskExecutor.getIOThreadExecutor()</span></span><br><span class="line">    mBoundaryCallback = boundaryCallback; <span class="comment">// 回调 传入</span></span><br><span class="line">    mConfig = config; <span class="comment">// 分页配置 一般是传入</span></span><br><span class="line">    mRequiredRemainder = mConfig.prefetchDistance * <span class="number">2</span> + mConfig.pageSize;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="PagingSample-项目解读">PagingSample 项目解读</h2>
+<h2 id="PagingSample-项目解读"><a class="header-anchor" href="#PagingSample-项目解读">¶</a>PagingSample 项目解读</h2>
 <p>看了基本的结构，接下来 看如如何使用，既然是<code>Pagin</code>是M层，那么必定是在<code>ViewModel</code>里面使用，配合<code>LiveData</code>来实现可观察 实时刷新</p>
 <ol>
 <li>先看数据源</li>
@@ -563,7 +563,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

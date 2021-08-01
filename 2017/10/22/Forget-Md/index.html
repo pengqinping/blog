@@ -299,28 +299,28 @@
 <p><a href="http://markdown.tw/" target="_blank" rel="noopener">繁体http://markdown.tw/</a><br>
 <a href="http://www.appinn.com/markdown/" target="_blank" rel="noopener">简体翻译http://www.appinn.com/markdown/</a></p>
 </blockquote>
-<h3 id="MarkDown思想">MarkDown思想</h3>
+<h3 id="MarkDown思想"><a class="header-anchor" href="#MarkDown思想">¶</a>MarkDown思想</h3>
 <p>可读性，无论如何，都是最重要的。一份使用 Markdown 格式撰写的文件应该可以直接以纯文本发布，并且看起来不会像是由许多标签或是格式指令所构成。Markdown 语法受到一些既有 text-to-HTML 格式的影响，包括 <code>Setext</code>、<code>atx</code>、<code>Textile</code>、<code>reStructuredText</code>、<code>Grutatext</code> 和 <code>EtText</code>，而最大灵感来源其实是纯文本电子邮件的格式。</p>
 <p>总之， Markdown 的语法全由一些符号所组成，这些符号经过精挑细选，其作用一目了然。比如：在文字两旁加上星号，看起来就像<code>*强调*</code>。Markdown 的列表看起来，嗯，就是列表。Markdown 的区块引用看起来就真的像是引用一段文字，就像你曾在电子邮件中见过的那样。</p>
-<h3 id="兼容Html">兼容Html</h3>
+<h3 id="兼容Html"><a class="header-anchor" href="#兼容Html">¶</a>兼容Html</h3>
 <p>直接编写 html标签在markdown 无需其他标志，要制约的只有一些 HTML 区块元素――比如 <code>&lt;div&gt;</code>、<code>&lt;table&gt;</code>、<code>&lt;pre&gt;</code>、<code>&lt;p&gt;</code> 等标签，必须在前后加上空行与其它内容区隔开，还要求它们的开始标签与结尾标签不能用制表符或空格来缩进。</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">This is a regular paragraph.</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>Foo<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"></span><br><span class="line">This is another regular paragraph.</span><br></pre></td></tr></table></figure>
 <p><strong>请注意</strong>，在 HTML 区块标签间的 Markdown 格式语法将不会被处理。比如，你在 HTML 区块内使用 Markdown 样式的<code>*强调*</code>会没有效果。</p>
-<h3 id="特殊字符转换">特殊字符转换</h3>
+<h3 id="特殊字符转换"><a class="header-anchor" href="#特殊字符转换">¶</a>特殊字符转换</h3>
 <p><code>&lt;</code>和<code>&amp;</code>特殊字符的处理，HTMl中如果你需要显示 <code>&lt;</code>和<code>&amp;</code>必须使用他们的实体 <code>&amp;lt;</code>和<code>&amp;amp;</code>来表示<br>
 在md中可以直接使用 &lt; &amp; 包括在代码块中,例如</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">4 <span class="tag">&lt; <span class="attr">5</span> </span></span><br><span class="line"><span class="tag"><span class="attr">AT</span>&amp;<span class="attr">T</span></span></span><br></pre></td></tr></table></figure>
-<h3 id="区块元素">区块元素</h3>
+<h3 id="区块元素"><a class="header-anchor" href="#区块元素">¶</a>区块元素</h3>
 <blockquote>
 <p>一个 Markdown 段落是由一个或多个连续的文本行组成，它的前后要有一个以上的空行（空行的定义是显示上看起来像是空的，便会被视为空行。比方说，若某一行只包含空格和制表符，则该行也会被视为空行）。普通段落不该用空格或制表符来缩进。</p>
 </blockquote>
-<h4 id="标题-利用-（最高阶标题）和-（第二阶标题）">标题 利用 <code>=</code> （最高阶标题）和 <code>-</code> （第二阶标题）</h4>
+<h4 id="标题-利用-（最高阶标题）和-（第二阶标题）"><a class="header-anchor" href="#标题-利用-（最高阶标题）和-（第二阶标题）">¶</a>标题 利用 <code>=</code> （最高阶标题）和 <code>-</code> （第二阶标题）</h4>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">底部双横线</span><br><span class="line">=======</span><br><span class="line"></span><br><span class="line">底部单横线</span><br><span class="line">-------</span><br></pre></td></tr></table></figure>
-<h4 id="标题-利用-（最高阶标题）">标题 利用 <code>#</code> （最高阶标题）</h4>
+<h4 id="标题-利用-（最高阶标题）"><a class="header-anchor" href="#标题-利用-（最高阶标题）">¶</a>标题 利用 <code>#</code> （最高阶标题）</h4>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"># 表示标题1</span><br><span class="line">## 表示标题2</span><br><span class="line">###### 标题6</span><br></pre></td></tr></table></figure>
-<h4 id="区块引用">区块引用</h4>
+<h4 id="区块引用"><a class="header-anchor" href="#区块引用">¶</a>区块引用</h4>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">a. 每行都添加 `&gt;`</span><br><span class="line">&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet</span><br><span class="line">&gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.</span><br><span class="line"></span><br><span class="line">b. 段落的第一行添加</span><br><span class="line">&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet</span><br><span class="line">consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.</span><br><span class="line">m.......</span><br><span class="line"></span><br><span class="line">c. 多层段落</span><br><span class="line">&gt; This is the first level of quoting.</span><br><span class="line">&gt; </span><br><span class="line">&gt; &gt; This is nested blockquote</span><br><span class="line">&gt; Back to the first level</span><br></pre></td></tr></table></figure>
-<h4 id="区块效果展示区：">区块效果展示区：</h4>
+<h4 id="区块效果展示区："><a class="header-anchor" href="#区块效果展示区：">¶</a>区块效果展示区：</h4>
 <p>a. 每行都添加 <code>&gt;</code></p>
 <blockquote>
 <p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet<br>
@@ -340,7 +340,7 @@ m…</p>
 Back to the first level</p>
 </blockquote>
 </blockquote>
-<h3 id="列表">列表</h3>
+<h3 id="列表"><a class="header-anchor" href="#列表">¶</a>列表</h3>
 <p>标记符号有 <code>*</code>,<code>+</code>,<code>-</code>,<code>数组.</code>,</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">* First</span><br><span class="line">* Second</span><br><span class="line">* Threed</span><br><span class="line"></span><br><span class="line">+ Red</span><br><span class="line">+ Green</span><br><span class="line">+ Bue</span><br><span class="line"></span><br><span class="line">1. Bird</span><br><span class="line">2. McHale</span><br><span class="line">3. Parish</span><br></pre></td></tr></table></figure>
 <p>列表效果展示如下：</p>
@@ -359,7 +359,7 @@ Back to the first level</p>
 <li>McHale</li>
 <li>Parish</li>
 </ol>
-<h4 id="列表包含段落">列表包含段落</h4>
+<h4 id="列表包含段落"><a class="header-anchor" href="#列表包含段落">¶</a>列表包含段落</h4>
 <p>列表项目可以包含多个段落，每个项目下的段落都必须缩进<strong>4</strong>个空格或是<strong>1</strong>个制表符：</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">1.    This is a list item with two paragraphs. Lorem ipsum dolor</span><br><span class="line">      sit amet, consectetuer adipiscing elit. Aliquam hendrerit</span><br><span class="line">      mi posuere lectus.</span><br><span class="line">      </span><br><span class="line">      Vestibulum enim wisi, viverra nec, fringilla in, laoreet</span><br><span class="line">      vitae, risus. Donec sit amet nisl. Aliquam semper ipsum</span><br><span class="line">      sit amet velit.</span><br><span class="line"></span><br><span class="line">2.    Suspendisse id sem consectetuer libero luctus adipiscing.</span><br></pre></td></tr></table></figure>
 <p>效果展示如下：</p>
@@ -376,7 +376,7 @@ sit amet velit.</p>
 <p>Suspendisse id sem consectetuer libero luctus adipiscing.</p>
 </li>
 </ol>
-<h4 id="列表包含引用">列表包含引用</h4>
+<h4 id="列表包含引用"><a class="header-anchor" href="#列表包含引用">¶</a>列表包含引用</h4>
 <p>如果要在列表项目内放进引用，那 <code>&gt;</code> 就需要缩进,缩进规则<strong>4</strong>个空格和<strong>1</strong>个tab：</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">* A list item with a block</span><br><span class="line">    &gt; This is a block quote</span><br><span class="line">    &gt; This is a block quote</span><br></pre></td></tr></table></figure>
 <p>效果演示如下：</p>
@@ -388,7 +388,7 @@ This is a block quote</p>
 </blockquote>
 </li>
 </ul>
-<h4 id="列表包含代码块">列表包含代码块</h4>
+<h4 id="列表包含代码块"><a class="header-anchor" href="#列表包含代码块">¶</a>列表包含代码块</h4>
 <p>如果要放代码区块的话，该区块就需要缩进两次，也就是<strong>8</strong>个空格或是<strong>2</strong>个制表符：</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">* A list item with a blockquote</span><br><span class="line">        </span><br><span class="line">        This is a code in the list item</span><br></pre></td></tr></table></figure>
 <p>效果演示如下：</p>
@@ -399,16 +399,16 @@ This is a block quote</p>
 </code></pre>
 </li>
 </ul>
-<h4 id="如果行首出现数组-点的组合100-需要做特殊处理">如果行首出现数组+点的组合<code>100.</code> 需要做特殊处理</h4>
+<h4 id="如果行首出现数组-点的组合100-需要做特殊处理"><a class="header-anchor" href="#如果行首出现数组-点的组合100-需要做特殊处理">¶</a>如果行首出现数组+点的组合<code>100.</code> 需要做特殊处理</h4>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">1986\. What a great season.</span><br></pre></td></tr></table></figure>
-<h3 id="分割线">分割线</h3>
+<h3 id="分割线"><a class="header-anchor" href="#分割线">¶</a>分割线</h3>
 <p>一行中可以使用3个或者3个以上的<code>*</code>,<code>-</code>,<code>_</code> 来进行一个风格线</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">***</span><br><span class="line">---</span><br><span class="line">____</span><br></pre></td></tr></table></figure>
 <p>效果演示如下：</p>
 <hr>
 <hr>
 <hr>
-<h3 id="超链接">超链接</h3>
+<h3 id="超链接"><a class="header-anchor" href="#超链接">¶</a>超链接</h3>
 <p>Markdown 支持两种形式的链接语法： 行内式和参考式两种形式。</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">行内式: </span><br><span class="line">This is [an example](http://example.com/ "Title") inline link.</span><br><span class="line">[This link](http://example.net/) has no title attribute.</span><br><span class="line"></span><br><span class="line">参考式:</span><br><span class="line">The click goto [first][1]</span><br><span class="line">The click goto [second][2]</span><br><span class="line"></span><br><span class="line">[1]: https://www.baidu.com "百度"</span><br><span class="line">[2]: https://google.com "Google"</span><br></pre></td></tr></table></figure>
 <p>效果如下<br>
@@ -417,7 +417,7 @@ This is <a href="http://example.com/" target="_blank" rel="noopener" title="Titl
 <p>参考式:<br>
 The click goto <a href="https://www.baidu.com" target="_blank" rel="noopener" title="百度">first</a><br>
 The click goto <a href="https://google.com" target="_blank" rel="noopener" title="Google">second</a></p>
-<h3 id="字体样式">字体样式</h3>
+<h3 id="字体样式"><a class="header-anchor" href="#字体样式">¶</a>字体样式</h3>
 <p>斜体：<code>*</code>和<code>_</code><br>
 加粗体: <code>**</code> 和 <code>__</code></p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">斜体 *Good*</span><br><span class="line">斜体 _Good_</span><br><span class="line">加粗 **Good**</span><br><span class="line">加粗 __Good__</span><br><span class="line"></span><br><span class="line">如果你的 * 和 _ 两边都有空白的话，它们就只会被当成普通的符号。</span><br><span class="line">mmm * Good * </span><br><span class="line"></span><br><span class="line">如果需要`*` 使用 `\*` 来显示</span><br><span class="line">\*this is a so much money\*</span><br></pre></td></tr></table></figure>
@@ -427,16 +427,16 @@ The click goto <a href="https://google.com" target="_blank" rel="noopener" title
 加粗 <strong>Good</strong></p>
 <p>mmm * Good *</p>
 <p>*this is a so much money*</p>
-<h3 id="代码块">代码块</h3>
+<h3 id="代码块"><a class="header-anchor" href="#代码块">¶</a>代码块</h3>
 <p>三个`符号</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">`print()`</span><br></pre></td></tr></table></figure>
 <p><code>print()</code></p>
-<h3 id="图片引用">图片引用</h3>
+<h3 id="图片引用"><a class="header-anchor" href="#图片引用">¶</a>图片引用</h3>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">Markdown 使用一种和链接很相似的语法来标记图片，同样也允许两种样式： 行内式和参考式。</span><br><span class="line">![我的博客](http://img.sc115.com/uploads/sc/cjpgs/1410/apic6991_sc115.com.jpg)</span><br><span class="line">![我的博客](http://img.sc115.com/uploads/sc/cjpgs/1410/apic6991_sc115.com.jpg "My Blogs")</span><br></pre></td></tr></table></figure>
 <p>显示效果：<br>
 <img src="http://img.sc115.com/uploads/sc/cjpgs/1410/apic6991_sc115.com.jpg" alt="我的博客"><br>
 <img src="http://img.sc115.com/uploads/sc/cjpgs/1410/apic6991_sc115.com.jpg" alt="我的博客" title="My Blogs"></p>
-<h4 id="Table">Table</h4>
+<h4 id="Table"><a class="header-anchor" href="#Table">¶</a>Table</h4>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">This is a table:</span><br><span class="line"></span><br><span class="line">First Header  | Second Header</span><br><span class="line">------------- | -------------</span><br><span class="line">Content Cell  | Content Cell</span><br><span class="line">Content Cell  | Content Cell</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
@@ -710,7 +710,7 @@ The click goto <a href="https://google.com" target="_blank" rel="noopener" title
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

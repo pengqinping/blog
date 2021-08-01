@@ -316,7 +316,7 @@
 </ol>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> ListFragmentBinding mBinding;</span><br><span class="line"><span class="meta">@Nullable</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,</span></span></span><br><span class="line"><span class="function"><span class="params">        @Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    mBinding = DataBindingUtil.inflate(inflater, R.layout.list_fragment, container, <span class="keyword">false</span>);</span><br><span class="line">    <span class="comment">//... some code</span></span><br><span class="line">    <span class="keyword">return</span> mBinding.getRoot();</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onViewCreated</span><span class="params">(@NonNull View view, @Nullable Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onViewCreated(view, savedInstanceState);</span><br><span class="line">    <span class="comment">// 通过 binding 对象直接引用</span></span><br><span class="line">    mBinding.productsSearchBtn.setOnClickListener(v -&gt; &#123;</span><br><span class="line">        Editable query = mBinding.productsSearchBox.getText();</span><br><span class="line">        viewModel.setQuery(query);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在布局里面写Viewmodel就不多介绍了，写过 vue angularjs 前端的 这些很好理解， 数据绑定的概念</p>
-<h2 id="BaseObservableField-和-ViewModel-在-数据绑定中的引用">BaseObservableField 和 ViewModel 在 数据绑定中的引用</h2>
+<h2 id="BaseObservableField-和-ViewModel-在-数据绑定中的引用"><a class="header-anchor" href="#BaseObservableField-和-ViewModel-在-数据绑定中的引用">¶</a>BaseObservableField 和 ViewModel 在 数据绑定中的引用</h2>
 <ul>
 <li>项目地址 <a href="https://gitee.com/pengqinping/databinding-samples/tree/master" target="_blank" rel="noopener">https://gitee.com/pengqinping/databinding-samples/tree/master</a></li>
 </ul>
@@ -349,7 +349,7 @@
 <li>c. 在Activity中绑定</li>
 </ul>
 <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Obtain binding</span></span><br><span class="line"><span class="keyword">val</span> binding: ViewmodelProfileBinding =</span><br><span class="line">        DataBindingUtil.setContentView(<span class="keyword">this</span>, R.layout.viewmodel_profile)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Bind layout with ViewModel</span></span><br><span class="line">binding.viewmodel = viewModel</span><br><span class="line"></span><br><span class="line"><span class="comment">// LiveData needs the lifecycle owner</span></span><br><span class="line">binding.lifecycleOwner = <span class="keyword">this</span></span><br></pre></td></tr></table></figure>
-<h2 id="官方还介绍了一种-替换LiveData-方式，-Bindable">官方还介绍了一种 替换LiveData 方式， @Bindable</h2>
+<h2 id="官方还介绍了一种-替换LiveData-方式，-Bindable"><a class="header-anchor" href="#官方还介绍了一种-替换LiveData-方式，-Bindable">¶</a>官方还介绍了一种 替换LiveData 方式， @Bindable</h2>
 <ul>
 <li><a href="https://developer.android.google.cn/topic/libraries/data-binding/observability" target="_blank" rel="noopener">https://developer.android.google.cn/topic/libraries/data-binding/observability</a></li>
 </ul>
@@ -578,7 +578,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
