@@ -129,3 +129,25 @@ markdown:
     permalink: true
     permalinkClass: header-anchor
     permalinkSymbol: ¶
+
+# plantuml config
+plantuml:
+  #  Local or PlantUMLServer.
+  render: "Local"
+
+  # "inline": <svg>xxx<svg/>
+  # "inlineUrlEncode": <img src='data:image/svg+xml;> 
+  # "inlineBase64": <img src='data:image/svg+xml;base64> 
+  # "localLink": <img src="/assert/puml/xxxx.svg">
+  link: "inline"
+
+  # where your dot binary
+  GraphvizDotFile: "/usr/local/bin/dot"
+  # where your jar
+  PlantJar: "/Users/pengqinping/Developer/plantUML/plantuml-nodot.1.2021.9.jar",
+
+  # common options: svg/png
+  outputFormat: "png"
+
+  # class-name for element style. The default style is center-aligned block
+  className: "plantuml"

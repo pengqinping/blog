@@ -23,3 +23,9 @@ date: 2017-10-21 17:20:04
 * <i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:pengqinping@qq.com">pengqinping@qq.com</a>
 * <i class="fa fa-location-arrow" aria-hidden="true"></i> China of shenzhen
 * <i class="fa fa-diamond" aria-hidden="true"></i> A man can be destroyed but not defeated
+
+```puml
+@startuml
+class demo
+@enduml
+```
