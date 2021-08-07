@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pengqinping.gitee.io","root":"/blog/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"hide","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"button","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"appID":"7B9SBAUUZF","apiKey":"c86be27189386e5c5c18c9998e070f4f","indexName":"ABlog","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Paging 使用教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Paging">
+<meta property="og:url" content="http://pengqinping.gitee.io/blog/2020/03/14/Paging/index.html">
+<meta property="og:site_name" content="认知弱点">
+<meta property="og:description" content="Paging 使用教程">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-14T15:48:35.000Z">
+<meta property="article:modified_time" content="2021-08-07T12:54:37.550Z">
+<meta property="article:author" content="认知弱点">
+<meta property="article:tag" content="Paging">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://pengqinping.gitee.io/blog/2020/03/14/Paging/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Paging | 认知弱点</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c41e3ad08c900f1a8cd62441f1d17c58";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">认知弱点</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">知之为知之，不知为不知</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="tags fa-fw"></i>标签<span class="badge">26</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="th fa-fw"></i>分类<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="archive fa-fw"></i>归档<span class="badge">22</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/blog/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+      
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pengqinping.gitee.io/blog/2020/03/14/Paging/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/head.jpg">
+      <meta itemprop="name" content="认知弱点">
+      <meta itemprop="description" content="生命不息, 奋斗不止">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="认知弱点">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Paging
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Android-Jetpack/" itemprop="url" rel="index"><span itemprop="name">Android-Jetpack</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/blog/2020/03/14/Paging/" class="post-meta-item leancloud_visitors" data-flag-title="Paging" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/blog/2020/03/14/Paging/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/blog/2020/03/14/Paging/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>7.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>7 分钟</span>
+            </span>
+            <div class="post-description">Paging 使用教程</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1>Paging</h1>
+<ul>
+<li>Google 文档 <a href="https://developer.android.google.cn/topic/libraries/architecture/paging" target="_blank" rel="noopener">https://developer.android.google.cn/topic/libraries/architecture/paging</a></li>
+<li>Github项目：<a href="https://github.com/android/architecture-components-samples/tree/master/PagingSample" target="_blank" rel="noopener">https://github.com/android/architecture-components-samples/tree/master/PagingSample</a></li>
+<li>Gitee项目：<a href="https://gitee.com/pengqinping/architecture-components-samples/tree/master/PagingSample" target="_blank" rel="noopener">https://gitee.com/pengqinping/architecture-components-samples/tree/master/PagingSample</a> (developer 改 maven repo 为 ali )</li>
+</ul>
+<div style="background:#fff5f5; color:#ff502c; display:block; font-size: 14px; margin: 16px 0;padding: 10px; border-radius:5px;border: 1px #f97d64 dashed"> 开始前先问自己几个问题：<br>1. 官方介绍说是用来做按需加载？那么和以前的 自己写的分页加载(根据页面判断数据是加在data列表的头还是尾)有什么区别<br>2. Paging 解决的问题是什么？ 优势是什么？</div>
+<h2 id="代码分析"><a class="header-anchor" href="#代码分析">¶</a>代码分析</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 继承于列表，那就是当做 data列表用</span></span><br><span class="line"><span class="comment">// 加入了 刷新，开始，介绍 三种类型，每种类型都对应下面的五种状态</span></span><br><span class="line"><span class="comment">// 这不是分页熟悉的逻辑吗，只不过以前是封装在View层的，</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">PagedList</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractList</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">enum</span> LoadType &#123; REFRESH, START, END &#125;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">enum</span> LoadState &#123; IDLE, LOADING, DONE, ERROR, RETRYABLE_ERROR &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 构造器</span></span><br><span class="line">PagedList(<span class="meta">@NonNull</span> PagedStorage&lt;T&gt; storage,</span><br><span class="line">        <span class="meta">@NonNull</span> Executor mainThreadExecutor,</span><br><span class="line">        <span class="meta">@NonNull</span> Executor backgroundThreadExecutor,</span><br><span class="line">        <span class="meta">@Nullable</span> BoundaryCallback&lt;T&gt; boundaryCallback,</span><br><span class="line">        <span class="meta">@NonNull</span> Config config) &#123;</span><br><span class="line">    mStorage = storage; <span class="comment">// ContiguousPageList 和 TiledPagedList 默认值都是 new PagedStorage&lt;V&gt;() </span></span><br><span class="line">    mMainThreadExecutor = mainThreadExecutor; <span class="comment">// ui线程池 默认值  ArchTaskExecutor.getMainThreadExecutor()</span></span><br><span class="line">    mBackgroundThreadExecutor = backgroundThreadExecutor; <span class="comment">// 耗时线程池 默认值： ArchTaskExecutor.getIOThreadExecutor()</span></span><br><span class="line">    mBoundaryCallback = boundaryCallback; <span class="comment">// 回调 传入</span></span><br><span class="line">    mConfig = config; <span class="comment">// 分页配置 一般是传入</span></span><br><span class="line">    mRequiredRemainder = mConfig.prefetchDistance * <span class="number">2</span> + mConfig.pageSize;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="PagingSample-项目解读"><a class="header-anchor" href="#PagingSample-项目解读">¶</a>PagingSample 项目解读</h2>
+<p>看了基本的结构，接下来 看如如何使用，既然是<code>Pagin</code>是M层，那么必定是在<code>ViewModel</code>里面使用，配合<code>LiveData</code>来实现可观察 实时刷新</p>
+<ol>
+<li>先看数据源</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Query(<span class="meta-string">"SELECT * FROM Cheese ORDER BY name COLLATE NOCASE ASC"</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">allCheesesByName</span><span class="params">()</span></span>: DataSource.Factory&lt;<span class="built_in">Int</span>, Cheese&gt;</span><br></pre></td></tr></table></figure>
+<p>他没有直接返回 <code>PagedList</code> 而是返回了一个 <code>DataSource.Factory</code>， 在 <code>LivePagedList</code> 扩展了一个  <code>DataSource.Factory&lt;Key, Value&gt;.toLiveData(config...)</code> 的函数 用来返回 <code>LiveData</code> 类型的 <code>PagedList</code></p>
+<p><strong>CheeseDao_Impl.java</strong> 中具体的  <code>DataSource.Factory</code> 实现类<br>
+直接 new 了 一个匿名的抽象来 来返回一个 <code>LimitOffsetDataSource&lt;Cheese&gt;</code></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> DataSource.<span class="function">Factory&lt;Integer, Cheese&gt; <span class="title">allCheesesByName</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">final</span> String _sql = <span class="string">"SELECT * FROM Cheese ORDER BY name COLLATE NOCASE ASC"</span>;</span><br><span class="line"><span class="keyword">final</span> RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, <span class="number">0</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> DataSource.Factory&lt;Integer, Cheese&gt;() &#123; </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> LimitOffsetDataSource&lt;Cheese&gt; <span class="title">create</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> LimitOffsetDataSource&lt;Cheese&gt;(__db, _statement, <span class="keyword">false</span> , <span class="string">"Cheese"</span>) &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> List&lt;Cheese&gt; <span class="title">convertRows</span><span class="params">(Cursor cursor)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(cursor, <span class="string">"id"</span>);</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(cursor, <span class="string">"name"</span>);</span><br><span class="line">        <span class="keyword">final</span> List&lt;Cheese&gt; _res = <span class="keyword">new</span> ArrayList&lt;Cheese&gt;(cursor.getCount());</span><br><span class="line">        <span class="keyword">while</span>(cursor.moveToNext()) &#123;</span><br><span class="line">            <span class="keyword">final</span> Cheese _item;</span><br><span class="line">            <span class="keyword">final</span> <span class="keyword">int</span> _tmpId;</span><br><span class="line">            _tmpId = cursor.getInt(_cursorIndexOfId);</span><br><span class="line">            <span class="keyword">final</span> String _tmpName;</span><br><span class="line">            _tmpName = cursor.getString(_cursorIndexOfName);</span><br><span class="line">            _item = <span class="keyword">new</span> Cheese(_tmpId,_tmpName);</span><br><span class="line">            _res.add(_item);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> _res;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><code>CheeseViewModel</code> 通过 <code>DataSource</code> 来返回 <code>LiveData&lt;PagedList&lt;Value&gt;&gt; </code></li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 传入一个Config，主要配置 没有的数量，大小等</span></span><br><span class="line"><span class="keyword">val</span> allCheeses = dao.allCheesesByName().toLiveData(Config(pageSize=<span class="number">60</span>, enablePlaceholders=<span class="literal">true</span>, maxSize=<span class="number">200</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">// Config 是通过 PagedList.Config.Builder 构建出来的</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">Config</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    pageSize: <span class="type">Int</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">    prefetchDistance: <span class="type">Int</span> = pageSize,</span></span></span><br><span class="line"><span class="function"><span class="params">    enablePlaceholders: <span class="type">Boolean</span> = <span class="literal">true</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">    initialLoadSizeHint: <span class="type">Int</span> =</span></span></span><br><span class="line"><span class="function"><span class="params">            pageSize * PagedList.Config.Builder.DEFAULT_INITIAL_PAGE_MULTIPLIER,</span></span></span><br><span class="line"><span class="function"><span class="params">    maxSize: <span class="type">Int</span> = PagedList.Config.MAX_SIZE_UNBOUNDED</span></span></span><br><span class="line"><span class="function"><span class="params">)</span></span>: PagedList.Config &#123;</span><br><span class="line">    <span class="keyword">return</span> PagedList.Config.Builder()</span><br><span class="line">            .setPageSize(pageSize)</span><br><span class="line">            .setPrefetchDistance(prefetchDistance)</span><br><span class="line">            .setEnablePlaceholders(enablePlaceholders)</span><br><span class="line">            .setInitialLoadSizeHint(initialLoadSizeHint)</span><br><span class="line">            .setMaxSize(maxSize)</span><br><span class="line">            .build()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>LimitOffsetDataSource<Cheese>.toLiveData() 直接带入实现类来分析</Cheese></li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;Key, Value&gt;</span> DataSource.Factory<span class="type">&lt;Key, Value&gt;</span>.<span class="title">toLiveData</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    config: <span class="type">PagedList</span>.<span class="type">Config</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">    initialLoadKey = <span class="literal">null</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">    boundaryCallback = <span class="literal">null</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">    fetchExecutor: <span class="type">Executor</span> = ArchTaskExecutor.getIOThreadExecutor()</span></span></span><br><span class="line">): LiveData&lt;PagedList&lt;Value&gt;&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> LivePagedListBuilder(<span class="keyword">this</span>, config)</span><br><span class="line">            .setInitialLoadKey(initialLoadKey)</span><br><span class="line">            .setBoundaryCallback(boundaryCallback)</span><br><span class="line">            .setFetchExecutor(fetchExecutor)</span><br><span class="line">            .build()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 经过下面一些列的封装主要做 两个事情</span></span><br><span class="line"><span class="comment">// 1. 创建 LiveData</span></span><br><span class="line"><span class="comment">// 2. 创建 PagedList </span></span><br><span class="line">LivePagedListBuilder.build() </span><br><span class="line">LivePagedListBuilder.create(key, PagedList.Config, PagedList.BoundaryCallback, DataSource.Factory&lt;Key, Value&gt;, Executor, Executor)</span><br><span class="line"></span><br><span class="line"><span class="comment">// LiveData 创建 : LiveData = new ComputableLiveData&lt;PagedList&lt;Value&gt;&gt;()</span></span><br><span class="line"><span class="comment">// PagedList =  PagedList.Builder&lt;&gt;().build()</span></span><br><span class="line"><span class="comment">// PagedList 创建 : PagedList =  PagedList.Builder&lt;&gt;().create(DataSource&lt;K, T&gt;, Executor,Executor, BoundaryCallback, Config, Key )</span></span><br></pre></td></tr></table></figure>
+<p>PagedList 到底怎么把数据 add 到自己的列表的呢？<br>
+在<code>PagedList.create()</code>中 最终返回的是 <code>ContiguousPagedList</code> 或者 <code>TiledPagedList</code> 通过构造来创建的对象。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ContiguousDataSource 与 PositionalDataSource 这里我们可以带入 LimitOffsetDataSource 来分析</span></span><br><span class="line"> ContiguousDataSource&lt;K, T&gt; contigDataSource = (ContiguousDataSource&lt;K, T&gt;) dataSource;</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> ContiguousPagedList&lt;&gt;(contigDataSource,</span><br><span class="line">        notifyExecutor,</span><br><span class="line">        fetchExecutor,</span><br><span class="line">        boundaryCallback,</span><br><span class="line">        config,</span><br><span class="line">        key,</span><br><span class="line">        lastLoad);</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> TiledPagedList&lt;&gt;((PositionalDataSource&lt;T&gt;) dataSource,</span><br><span class="line">                notifyExecutor,</span><br><span class="line">                fetchExecutor,</span><br><span class="line">                boundaryCallback,</span><br><span class="line">                config,</span><br><span class="line">                (key != <span class="keyword">null</span>) ? (Integer) key : <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<p>通过分析可知，最后调用到这里进行了 把 数据的数据 装载到了 List ，并且通过 Callback 返回了。<br>
+<code>LimitOffsetDataSource.loadInitial(LoadInitialParams params,LoadInitialCallback&lt;T&gt; callback)</code></p>
+<ol start="4">
+<li><code>LoadInitialCallbackImpl.OnResult()</code></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResult</span><span class="params">(@NonNull List&lt;T&gt; data, <span class="keyword">int</span> position, <span class="keyword">int</span> totalCount)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//... some code</span></span><br><span class="line">    <span class="keyword">if</span> (mCountingEnabled) &#123;</span><br><span class="line">        <span class="keyword">int</span> trailingUnloadedCount = totalCount - position - data.size();</span><br><span class="line">        mCallbackHelper.dispatchResultToReceiver(</span><br><span class="line">                <span class="keyword">new</span> PageResult&lt;&gt;(data, position, trailingUnloadedCount, <span class="number">0</span>));</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// Only occurs when wrapped as contiguous</span></span><br><span class="line">        mCallbackHelper.dispatchResultToReceiver(<span class="keyword">new</span> PageResult&lt;&gt;(data, position));</span><br><span class="line">    &#125;</span><br><span class="line">     <span class="comment">//... some code</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// LoadCallbackHelper.dispatchOnCurrentThread()</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dispatchOnCurrentThread</span><span class="params">(@Nullable PageResult&lt;T&gt; result,</span></span></span><br><span class="line"><span class="function"><span class="params">        @Nullable Throwable error, <span class="keyword">boolean</span> retryable)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (result != <span class="keyword">null</span>) &#123;</span><br><span class="line">        mReceiver.onPageResult(mResultType, result);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        mReceiver.onPageError(mResultType, error, retryable);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>ContiguousPagedList.mReceiver or TiledPagedList.mReceiver<br>
+最终的 mReceiver 是定义在这两个实现类里面的<br>
+可以看到在这里对列表 进行了添加操作，以及 PagedList 一系列状态的管理。</li>
+</ol>
+<p>回答最开始的几个问题</p>
+<ol>
+<li>
+<p>通过分析看到，以前自己写的刷新主要是通过 在 View 层进行控制，以及加载事件的处理 加载，刷新以及状态处理。 通过 PagedList 可以看到 这些加载逻辑全部放到了 M 层，数据变化后自动会去更新（只用于Room本地数据库）</p>
+</li>
+<li>
+<p>在我的理解看来 它解决的主要是结合 MVVM框架而对M层在有批量加载的时候用来做分页处理，好处最明显的就是和本地数据库配合使用非常简单，易于扩张，如果你写过 分页逻辑，每个页面都是写一次 第一页 结束刷新，把数据加到头部，不是第一页把数据加到 列表尾部，结束加载更多，这个也许会成为你的菜。</p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>喝杯咖啡吧</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/blog/images/wechatpay.png" alt="认知弱点 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/blog/images/alipay.jpg" alt="认知弱点 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>认知弱点
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://pengqinping.gitee.io/blog/2020/03/14/Paging/" title="Paging">http://pengqinping.gitee.io/blog/2020/03/14/Paging/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/Paging/" rel="tag"># Paging</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2020/03/14/ViewBinding/" rel="prev" title="ViewBinding">
+      <i class="fa fa-chevron-left"></i> ViewBinding
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">Paging</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码分析"><span class="nav-number">1.1.</span> <span class="nav-text">代码分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PagingSample-项目解读"><span class="nav-number">1.2.</span> <span class="nav-text">PagingSample 项目解读</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="认知弱点"
+      src="/blog/images/head.jpg">
+  <p class="site-author-name" itemprop="name">认知弱点</p>
+  <div class="site-description" itemprop="description">生命不息, 奋斗不止</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+          
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/pengqinping" title="GitHub → https://gitee.com/pengqinping" rel="noopener" target="_blank"><i class="github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/pengqinping/" title="Weibo → https://weibo.com/pengqinping/" rel="noopener" target="_blank"><i class="weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.douban.com/people/130646662" title="豆瓣 → https://www.douban.com/people/130646662" rel="noopener" target="_blank"><i class="globe fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.zhihu.com/people/pengqinping" title="知乎 → http://www.zhihu.com/people/pengqinping" rel="noopener" target="_blank"><i class="globe fa-fw"></i></a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="link fa-fw"></i>
+      收藏
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hexo.io/zh-cn/" title="https://hexo.io/zh-cn/" rel="noopener" target="_blank">Hexo</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://theme-next.org/" title="https://theme-next.org/" rel="noopener" target="_blank">Next</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://gitee.com/" title="https://gitee.com/" rel="noopener" target="_blank">Gitee</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.android.google.cn/" title="https://developer.android.google.cn/" rel="noopener" target="_blank">GoogleCN</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://fontawesome.com/v4.7.0/icons/" title="https://fontawesome.com/v4.7.0/icons/" rel="noopener" target="_blank">Fontawesome</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/" title="https://github.com/" rel="noopener" target="_blank">Github</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://leetcode-cn.com/" title="https://leetcode-cn.com/" rel="noopener" target="_blank">Leetcode</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://maven.aliyun.com/mvn/search" title="https://maven.aliyun.com/mvn/search" rel="noopener" target="_blank">AliYun</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://time.geekbang.org/" title="https://time.geekbang.org/" rel="noopener" target="_blank">极客学院</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">认知弱点拥有版权，请注明出处转载。</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">75k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:08</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/muse.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+<script src="/blog/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
+<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
+<script src="/blog/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : '9wWHXQuF5WbeMymYm9RiCkP8-gzGzoHsz',
+      appKey     : 'He1X8AhmlR2EBQSzSfxw4aCD',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
