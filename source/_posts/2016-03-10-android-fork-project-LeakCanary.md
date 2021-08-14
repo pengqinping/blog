@@ -12,7 +12,7 @@ excerpt: "LeakCanary 使用教程"
 ---
 > 很给力的分析工具，基本上能够解决内存泄露的大部分场景，比MAT看起来清晰。
 
-#### 常见的内存泄露的几种场景 
+## 常见的内存泄露的几种场景 
 
 1. 数据库中的`Cursor`没有关闭;
 2. 广播接收器没有销毁;
@@ -23,7 +23,7 @@ excerpt: "LeakCanary 使用教程"
 7. 线程泄露
 8. Adapter 每次都直接 new View 返回。
 
-#### LeakCanary 使用：
+## LeakCanary 使用：
 > 首先贴下 github的地址： [https://github.com/square/leakcanary](https://github.com/square/leakcanary)使用方法参考README.md文件。
 
 有网络的情况下使用就很方便了。like this

@@ -11,8 +11,7 @@ tags:
     - Mac tools
 
 ---
-
-#### Sublime Text 3 配置 `Code Snippet`
+## Sublime Text 3 配置 `Code Snippet`
 1. “Tools”->"Developer"->“New Snippet...”
 ```xml
 <snippet>
@@ -28,7 +27,7 @@ Hello, ${1:this} is a ${2:snippet}.
 2. 命名格式 `*.sublime-snippet` 一定是以 <span style='background-color:#FEEFE3;color:#BF350B;padding:3px'>.sublime-snippet</span> 的格式保存
 
 
-#### Sublime Text 3 开启自动换行
+## Sublime Text 3 开启自动换行
 
 1. 打开 Preferences -> Setting - User（设置 - 用户）
 2. 添加配置 "word_wrap" : true

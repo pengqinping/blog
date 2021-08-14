@@ -9,49 +9,17 @@ tags:
     - view
 excerpt: "Android 自定义布局"
 ---
-#### 工作中遇到一个难题
+## 工作中遇到一个难题
 > 有个进度条显示效果要求进度按照比例计算，但是文字显示效果和背景恰好相反，项目中的效果是前人留下的，现实方式非常随意，直接使用大图完成，导致小屏手机无法显示完整图片，大屏手机显示拉伸，英文状态根本没有，后面接手修改适配真是头疼，做成了.9 模式，但是适配依然蛋疼，最后没有办法终于还是准备重写自定View来完成效果。
 
 最终的效果如下：
 {% asset_img 01.png 400 200 download %}
-#### 实战演练
+## 实战演练
 下面简要描述下代码的实现，主要分为两个部分，第一个为文字显示效果。第二个为背景显示效果。
 
 文字显示 `Progress.java`
 
 ```java
-/*
- *
- *      Copyright (C) 2016. 彭钦平
- *
- *      Licensed under the Apache License, Version 2.0 (the "License");
- *      you may not use this file except in compliance with the License.
- *      You may obtain a copy of the License at
- *
- *           http://www.apache.org/licenses/LICENSE-2.0
- *
- *      Unless required by applicable law or agreed to in writing, software
- *      distributed under the License is distributed on an "AS IS" BASIS,
- *      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *      See the License for the specific language governing permissions and
- *      limitations under the License.
- *
- */
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.LinearGradient;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Shader;
-import android.util.AttributeSet;
-import android.widget.TextView;
-/**
- * Created by pengqinping on 16/3/7.
- *
- * @email Royal.k.peng@gmail.com
- * @description
- */
 public class Progress extends TextView {
     public Progress(Context context) {
         super(context);
@@ -77,36 +45,10 @@ public class Progress extends TextView {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        /*if (mViewWidth == 0) {
-            mViewWidth = getMeasuredWidth();
-            if (mViewWidth > 0) {
-                mPaint = getPaint();
-                mLinearGradient = new LinearGradient(-mViewWidth, 0, 0, 0,
-                        new int[] {Color.RED, Color.RED,Color.WHITE, Color.WHITE },
-                        new float[] { 0, 0.5f,0.5f, 1 }, Shader.TileMode.MIRROR);
-                mPaint.setShader(mLinearGradient);
-                mGradientMatrix = new Matrix();
-            }
-        }*/
     }
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        /*if (mAnimating && mGradientMatrix != null) {
-            mTranslate += mViewWidth / 10;
-            if (mTranslate > 2 * mViewWidth) {
-                mTranslate = -mViewWidth;
-            }
-            mGradientMatrix.setTranslate(mTranslate, 0);
-            mLinearGradient.setLocalMatrix(mGradientMatrix);
-            *//*postInvalidateDelayed(50);*//*
-        }*/
-       /* mPaint = getPaint();
-        mLinearGradient = new LinearGradient(0, 0, getWidth(), getHeight(),
-                new int[]{ Color.WHITE, Color.WHITE,Color.parseColor("#f05858"), Color.parseColor("#f05858")},
-                new float[]{0, 0.5f, 0.5f, 1}, Shader.TileMode.MIRROR);
-        mPaint.setShader(mLinearGradient);*/
-    }
     /**
      * progress 取值范围 (0-100)
      */
@@ -139,38 +81,7 @@ public class Progress extends TextView {
 背景显示 `ProgressBg.java`
 
 ```java
-/*
- *
- *      Copyright (C) 2016. 彭钦平
- *
- *      Licensed under the Apache License, Version 2.0 (the "License");
- *      you may not use this file except in compliance with the License.
- *      You may obtain a copy of the License at
- *
- *           http://www.apache.org/licenses/LICENSE-2.0
- *
- *      Unless required by applicable law or agreed to in writing, software
- *      distributed under the License is distributed on an "AS IS" BASIS,
- *      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *      See the License for the specific language governing permissions and
- *      limitations under the License.
- *
- */
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.LinearGradient;
-import android.graphics.Paint;
-import android.util.AttributeSet;
-import android.util.Log;
-import android.view.View;
 
-/**
- * Created by pengqinping on 16/3/8.
- *
- * @email Royal.k.peng@gmail.com
- * @description
- */
 public class ProgressBg extends View {
 
     public ProgressBg(Context context) {
@@ -196,10 +107,6 @@ public class ProgressBg extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         setBackgroundColor(Color.WHITE);
-//        mLinearGradient = new LinearGradient(0, 0, getWidth(), getHeight(),
-//                new int[]{Color.WHITE, Color.WHITE, Color.parseColor("#f05858"), Color.parseColor("#f05858")},
-//                new float[]{0, 0.5f, 0.5f, 1}, Shader.TileMode.REPEAT);
-//        mPaint.setShader(mLinearGradient);
         mPaint.setColor(Color.parseColor("#f05858"));
         canvas.drawRect(0f, 0f, getWidth()*precent, getHeight(), mPaint);
         invalidate();
@@ -269,8 +176,4 @@ public class ProgressBg extends View {
         }
     };
 ```
-
-具体的进度根据实际的下载来定。
-
-[demo.apk](https://github.com/pengqinping/Android-Universal-Image-Loader/blob/master/downloads/sample-debug.apk)
 

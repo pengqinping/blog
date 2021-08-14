@@ -19,7 +19,7 @@ excerpt: "EventBus源码分析"
 3. Eventbus结构，流程，核心类分析 [codekk分析](http://a.codekk.com/detail/Android/Trinea/EventBus%20%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90)
 4. [自己测试demo](https://github.com/pengqinping/Android.demo/tree/master/app.eventbus)
 
-#### 1.EventBus.register(Object subcriber)
+## 1.EventBus.register(Object subcriber)
 > 分析思路，以启动流程的逻辑来分析，没有任何前置条件。如果在越到变量值的问题，都以这个场景下的默认值带入
 
 ```java
@@ -50,7 +50,7 @@ excerpt: "EventBus源码分析"
 
 ```
 
-首先看到订阅者接受消息的方法集合通过 <code>subscriberMethodFinder.findSubscriberMethods</code> 来获取，我们看看**subscriberMethodFinder** 对象的实例化, 是在 *EventBus* 的构造器中进行注册的并且接受了 builer中的3个参数 <code>builder.subscriberInfoIndexes</code> , <code> builder.strictMethodVerification</code> , <code>builder.ignoreGeneratedIndex</code> *EventBusBuilder* 实例是个什么东东，看看就知道，**DEFAULT_BUILDER** 是个静态实例, <code> private static final EventBusBuilder DEFAULT_BUILDER = new EventBusBuilder();</code>
+首先看到订阅者接受消息的方法集合通过 `subscriberMethodFinder.findSubscriberMethods` 来获取，我们看看**subscriberMethodFinder** 对象的实例化, 是在 *EventBus* 的构造器中进行注册的并且接受了 builer中的3个参数 <code>builder.subscriberInfoIndexes</code> , <code> builder.strictMethodVerification</code> , <code>builder.ignoreGeneratedIndex</code> *EventBusBuilder* 实例是个什么东东，看看就知道，**DEFAULT_BUILDER** 是个静态实例, <code> private static final EventBusBuilder DEFAULT_BUILDER = new EventBusBuilder();</code>
 
 ```java
 
