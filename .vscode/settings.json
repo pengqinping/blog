@@ -2,5 +2,5 @@
     "git.ignoreLimitWarning": true,
     "workbench.preferredDarkColorTheme": "Default Light+",
     "editor.cursorStyle": "underline",
-    "workbench.colorTheme": "Dracula Soft"
+    "workbench.colorTheme": "Electron vue"
 }
