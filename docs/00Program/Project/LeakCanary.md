@@ -75,7 +75,9 @@ excerpt: "LeakCanary 使用教程"
 
 这样就会有一个泄露，TestDataModel的单例对象会持有TestActivity 的 textView对象的引用，如果这个单例无法销毁就会有内存泄露，这个使用只需要进入 TestActivity后在退出leakcanary 就会检测到内存泄露。并且有相关的描述
 
-{% asset_img static_class_with_view.jpg 350 handler_leak %}
+![](../../assets/static_class_with_view.jpg)
+
+
 2.handler 发送消息在activity destory的时候没有停止，导致activity不能被释放，
 
 `HandlerLeakAcivity.java`

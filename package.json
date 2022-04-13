@@ -1,17 +1,25 @@
 {
   "name": "pengqinping-blog",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
-
   "scripts": {
     "mk-serve": "mkdocs serve",
-    "start": "hexo clean && hexo server -p 4001",
-    "deploy": "hexo generate --deploy",
+    "mk-build": "mkdocs build",
+    "mk-deploy-github": "mkdocs build && git subtree push --prefix=site github gh-pages",
     "prepush": "echo \" Begin Auto Push \" ",
     "push": "git status && git add . && read -p \"please input commit info:\" commitInfo && git commit -m \"$commitInfo\" && git pull && git push",
-    "postpush": "echo \" End Auto Push \" ",
-    "prepage": "echo \" already set post_asset_folder = true \" ",
-    "page": "read -p \"please input page title:\" pageName && hexo new page \"$pageName\" ",
-    "post": " read -p \"please input post title:\" postName && hexo new post \"$postName\" "
-  }
+    "postpush": "echo \" End Auto Push \" "
+  },
+  "dependencies": {},
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitee.com:pengqinping/blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
