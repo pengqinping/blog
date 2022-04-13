@@ -6,6 +6,7 @@
     "mk-serve": "mkdocs serve",
     "mk-build": "mkdocs build",
     "mk-deploy-github": "mkdocs build && git subtree push --prefix=site github gh-pages",
+    "mk-deploy-gitee": "mkdocs build && git subtree push --prefix=site origin gitee-pages",
     "prepush": "echo \" Begin Auto Push \" ",
     "push": "git status && git add . && read -p \"please input commit info:\" commitInfo && git commit -m \"$commitInfo\" && git pull && git push",
     "postpush": "echo \" End Auto Push \" "
