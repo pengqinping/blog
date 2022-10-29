@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "vp2-dev": "vuepress dev docs",
+    "vp2-clean-dev": "vuepress dev src --clean-cache",
+    "vp2-build": "vuepress build docs",
     "mk-serve": "mkdocs serve",
     "mk-build": "mkdocs build",
     "mk-deploy-github": "npm run mk-build && npm run push && git subtree push --prefix=site github gh-pages",
@@ -12,7 +15,6 @@
     "postpush": "echo \" End Auto Push \" "
   },
   "dependencies": {},
-  "main": "index.js",
   "directories": {
     "doc": "docs"
   },
@@ -22,5 +24,11 @@
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "@vuepress/client": "2.0.0-beta.53",
+    "vue": "^3.2.41",
+    "vuepress": "2.0.0-beta.53",
+    "vuepress-theme-hope": "2.0.0-beta.116"
+  }
 }

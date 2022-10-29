@@ -5,3 +5,7 @@ node_modulesc
 */*/.DS_Store
 *.sh
 ./idea
+node_modules/
+docsv2/src/.vuepress/.cache/
+docsv2/src/.vuepress/.temp/
+docsv2/src/.vuepress/dist/
