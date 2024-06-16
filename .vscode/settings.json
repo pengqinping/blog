@@ -1,6 +1,6 @@
 {
     "git.ignoreLimitWarning": true,
     "workbench.preferredDarkColorTheme": "Default Light+",
-    "editor.cursorStyle": "underline",
-    "workbench.colorTheme": "Electron vue"
+    "editor.cursorStyle": "line",
+    "workbench.colorTheme": "One Dark Pro"
 }

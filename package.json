@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "vp2-dev": "vuepress dev docs",
-    "vp2-clean-dev": "vuepress dev src --clean-cache",
     "vp2-build": "vuepress build docs",
     "mk-serve": "mkdocs serve",
     "mk-build": "mkdocs build",
@@ -12,23 +11,26 @@
     "mk-deploy-gitee": "npm run mk-build && npm run push && git subtree push --prefix=site origin gitee-pages",
     "prepush": "echo \" Begin Auto Push \" ",
     "push": "git status && git add . && read -p \"please input commit info:\" commitInfo && git commit -m \"$commitInfo\" && git pull && git push",
-    "postpush": "echo \" End Auto Push \" "
+    "postpush": "echo \" End Auto Push \" ",
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
   },
-  "dependencies": {},
   "directories": {
     "doc": "docs"
   },
   "repository": {
     "type": "git",
-    "url": "git@gitee.com:pengqinping/blog.git"
+    "url": "git@github.com:pengqinping/blog.git"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@vuepress/client": "2.0.0-beta.53",
-    "vue": "^3.2.41",
+    "@vuepress/plugin-search": "^2.0.0-beta.53",
+    "@vuepress/plugin-toc": "^2.0.0-beta.51",
+    "vitepress": "^1.2.3",
     "vuepress": "2.0.0-beta.53",
-    "vuepress-theme-hope": "2.0.0-beta.116"
+    "vuepress-plugin-md-enhance": "^2.0.0-beta.116"
   }
 }
