@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "vitpress-deploy-github": "npm run docs:build && npm run push && git subtree push --prefix=.vitepress/dist/ github gh-pages",
+    "vitpress-deploy-github": "npm run docs:build && npm run push && git subtree push --prefix .vitepress/dist github gh-pages",
     "prepush": "echo \" Begin Auto Push \" ",
     "push": "git status && git add . && read -p \"please input commit info:\" commitInfo && git commit -m \"$commitInfo\" && git pull && git push",
     "postpush": "echo \" End Auto Push \" ",
