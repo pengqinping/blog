@@ -7,11 +7,11 @@ hero:
   tagline: 爱生活，爱自己
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: 关于我
+      link: /about-me.md
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: android
+      link: /android/index.md
 
 features:
   - title: Android
