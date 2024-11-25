@@ -9,6 +9,10 @@ const getAndroidSide = (): Array<DefaultTheme.SidebarItem> => {
       collapsed: true,
       items: [
         {
+          text: 'ViewModel',
+          link: 'ViewModel.md'
+        },
+        {
           text: 'LiveData',
           link: 'LiveData.md'
         },
