@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as a,ag as l}from"./chunks/framework.W0M1DOUF.js";const p=JSON.parse('{"title":"GIT 教程","description":"","frontmatter":{},"headers":[],"relativePath":"tools/git.md","filePath":"tools/git.md"}'),o={name:"tools/git.md"};function s(r,i,c,d,h,n){return a(),t("div",null,i[0]||(i[0]=[l("",19)]))}const m=e(o,[["render",s]]);export{p as __pageData,m as default};
