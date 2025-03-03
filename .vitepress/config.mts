@@ -29,7 +29,13 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/pengqinping/blog' },
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
+    ],
+
+    search: {
+      provider: 'local'
+    }
   }
+
+
 })
 

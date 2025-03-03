@@ -4,6 +4,17 @@ import { DefaultTheme } from 'vitepress';
 const getAndroidSide = (): Array<DefaultTheme.SidebarItem> => {
   return [
     {
+      text: '版本兼容',
+      collapsed: true,
+      base: '/android/版本兼容/',
+      items: [
+        {
+          text: '【Android】针对非 SDK 接口的限制',
+          link: '【Android】针对非 SDK 接口的限制.md'
+        }
+      ]
+    },
+    {
       text: 'Jetpack',
       base: '/android/jetpack/',
       collapsed: true,
@@ -51,6 +62,7 @@ const getAndroidSide = (): Array<DefaultTheme.SidebarItem> => {
     },
     {
       text: '组件',
+      collapsed: true,
       base: '/android/view/',
       items: [
         {
@@ -114,10 +126,27 @@ const getToolsSide = (): Array<DefaultTheme.SidebarItem> => {
   ]
 }
 
+const getAndroidSystemSide = (): Array<DefaultTheme.SidebarItem> => {
+  return [
+    {
+      text: 'Android系统',
+      base: '/AndroidSystem/',
+      collapsed: true,
+      items: [
+        {
+          text: 'Android源码-Logger日志系统',
+          link: 'Android源码-Logger日志系统.md'
+        }
+      ]
+    }
+  ]
+}
+
 const sides: DefaultTheme.SidebarMulti = {
   '/android/': getAndroidSide(),
   '/web/': getWebSide(),
-  '/tools/': getToolsSide()
+  '/tools/': getToolsSide(),
+  '/AndroidSystem/': getAndroidSystemSide()
 }
 
 
