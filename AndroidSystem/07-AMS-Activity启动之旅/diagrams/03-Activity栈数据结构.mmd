@@ -1,0 +1,14 @@
+flowchart TD
+    subgraph R1["每块屏一棵树"]
+        direction LR
+        RW["RootWindowContainer<br/>总根"] --> DC["DisplayContent<br/>每块屏一个"]
+    end
+    subgraph R2["栈内层级"]
+        direction LR
+        TSK["Task（任务栈）"] --> TF["TaskFragment"] --> AR["ActivityRecord ×N<br/>一个 Activity 一条"]
+    end
+    subgraph R3["栈顶规则"]
+        direction LR
+        TOP["栈顶 = 前台"] --> RES["只有栈顶可 RESUMED<br/>其余 PAUSED/STOPPED"]
+    end
+    R1 --> R2 --> R3

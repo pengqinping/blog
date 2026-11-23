@@ -1,0 +1,13 @@
+flowchart TD
+    subgraph R1["三层模型"]
+        direction LR
+        DEF["权限定义<br/>（系统声明 or 应用自定义）"] --> GRP["权限组<br/>（危险权限按组展示）"]
+        GRP --> ST["授权状态<br/>按 uid × user 维度存储"]
+    end
+    subgraph R2["两类权限"]
+        direction LR
+        I["install-time（normal）<br/>安装即授予：INTERNET 等"]
+        R["runtime（dangerous）<br/>用前申请：相机/定位/通讯录"]
+        R --> O["S+ 一次性授权<br/>11+ 长期休眠自动撤销"]
+    end
+    R1 --> R2

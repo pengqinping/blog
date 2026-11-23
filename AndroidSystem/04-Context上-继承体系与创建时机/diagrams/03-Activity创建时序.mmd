@@ -1,0 +1,11 @@
+sequenceDiagram
+    autonumber
+    participant AT as ActivityThread
+    participant CI as ContextImpl
+    participant AC as Activity
+    AT->>AT: performLaunchActivity（Launch 事务）
+    AT->>CI: createActivityContext（activity 专属）
+    AT->>AC: activity.attach：注入 base + PhoneWindow + theme
+    AC->>AC: onCreate：setContentView 填充 PhoneWindow
+    AT->>AC: onResume
+    Note over AC: 每个 Activity 都有独立的 ContextImpl

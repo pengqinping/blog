@@ -1,0 +1,6 @@
+flowchart LR
+  A["模板字符串<br/><div>{{n}}</div>"] --> B["① parse<br/>词法+语法 → AST"]
+  B --> C["② transform<br/>标记 patchFlag<br/>静态提升"]
+  C --> D["③ codegen<br/>生成 render 函数字符串"]
+  D --> E["执行 render()"]
+  E --> F["vnode 树"]

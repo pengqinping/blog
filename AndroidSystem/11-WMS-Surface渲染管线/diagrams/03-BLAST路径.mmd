@@ -1,0 +1,11 @@
+sequenceDiagram
+    autonumber
+    participant UI as UI 线程
+    participant RT as RenderThread
+    participant SF as SurfaceFlinger
+    UI->>RT: draw 命令录制完成
+    RT->>RT: GPU 渲染进 Buffer
+    RT->>SF: BLAST：经 Transaction 异步提交
+    Note over UI,SF: S 之前：同步 queueBuffer，UI 线程可能被 SF 拖慢
+    SF->>SF: 收齐各层 → 合成一帧
+    SF-->>RT: 帧完成通知（VSync 到来）

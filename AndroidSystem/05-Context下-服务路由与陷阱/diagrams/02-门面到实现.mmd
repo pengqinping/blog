@@ -1,0 +1,4 @@
+flowchart LR
+    M["App 侧门面<br/>ActivityManager / WindowManager / PackageManager"] --> P["Binder 代理<br/>IActivityTaskManager / IWindowSession …"]
+    P ==>|"transact（02 篇）"| S["system_server<br/>服务真正实现"]
+    M -.->|"对象缓存于<br/>SystemServiceRegistry / ContextImpl"| C["ContextImpl"]

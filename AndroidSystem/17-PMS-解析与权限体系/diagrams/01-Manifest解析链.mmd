@@ -1,0 +1,11 @@
+flowchart TD
+    subgraph R1["解析三步"]
+        direction LR
+        MF["AndroidManifest.xml<br/>（编译后 AXML 二进制）"] --> P["ParsingPackageUtils 解析<br/>（T+ 替代 PackageParser）"]
+        P --> V["校验：组件必填项 · 权限声明合法性"]
+    end
+    subgraph R2["产出与消费方"]
+        direction LR
+        PKG["AndroidPackage（只读快照）"] --> I["IntentResolver 索引<br/>（07 篇 startActivity / 09 篇静态广播的查询源）"]
+    end
+    R1 ==> R2

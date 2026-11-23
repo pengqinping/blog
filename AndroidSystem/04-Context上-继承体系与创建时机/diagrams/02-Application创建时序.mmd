@@ -1,0 +1,12 @@
+sequenceDiagram
+    autonumber
+    participant AT as ActivityThread
+    participant CI as ContextImpl
+    participant Ap as Application
+    AT->>AT: handleBindApplication（fork 后报到）
+    AT->>AT: LoadedApk.getPackageInfoNoCheck
+    AT->>CI: createAppContext（进程级 AppContext）
+    AT->>Ap: LoadedApk.makeApplication：new Application
+    Ap->>Ap: attach(base = ContextImpl)
+    AT->>Ap: installContentProviders（provider 先于 onCreate！）
+    AT->>Ap: callApplicationOnCreate

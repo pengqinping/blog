@@ -1,0 +1,7 @@
+flowchart TD
+    A["ctx.getSystemService（WINDOW_SERVICE）"] --> B["ContextImpl.getSystemService"]
+    B --> C["SystemServiceRegistry 静态路由表<br/>服务名 → ServiceFetcher"]
+    C --> D["fetcher.getService（ctx）"]
+    D --> E{"哪类服务？"}
+    E -->|"进程级单例<br/>（ActivityManager 等）"| F["返回全局缓存的门面对象<br/>内部持 Binder 代理"]
+    E -->|"Context 级<br/>（WindowManager / LayoutInflater）"| G["为该 Context 新建门面对象"]

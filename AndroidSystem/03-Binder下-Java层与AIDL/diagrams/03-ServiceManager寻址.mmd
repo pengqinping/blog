@@ -1,0 +1,11 @@
+sequenceDiagram
+    autonumber
+    participant S as 服务端（system_server）
+    participant SM as ServiceManager（0 号句柄）
+    participant C as 客户端（App）
+    S->>SM: addService("activity", Binder 节点)
+    Note over SM: 记录 名字 → 句柄 映射
+    C->>SM: getService("activity")
+    SM-->>C: 返回句柄
+    Note over C: 驱动把它包装成 BinderProxy
+    C->>S: 直接 transact（此后不再经过 SM）

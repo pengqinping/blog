@@ -1,0 +1,12 @@
+sequenceDiagram
+    autonumber
+    participant V as ViewRootImpl（App）
+    participant S as Session（IWindowSession）
+    participant W as WMS
+    V->>S: addToDisplay（IPC）
+    S->>W: addWindow
+    W->>W: 校验：type 合法性 / token / 系统窗口权限
+    W->>W: 创建 WindowState，挂进容器树（07 篇的树）
+    W->>W: 创建 InputChannel 一对（14 篇伏笔）
+    W-->>V: 返回 SurfaceControl + InputChannel 一端
+    V->>V: 包成 Surface，等 VSync 开始渲染（11 篇）

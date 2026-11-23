@@ -1,0 +1,11 @@
+sequenceDiagram
+    autonumber
+    participant ATMS as ATMS（system_server）
+    participant App as App 进程（IApplicationThread）
+    participant EX as TransactionExecutor
+    ATMS->>App: scheduleTransaction（oneway，03 篇）
+    App->>App: 消息投递主线程（H.EXECUTE_TRANSACTION）
+    App->>EX: execute(transaction)
+    EX->>EX: executeCallbacks（如 Launch）
+    EX->>EX: getTargetState → 跳到终态（如 Resume）
+    Note over EX: 状态跳跃：PAUSED 可直达 RESUMED

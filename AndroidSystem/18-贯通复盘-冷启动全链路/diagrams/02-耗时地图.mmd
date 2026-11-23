@@ -1,0 +1,10 @@
+flowchart TD
+    subgraph R1["前半程"]
+        direction LR
+        A["fork<br/>~几十 ms（COW 红利）"] --> B["bindApplication<br/>Application 构造 + Provider<br/>★ 最常见拖累点"] --> C["Launch 事务<br/>onCreate：setContentView 解析"]
+    end
+    subgraph R2["后半程"]
+        direction LR
+        D["Resume + addWindow<br/>~几十 ms"] --> E["首帧渲染<br/>measure / layout / draw"] --> F["SF 合成上屏"]
+    end
+    R1 --> R2

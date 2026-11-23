@@ -1,0 +1,12 @@
+flowchart TD
+    subgraph R1["去程（外 → 内）"]
+        direction LR
+        A["ViewRootImpl → DecorView.dispatchTouchEvent"] --> B["Activity.dispatchTouchEvent"]
+        B --> C["ViewGroup.dispatchTouchEvent<br/>onInterceptTouchEvent 决定拦截"]
+        C --> D["子 View.dispatchTouchEvent（层层向下）"]
+    end
+    subgraph R2["叶子与回程（内 → 外，U 型）"]
+        direction LR
+        E["叶子：onTouch 监听器 → onTouchEvent → onClick"] -->|"返回 false"| F["逐层回传父级 onTouchEvent"]
+    end
+    R1 --> R2

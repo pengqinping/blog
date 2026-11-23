@@ -1,0 +1,12 @@
+flowchart TD
+    subgraph R1["决策二分"]
+        direction LR
+        A["事件到达 InputDispatcher"] --> B{"按键 or 触摸？"}
+        B -->|"按键"| C["发给焦点窗口<br/>（WMS 维护的焦点链）"]
+        B -->|"触摸"| D["按 InputWindowHandle 的<br/>可视区域做命中测试"]
+    end
+    subgraph R2["派发"]
+        direction LR
+        E["写入目标窗口的 InputChannel"] --> F["开启 ANR 计时<br/>（5s，15 篇）"]
+    end
+    R1 --> R2

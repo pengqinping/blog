@@ -1,0 +1,13 @@
+flowchart TD
+    subgraph R1["触发与决策"]
+        direction LR
+        A["组件状态变化<br/>Activity resume · Service 启停"] --> B["AMS updateOomAdjLocked<br/>重算 setAdj"] --> L["lmkd 收到 socket 与 PSI 信号"]
+        K1["内核 PSI<br/>内存压力评估"] -.-> L
+    end
+    subgraph R2["执行与回收"]
+        direction LR
+        C["按 ADJ 从高到低选杀<br/>SIGKILL 缓存进程"] --> D["AMS 死亡通知感知<br/>清理组件状态"]
+        T["App 收到 onTrimMemory<br/>自行释放内存（同步回调）"]
+    end
+    R1 ==> R2
+    R2 -.->|"循环：状态变化再次触发"| R1

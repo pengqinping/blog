@@ -1,0 +1,9 @@
+flowchart TD
+  S["patch(n1, n2)"] --> T{"n1.type === n2.type ?"}
+  T -- 否 --> U["unmount(n1) + mount(n2)<br/>整个替换"]
+  T -- 是 --> K{"组件 or 元素？"}
+  K -- 组件 --> C["updateComponent<br/>props 变化 → 触发更新 job"]
+  K -- 元素 --> P{"有编译期 patchFlag？"}
+  P -- "TEXT(1)" --> PT["只更新动态文字"]
+  P -- "PROPS(8)" --> PP["只 diff dynamicProps<br/>数组里的属性"]
+  P -- "无（运行时手写 h）" --> F["全量 props diff<br/>+ children diff"]

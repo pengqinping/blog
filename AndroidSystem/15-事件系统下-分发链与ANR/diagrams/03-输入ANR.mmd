@@ -1,0 +1,15 @@
+sequenceDiagram
+    autonumber
+    participant D as InputDispatcher
+    participant A as App（UI 线程）
+    participant AMS as AMS（AppErrors）
+    D->>A: 派发事件（deadline = now + 5s）
+    Note over A: 主线程卡死 / 单事件处理超时
+    A-->>D: 截止前未消费
+    D->>AMS: notifyANR
+    AMS->>AMS: 抓相关进程 trace → /data/anr
+    alt 前台
+        AMS->>A: 弹出 ANR 对话框
+    else 后台
+        AMS->>A: 直接杀进程
+    end

@@ -1,0 +1,10 @@
+flowchart LR
+  S["切换到组件"] --> M{"cache 命中？"}
+  M -- 命中 --> R["复用缓存 vnode<br/>keys 移到队尾（最近使用）"]
+  M -- 未命中 --> N["新建组件实例"]
+  N --> I{"匹配 include/exclude？"}
+  I -- 否 --> U["正常创建后卸载<br/>（完全不缓存）"]
+  I -- 是 --> C["写入 cache + keys"]
+  C --> O{"keys.size > max？"}
+  O -- 是 --> E["LRU：淘汰 keys 第一个<br/>（最久未使用）"]
+  O -- 否 --> D["deactivated 钩子"]

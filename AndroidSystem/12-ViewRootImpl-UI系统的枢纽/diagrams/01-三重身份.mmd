@@ -1,0 +1,12 @@
+flowchart TD
+    subgraph R1["一个 Window 一个 ViewRootImpl"]
+        direction LR
+        VRI["ViewRootImpl"] --> R1A["身份一：WMS 会话端<br/>持 IWindowSession + IWindow"]
+        VRI --> R1B["身份二：View 树的根 Parent<br/>requestLayout / invalidate 入口"]
+        VRI --> R1C["身份三：渲染协调者<br/>Choreographer 回调里跑 performTraversals"]
+    end
+    subgraph R2["三重身份的交汇点"]
+        direction LR
+        PT["performTraversals<br/>一次 traverse = 与 WMS 协商 + 测量 + 布局 + 绘制"]
+    end
+    R1 --> R2

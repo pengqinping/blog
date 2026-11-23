@@ -1,0 +1,11 @@
+sequenceDiagram
+    autonumber
+    participant A as 你的 App
+    participant P as PermissionManager（system_server）
+    participant G as GrantPermissionsActivity（系统弹窗）
+    A->>P: requestPermissions（IPC）
+    P->>P: 查声明与当前授权状态
+    P->>G: 拉起系统授权界面
+    G->>P: 用户选择（允许 / 仅本次 / 拒绝）
+    P->>P: 持久化授权状态（per user）
+    P-->>A: onRequestPermissionsResult 回调

@@ -1,0 +1,14 @@
+flowchart TD
+    subgraph R1["杀不动的底层"]
+        direction LR
+        S0["system_server -900"] --> S1["持久进程 -800<br/>（常驻：电话/输入法类）"]
+    end
+    subgraph R2["核心层级（越靠上越不能杀）"]
+        direction LR
+        F1["前台 0<br/>正在交互"] --> F2["可见 100<br/>可见无焦点"] --> F3["可感知 200<br/>前台服务/音乐"]
+    end
+    subgraph R3["可牺牲层级（按序回血）"]
+        direction LR
+        M1["服务 A 500 / B 800"] --> M2["桌面 600 · 上个 App 700"] --> M3["缓存 900~999<br/>随时可杀"]
+    end
+    R1 --> R2 --> R3

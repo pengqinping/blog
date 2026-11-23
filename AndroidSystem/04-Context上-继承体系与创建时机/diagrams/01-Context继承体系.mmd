@@ -1,0 +1,9 @@
+flowchart TD
+    CTX["Context（抽象类）<br/>定义 200+ 个能力接口"]
+    CTX --> IMPL["ContextImpl<br/>真正干活：getSystemService / startService / startActivity …"]
+    CTX --> WRAP["ContextWrapper（装饰器）<br/>mBase 指向真正的实现"]
+    WRAP --> APPC["Application"]
+    WRAP --> SVC["Service"]
+    WRAP --> THEME["ContextThemeWrapper<br/>在能力之上叠加主题"]
+    THEME --> ACT["Activity"]
+    IMPL -.->|"mBase 引用关系"| WRAP

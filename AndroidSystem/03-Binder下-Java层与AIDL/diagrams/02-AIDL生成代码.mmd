@@ -1,0 +1,10 @@
+flowchart TD
+    subgraph GENP["编译期"]
+        AIDL["IMyService.aidl"] --> GEN["生成 IMyService.java"]
+    end
+    GEN --> STUB["Stub（抽象类，服务端）<br/>asInterface：同进程用本体 / 跨进程包 Proxy<br/>onTransact：按 code 分发到方法"]
+    GEN --> PROXY["Proxy（客户端）<br/>方法调用 → 打包 Parcel → mRemote.transact"]
+    STUB --> IMPL["服务实现<br/>new IMyService.Stub() { … }"]
+    PROXY --> APP["客户端拿到的对象"]
+    IMPL -.->|"onBind 返回"| SM["ServiceManager / ServiceConnection"]
+    APP -.->|"getService 拿到"| SM

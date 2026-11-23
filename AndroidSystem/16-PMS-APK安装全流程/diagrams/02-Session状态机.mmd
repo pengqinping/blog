@@ -1,0 +1,14 @@
+flowchart TD
+    subgraph R1["Session 状态机"]
+        direction LR
+        S["PackageInstallerSession"] --> P["prepare：接收 APK 流（可分片）"]
+        P --> V["verify：签名与完整性"]
+        V --> DI["dispatch：提交给 PMS"]
+        DI --> PI["post-install：dexopt + 收尾"]
+    end
+    subgraph R2["原子性"]
+        direction LR
+        OK["成功 → 安装完成"]
+        FAIL["任一步失败 → 整体回滚<br/>不留半装状态"]
+    end
+    R1 --> R2

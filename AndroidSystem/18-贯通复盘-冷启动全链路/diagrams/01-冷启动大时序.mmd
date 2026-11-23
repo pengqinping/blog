@@ -1,0 +1,17 @@
+sequenceDiagram
+    autonumber
+    participant L as Launcher
+    participant ATMS as ATMS（system_server）
+    participant Z as Zygote
+    participant T as 目标进程
+    participant W as WMS / SF
+    L->>ATMS: startActivity（IPC①）
+    ATMS->>ATMS: PMS 查组件 · 权限 · Task 决策
+    ATMS->>Z: socket 请求 fork（IPC②）
+    Z-->>ATMS: 新进程 attachApplication
+    ATMS->>T: bindApplication：Application + Context + Provider
+    ATMS->>T: Launch + Resume 事务（08 篇）
+    T->>T: onCreate → onResume
+    T->>W: addWindow → 分配 Surface（10/11 篇）
+    T->>W: 首帧渲染 → SF 合成上屏
+    Note over T,W: 输入通道就绪，事件待命（14 篇）

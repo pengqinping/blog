@@ -1,0 +1,20 @@
+flowchart TD
+    subgraph Q1["Dialog"]
+        direction LR
+        A["Activity token"] --> A2["宿主存活才可 show<br/>缺 token 即崩"]
+    end
+    subgraph Q2["PopupWindow"]
+        direction LR
+        B["anchor 窗口的 token"] --> B2["子窗口跟随父生命周期"]
+    end
+    subgraph Q3["Toast"]
+        direction LR
+        C["NotificationManagerService 排队"] --> C2["系统级 token，不依赖 Activity"]
+    end
+    subgraph Q4["悬浮窗"]
+        direction LR
+        D["SYSTEM_ALERT_WINDOW 权限<br/>（canDrawOverlays）"] --> D2["TYPE_APPLICATION_OVERLAY"]
+    end
+    Q1 ~~~ Q2
+    Q2 ~~~ Q3
+    Q3 ~~~ Q4

@@ -1,0 +1,11 @@
+flowchart TD
+    subgraph R1["一棵树管一屏"]
+        direction LR
+        DC["DisplayContent（每块屏一棵树）"] --> T1["WindowToken：应用窗口<br/>（07 篇的 ActivityRecord 家族）"]
+        DC --> T2["WindowToken：系统窗口<br/>Toast / 悬浮窗 / 输入法"]
+    end
+    subgraph R2["层级由 type 决定"]
+        direction LR
+        Z1["应用窗口段 21000~29999<br/>随 ActivityRecord 在树中的位置浮动"] --> Z2["系统窗口更高段<br/>悬浮窗在应用之上"]
+    end
+    R1 --> R2

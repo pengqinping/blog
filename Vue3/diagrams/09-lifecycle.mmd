@@ -1,0 +1,12 @@
+sequenceDiagram
+  participant P as 父组件
+  participant C as 子组件
+  participant Q as post 队列
+  P->>P: setup()
+  P->>P: render() 产出子组件 vnode
+  P->>C: mountComponent（递归）
+  C->>C: setup() → render() → 挂 DOM
+  C->>Q: 入队 Child.mounted
+  C-->>P: 子树挂载完成
+  P->>Q: 入队 Parent.mounted
+  Note over Q: flush 时按入队顺序：<br/>Child.mounted 先于 Parent.mounted

@@ -1,0 +1,13 @@
+flowchart TD
+    subgraph R1["第一段：找栈"]
+        direction LR
+        A["startActivityUnchecked"] --> B{"launchMode + flags + affinity<br/>能否复用已有 Task？"}
+        B -->|"singleTask / clearTop 命中"| C["清到目标 Activity<br/>旧实例 onNewIntent"]
+        B -->|"无可复用"| D["新建 Task 或压入当前栈顶"]
+    end
+    subgraph R2["第二段：入场"]
+        direction LR
+        E["Task 移到前台 + 申请焦点"] --> F["创建 / 复用 ActivityRecord"]
+        F --> G["进程就绪后 realStartActivityLocked<br/>下发 Launch 事务"]
+    end
+    R1 --> R2

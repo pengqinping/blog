@@ -1,0 +1,14 @@
+sequenceDiagram
+    autonumber
+    participant T as 超时检测（AnrTimer / Watchdog）
+    participant AMS as AMS（AppErrors）
+    participant P as 目标进程
+    T->>AMS: 超时上报 processANR
+    AMS->>AMS: 汇总：Binder 调用链 + 全相关进程线程栈
+    AMS->>P: dump 线程栈
+    AMS->>AMS: 写 /data/anr/anr_xxx
+    alt 前台
+        AMS->>P: 弹 ANR 对话框（等用户选择）
+    else 后台
+        AMS->>P: 直接杀进程
+    end

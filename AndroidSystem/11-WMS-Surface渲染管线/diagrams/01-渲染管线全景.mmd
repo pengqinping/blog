@@ -1,0 +1,13 @@
+flowchart TD
+    subgraph R1["App 进程"]
+        direction LR
+        A["View 树 draw<br/>RecordingCanvas 只记录命令"] --> B["RenderThread<br/>GPU 执行命令 → 画进 Buffer"]
+        B --> C["BLASTBufferQueue<br/>异步提交帧"]
+    end
+    subgraph R2["surfaceflinger 进程"]
+        direction LR
+        D["收齐所有窗口 Layer"] --> E["合成：HWC 硬件合成 / GPU 兜底"]
+        E --> F["按 VSync 上屏"]
+    end
+    R1 ==>|"Buffer 跨进程共享"| R2
+    G["Choreographer：VSync 心跳<br/>统一节奏（12 篇）"] -.-> A

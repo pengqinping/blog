@@ -1,0 +1,16 @@
+flowchart TD
+    subgraph R1["发送与排队"]
+        direction LR
+        A["sendBroadcast"] --> B["AMS BroadcastQueue<br/>前台队列 / 后台队列"]
+    end
+    subgraph R2["分发路径二选一"]
+        direction LR
+        C{"接收方类型？"}
+        C -->|"动态注册"| D["AMS 直接派发<br/>scheduleRegisteredReceiver"]
+        C -->|"静态注册"| E["查 PMS 注册表<br/>必要时先拉起进程"]
+    end
+    subgraph R3["执行"]
+        direction LR
+        F["onReceive 跑在主线程<br/>前台 10s / 后台 60s 超时"]
+    end
+    R1 ==> R2 ==> R3

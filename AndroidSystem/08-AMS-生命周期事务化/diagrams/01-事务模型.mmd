@@ -1,0 +1,5 @@
+flowchart TD
+    TX["ClientTransaction（一次跨进程请求）"] --> CB["callbacks 列表<br/>LaunchActivityItem · PauseActivityItem …"]
+    TX --> LI["LifecycleItem（目标终态）<br/>如 RESUMED"]
+    TX ==>|"IApplicationThread（Binder，03 篇）"| APP["App 端 ActivityThread"]
+    APP --> EX["TransactionExecutor.execute<br/>先执行 callbacks，再直达终态"]

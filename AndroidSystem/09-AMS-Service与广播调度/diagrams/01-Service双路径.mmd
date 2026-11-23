@@ -1,0 +1,14 @@
+flowchart TD
+    subgraph R1["两种启动，两种生命周期归属"]
+        direction LR
+        A["startService"] --> B["AMS.startService<br/>（ActiveServices）"]
+        B --> B2["bringUp：确保进程 → onCreate<br/>→ onStartCommand"]
+        C["bindService"] --> D["先包装 Connection 为 Binder"]
+        D --> D2["AMS.bindService → onCreate → onBind"]
+    end
+    R1 ==>|"归属不同"| R2
+    subgraph R2["生命周期归谁"]
+        direction LR
+        E["start：归 AMS<br/>stopService / 自己 stopSelf"] 
+        F["bind：归连接<br/>全部调用方解绑 → 可销毁"]
+    end

@@ -1,0 +1,4 @@
+flowchart TD
+    A["Activity 的 Context"] -->|"被 static 字段 / 长生命周期单例持有"| B["静态引用存活到进程结束"]
+    B --> C["Activity 无法回收 → 内存泄漏<br/>连带 View 树、Bitmap 全部滞留"]
+    D["正确姿势：全局对象用 AppContext<br/>必须用 Activity Context 时用 WeakReference"] -.->|"切断引用链"| B

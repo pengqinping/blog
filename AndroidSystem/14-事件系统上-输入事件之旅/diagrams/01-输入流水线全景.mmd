@@ -1,0 +1,15 @@
+flowchart TD
+    subgraph R1["前半程（system_server 内）"]
+        direction LR
+        HW["触摸屏硬件"] --> EV["内核 evdev 驱动<br/>/dev/input/eventX"]
+        EV --> EH["EventHub<br/>epoll 监听 + 热插拔"]
+        EH --> IR["InputReader 线程<br/>原始事件 → MotionEvent"]
+        IR --> ID["InputDispatcher 线程<br/>决策派发 + ANR 计时"]
+    end
+    subgraph R2["后半程（跨进程送达 App）"]
+        direction LR
+        IC["InputChannel<br/>socketpair"] --> RECV["NativeInputEventReceiver<br/>epoll 唤醒"]
+        RECV --> APP["ViewRootImpl 收到 → 15 篇分发"]
+    end
+    R1 ==> R2
+    NOTE["三个角色都是 system_server 内的 native 线程（00 篇误区）"] -.-> R1

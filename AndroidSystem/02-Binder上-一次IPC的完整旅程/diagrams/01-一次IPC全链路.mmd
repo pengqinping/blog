@@ -1,0 +1,15 @@
+flowchart TD
+    subgraph R1["调用方进程（App）"]
+        direction LR
+        A1["Java Proxy.transact<br/>打包 Parcel"] --> A2["JNI：BpBinder::transact"] --> A3["IPCThreadState<br/>写 BC_TRANSACTION → ioctl"]
+    end
+    subgraph R2["Binder 驱动（内核）"]
+        direction LR
+        D1["校验 uid/pid"] --> D2["路由到目标进程"] --> D3["写入目标 mmap 缓冲区<br/>（唯一一次拷贝）"]
+    end
+    subgraph R3["目标进程（system_server）"]
+        direction LR
+        T1["IPCThreadState<br/>读出 BR_TRANSACTION"] --> T2["BBinder::onTransact"] --> T3["Java Stub.onTransact<br/>→ 真正的实现"]
+    end
+    R1 ==>|"ioctl BINDER_WRITE_READ"| R2
+    R2 ==> R3

@@ -1,0 +1,16 @@
+sequenceDiagram
+    autonumber
+    participant A as App（发起方）
+    participant AT as ATMS / ActivityStarter
+    participant Z as Zygote
+    participant T as 目标进程
+    A->>AT: startActivity（IPC）
+    AT->>AT: 解析 Intent · 权限校验（查 PMS 注册表）
+    AT->>AT: Task 决策：复用 / 新建（launchMode + flags）
+    alt 目标进程不存在
+        AT->>Z: socket 请求 fork（01 篇）
+        Z-->>AT: 新进程 attachApplication
+    end
+    AT->>T: ClientTransaction（Launch + Resume，08 篇）
+    T->>T: performLaunchActivity：建 Context、attach、onCreate
+    T->>T: handleResumeActivity → addView（10 篇）

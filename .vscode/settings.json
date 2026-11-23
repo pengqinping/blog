@@ -1,6 +1,6 @@
 {
     "git.ignoreLimitWarning": true,
-    "workbench.preferredDarkColorTheme": "Default Light+",
+    "workbench.preferredDarkColorTheme": "Light+",
     "editor.cursorStyle": "line",
-    "workbench.colorTheme": "One Dark Pro"
+    "workbench.colorTheme": "GitHub Dark Default"
 }

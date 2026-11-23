@@ -1,0 +1,12 @@
+sequenceDiagram
+    autonumber
+    participant C as 客户端 Proxy
+    participant D as Binder 驱动
+    participant S as 服务端 BBinder
+    C->>D: ioctl（BC_TRANSACTION）
+    D->>S: 事务写入服务端 mmap 缓冲区，唤醒一个 Binder 线程
+    Note over S: IPCThreadState 读出 BR_TRANSACTION
+    S->>S: Java Stub.onTransact 按 code 执行
+    S->>D: ioctl（BC_REPLY）
+    D->>C: 回包写入客户端缓冲区，唤醒等待线程
+    C->>C: 解析返回 Parcel，方法调用结束

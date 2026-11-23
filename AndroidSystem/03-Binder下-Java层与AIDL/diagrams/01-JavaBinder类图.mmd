@@ -1,0 +1,19 @@
+flowchart TD
+    subgraph JAVASIDE["Java 层"]
+        IB["IBinder 接口"]
+        BD["Binder（服务端壳）"]
+        BP["BinderProxy（客户端壳）"]
+    end
+    subgraph CPPI["JNI 桥（android_util_Binder.cpp）"]
+        JN1["mObject 指针互认"]
+    end
+    subgraph CPP["C++ libbinder"]
+        BB["BBinder（服务端实体）"]
+        BPB["BpBinder（客户端句柄）"]
+        ITS["IPCThreadState（每线程）"]
+    end
+    BD -.->|"JNI 互认"| BB
+    BP -.->|"JNI 互认"| BPB
+    BB --> ITS
+    BPB --> ITS
+    JN1 -.->|"双向：Java↔C++ 生命周期绑定"| CPPI

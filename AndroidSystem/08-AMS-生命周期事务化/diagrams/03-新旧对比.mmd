@@ -1,0 +1,10 @@
+flowchart TD
+    subgraph OLD["P 之前：方法直调"]
+        direction LR
+        O1["AMS 逐个调<br/>scheduleLaunchActivity<br/>scheduleResumeActivity"] --> O2["状态分散<br/>IPC 次数多<br/>多窗口状态易错"]
+    end
+    subgraph NEW["P 之后：事务化"]
+        direction LR
+        N1["一次事务打包<br/>callbacks + 目标终态"] --> N2["状态集中<br/>可合并去重<br/>跨窗口一致"]
+    end
+    OLD ~~~ NEW

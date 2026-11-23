@@ -1,0 +1,16 @@
+flowchart LR
+  subgraph COMPILE["① 编译时 compiler-core"]
+    direction TB
+    A[".vue 模板"] --> B["parse<br/>AST"] --> C["transform<br/>patchFlag / 静态提升"] --> D["codegen"] --> E["render 函数<br/>（带优化标记）"]
+  end
+  E --> F
+  subgraph RUNTIME["② 运行时 runtime-core"]
+    direction TB
+    F["createVNode"] --> G["渲染器 patch<br/>mount / diff"] --> H["真实 DOM"]
+  end
+  H -.用户交互.-> I
+  subgraph REACTIVITY["③ 响应式 reactivity"]
+    direction TB
+    I["reactive / ref / computed"] -.数据驱动.-> J["effect + 调度器 scheduler"]
+  end
+  J -.触发组件更新.-> F

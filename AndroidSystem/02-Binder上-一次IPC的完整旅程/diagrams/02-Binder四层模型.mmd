@@ -1,0 +1,15 @@
+flowchart TD
+    subgraph JAVA["Java 层"]
+        A1["IBinder 接口"] --> A2["Binder（服务端壳）· BinderProxy（客户端壳）"]
+        A2 --> A3["AIDL 生成代码：Stub / Proxy"]
+    end
+    subgraph CPP["C++ 层 libbinder"]
+        B1["BBinder（服务端）"]
+        B2["BpBinder（客户端句柄）"]
+        B3["IPCThreadState（每线程）<br/>ProcessState（每进程 · 管 mmap）"]
+    end
+    subgraph K["内核驱动"]
+        C1["binder_proc（每进程一份）<br/>红黑树管理节点与引用<br/>按 uid/pid 做权限校验"]
+    end
+    A3 ---|"JNI 互认（mObject）"| B1
+    B3 ==>|"ioctl BINDER_WRITE_READ"| C1

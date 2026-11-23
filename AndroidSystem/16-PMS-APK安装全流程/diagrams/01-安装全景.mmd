@@ -1,0 +1,13 @@
+flowchart TD
+    subgraph R1["前三站"]
+        direction LR
+        A["adb install / 应用商店<br/>创建 Session 流式写入"] --> B["commit：交棒 system_server"]
+        B --> C["校验：签名 / 完整性 / verifier"]
+    end
+    subgraph R2["后四站"]
+        direction LR
+        D["scan：解析 Manifest → 组件注册表"] --> E["dexopt：installd 调 dex2oat"]
+        E --> F["持久化 packages.xml + 授予权限"]
+        F --> G["广播安装完成（ACTION_PACKAGE_ADDED）"]
+    end
+    R1 ==> R2

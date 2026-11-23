@@ -1,0 +1,11 @@
+sequenceDiagram
+    autonumber
+    participant V as ViewRootImpl（App）
+    participant W as WMS
+    participant D as InputDispatcher
+    V->>W: addWindow（10 篇）
+    W->>W: 创建 socketpair
+    W->>D: 注册一端 + 登记 InputWindowHandle
+    W-->>V: 另一端随 addWindow 返回
+    V->>V: NativeInputEventReceiver 挂到主线程 Looper 的 epoll
+    Note over V,D: 通路就绪：等待第一个事件

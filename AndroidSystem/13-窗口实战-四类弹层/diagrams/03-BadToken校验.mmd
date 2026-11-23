@@ -1,0 +1,6 @@
+flowchart TD
+    A["ViewRootImpl.setView → addWindow（10 篇）"] --> B{"token 校验三连"}
+    B -->|"token 不存在 / Activity 已 finish"| C["BadTokenException"]
+    B -->|"系统窗口无权限"| D["权限异常"]
+    B -->|"type 与 token 不匹配"| E["类型不匹配异常"]
+    B -->|"全部通过"| F["WindowState 创建成功"]

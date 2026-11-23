@@ -1,0 +1,11 @@
+flowchart TB
+  subgraph OLD["旧列表"]
+    direction LR
+    o1["a"] --> o2["b"] --> o3["c"] --> o4["d"]
+  end
+  subgraph NEW["新列表"]
+    direction LR
+    n1["a"] --> n2["d"] --> n3["b"] --> n4["c"]
+  end
+  LIS["LIS：a → b → c（相对顺序未变，不动）<br/>d 只需移动 1 次"]
+  NEW --> LIS

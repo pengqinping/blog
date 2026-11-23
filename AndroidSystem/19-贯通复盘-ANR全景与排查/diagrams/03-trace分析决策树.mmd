@@ -1,0 +1,13 @@
+flowchart TD
+    subgraph R1["第一步：定位主线程"]
+        direction LR
+        A["打开 /data/anr/anr_xxx<br/>按 Cmd line: 你的包名 找 main 线程"] --> B{"主线程栈在干嘛？"}
+    end
+    subgraph R2["四种典型死法"]
+        direction LR
+        B -->|"Binder 对端等待"| C["去对面进程 trace 找根因<br/>（服务端慢 / 对方持锁）"]
+        B -->|"IO / 锁等待"| D["看 held by thread N<br/>去 N 线程栈找持锁者"]
+        B -->|"消息堆积"| E["perfetto 找慢消息<br/>单帧超 16ms 的元凶"]
+        B -->|"看似空闲"| F["查 Looper idling + 输入超时<br/>多为子线程持锁致主线程 wait"]
+    end
+    R1 --> R2

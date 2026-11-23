@@ -1,0 +1,11 @@
+sequenceDiagram
+    autonumber
+    participant C as 调用方
+    participant AMS as AMS（ActiveServices）
+    participant S as Service 所在进程
+    C->>C: getServiceDispatcher：把 Connection 包成 IServiceConnection（Binder）
+    C->>AMS: bindService（IPC）
+    AMS->>S: ensureServiceCreated → onCreate
+    S->>AMS: onBind 返回 IBinder
+    AMS->>C: publishService → onServiceConnected（Binder 对象送达）
+    Note over C,S: 此后双方直接 Binder 通信，不再经 AMS

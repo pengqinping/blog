@@ -1,0 +1,12 @@
+sequenceDiagram
+  participant U as 用户操作
+  participant T as trigger
+  participant Q as queue（Set）
+  participant F as flushJobs（微任务）
+  U->>T: count = 1 / 2 / 3（同一 tick）
+  T->>Q: queueJob ×3
+  Note over Q: Set 去重 → 只剩 1 个 job
+  Q->>F: Promise.resolve().then(flushJobs)
+  Note over F: 按 uid 排序：父组件先于子组件
+  F->>F: 依次执行 job：render → patch
+  F-->>U: nextTick 的回调此刻执行

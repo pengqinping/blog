@@ -1,0 +1,8 @@
+flowchart TB
+  ROOT["Block（动态根节点）"] --> A["静态 div<br/>已提升，不进 Block"]
+  ROOT --> B["span：flag=TEXT"]
+  ROOT --> C["v-if 动态节点"]
+  C --> D["嵌套 Block"]
+  D --> D1["子节点们"]
+  note["Block 只收集「动态后代」<br/>更新时遍历 Block 的动态节点数组，静态部分整体跳过"]
+  ROOT -.收集.-> note

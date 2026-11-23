@@ -1,0 +1,11 @@
+flowchart TD
+    subgraph PROC["system_server 进程"]
+        MAIN["主线程（Looper 消息循环）"]
+        POOL["Binder 线程池（默认 15 个）"]
+        T1["binder:pid_1"]
+        T2["binder:pid_2 ……"]
+        POOL --> T1
+        POOL --> T2
+    end
+    REQ["并发事务到达"] ==> POOL
+    POOL ==>|"onTransact 可并发执行"| WARN["线程安全是你的责任：<br/>不要在 onTransact 里改无锁共享状态"]

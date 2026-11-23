@@ -1,0 +1,13 @@
+flowchart TD
+    subgraph R1["解析"]
+        direction LR
+        APK["APK 文件"] --> PAR["parsing 包解析<br/>（T+ 弃用 PackageParser）"]
+        PAR --> PP["ParsingPackage（内存数据结构）"]
+    end
+    subgraph R2["三大产出"]
+        direction LR
+        REG["IntentResolver 组件索引<br/>activity/service/receiver/provider<br/>（07 篇 startActivity 查的就是它）"]
+        SET["PackageSetting<br/>uid · 权限 · 签名 · 安装时间"]
+        DEX["优化产物 odex/vdex"]
+    end
+    R1 ==> R2

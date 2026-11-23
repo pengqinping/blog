@@ -1,0 +1,14 @@
+flowchart LR
+  subgraph DEP["Dep：某个 target 的某个 key"]
+    DEPS["subs 双向链表<br/>Sub0 - Sub1 - Sub2"]
+  end
+  L["Link 节点<br/>（dep 与订阅者的桥梁）"]
+  E["ReactiveEffect<br/>组件渲染 / watch"]
+  C["ComputedRefImpl"]
+  DEPS -->|nextSub| L
+  L -->|nextSub| E
+  L -.prevSub.-> DEPS
+  E -.deps 回指 Link.-> L
+  DEPS -->|另一条链| C
+  note["为什么用链表不用 Set？<br/>分支切换时沿 effect.deps 反向 unlink 旧依赖<br/>O1 摘除后重新 link，死依赖彻底清除"]
+  E -. cleanup 时 .-> note

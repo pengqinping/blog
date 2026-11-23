@@ -1,0 +1,10 @@
+flowchart TD
+    subgraph R1["一个窗口，两张脸"]
+        direction LR
+        SC["SurfaceControl<br/>（WMS 持有）句柄：位置/层级/可见性"] --- SF["Surface<br/>（App 持有）画布 + Buffer 生产端"]
+    end
+    subgraph R2["Buffer 的旅程"]
+        direction LR
+        P["App 画进 Buffer<br/>queueBuffer 提交"] --> Q["BufferQueue / BLAST"] --> LAY["Layer（SF 侧）消费合成"]
+    end
+    R1 --> R2

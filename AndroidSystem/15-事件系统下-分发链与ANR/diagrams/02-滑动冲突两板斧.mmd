@@ -1,0 +1,10 @@
+flowchart TD
+    subgraph W1["外部拦截法（父级裁决）"]
+        direction LR
+        A1["父 onInterceptTouchEvent<br/>按滑动方向判断"] --> A2["拦截后 DOWN 序列归父处理<br/>子收到 CANCEL"]
+    end
+    subgraph W2["内部拦截法（子级申请）"]
+        direction LR
+        B1["子 dispatch 里按内容方向<br/>调 requestDisallowInterceptTouchEvent"] --> B2["父直接放行"]
+    end
+    W1 ~~~ W2

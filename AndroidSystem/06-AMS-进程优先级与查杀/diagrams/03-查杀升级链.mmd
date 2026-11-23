@@ -1,0 +1,10 @@
+flowchart TD
+    subgraph R1["查杀升级 · 第一段"]
+        direction LR
+        A["内存吃紧<br/>PSI 压力飙升"] --> B["杀缓存进程<br/>ADJ 900+"] --> C{"缓解？"} -->|"否"| D["杀 800+<br/>EMPTY / SERVICE 级"] --> E{"缓解？"}
+    end
+    subgraph R2["第二段（仍不缓解）"]
+        direction LR
+        F["杀 600~700<br/>上个 App / 桌面级"] --> G{"仍不缓解？"} -->|"是 → 极端"| H["杀可感知进程<br/>音乐停播 · 通知消失"]
+    end
+    R1 -->|"仍否"| R2 --> OK["任一步缓解 → 恢复运行"]

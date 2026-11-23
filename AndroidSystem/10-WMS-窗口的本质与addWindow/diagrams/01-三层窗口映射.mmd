@@ -1,0 +1,11 @@
+flowchart TD
+    subgraph R1["同一窗口的三个化身"]
+        direction LR
+        A["Framework 窗口<br/>Window / ViewRootImpl<br/>（App 侧画框）"] -->|"addView"| B["WMS 窗口：WindowState<br/>策略对象：大小/层级/焦点"]
+        B -->|"提图层"| C["SF 图层：Layer<br/>真正参与合成的像素容器"]
+    end
+    subgraph R2["分工"]
+        direction LR
+        D["WMS 管策略<br/>谁在哪 · 谁在最上 · 焦点给谁"] --> E["SurfaceFlinger 管合成<br/>把所有 Layer 画成一帧"]
+    end
+    R1 --> R2

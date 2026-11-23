@@ -1,0 +1,12 @@
+flowchart TD
+  V["createRenderer 队列入口"] --> P["patch(n1, n2)<br/>唯一分流器"]
+  P --> S{"n1 === n2 ?"}
+  S -- 是 --> X["无事发生"]
+  S -- 否 --> T{"type 与 key 相同？"}
+  T -- 否 --> U["unmount(n1) → 全新挂载"]
+  T -- 是 --> C{"vnode 类型？"}
+  C -- 文本/注释 --> TX["processText / processComment"]
+  C -- Fragment --> FR["processFragment"]
+  C -- 元素 --> EL["processElement<br/>n1为空→mount / 否则→patchElement"]
+  C -- 组件 --> CO["processComponent<br/>mountComponent：setup + 渲染effect"]
+  CO --> R["递归 patch 子树"]

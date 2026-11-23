@@ -1,0 +1,12 @@
+flowchart TD
+    subgraph R1["从标记到执行"]
+        direction LR
+        A["requestLayout / invalidate<br/>标记脏区，不一定立即执行"] --> B["scheduleTraversals"]
+        B --> C["Choreographer doFrame<br/>下一个 VSync 才真正执行"]
+    end
+    subgraph R2["performTraversals 四步"]
+        direction LR
+        D["relayoutWindow<br/>与 WMS 协商尺寸 + 拿 Surface"] --> E["performMeasure<br/>MeasureSpec 自顶向下"]
+        E --> F["performLayout<br/>setFrame 自顶向下"] --> G["performDraw<br/>录制命令 → RenderThread（11 篇）"]
+    end
+    R1 ==> R2

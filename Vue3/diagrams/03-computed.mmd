@@ -1,0 +1,7 @@
+flowchart LR
+  A["num.value = 10"] --> B["RefImpl.dep<br/>trigger"]
+  B --> C["ComputedRefImpl.notify()<br/>只标 dirty = true，不重算"]
+  C --> D{"有订阅者读 .value？"}
+  D -- "是（effect 读到了脏值）" --> E["refreshComputed<br/>重新执行 getter"]
+  E --> F["缓存新值，dirty = false"]
+  D -- 否 --> G["什么都不做<br/>（惰性求值 = 零浪费）"]

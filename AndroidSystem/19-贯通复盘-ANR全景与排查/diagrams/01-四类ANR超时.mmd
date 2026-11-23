@@ -1,0 +1,15 @@
+flowchart TD
+    subgraph R1["输入侧"]
+        direction LR
+        A["输入事件 ANR<br/>5s 内未消费（14-15 篇）"]
+    end
+    subgraph R2["服务侧"]
+        direction LR
+        B["Service ANR<br/>前台 20s / 后台 200s 未完成 onCreate/onStartCommand"]
+        C["广播 ANR<br/>前台 10s / 后台 60s（09 篇）"]
+    end
+    subgraph R3["生命周期侧"]
+        direction LR
+        D["生命周期 ANR<br/>暂停 500ms / 停止 10s 级（08 篇时序契约）"]
+    end
+    ROOT["ANR 本质：主线程消息循环没在期限内做完该做的事（00 篇 Q5）"] --> R1 & R2 & R3

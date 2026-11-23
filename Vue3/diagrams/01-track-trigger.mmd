@@ -1,0 +1,14 @@
+sequenceDiagram
+  participant E as effect（如组件渲染函数）
+  participant P as Proxy.get
+  participant D as Dep（targetMap）
+  participant S as Proxy.set
+  E->>P: 读 state.count
+  P->>D: track(target, key)
+  Note over D: dep.linkSub(activeSub)<br/>dep ↔ 订阅者 双向关联
+  P-->>E: 返回属性值
+  Note over E,P: 依赖收集完成
+  S->>S: 写 state.count = 2
+  S->>D: trigger(target, key)
+  D->>E: sub.notify()
+  E->>E: 重新执行，同时收集新依赖

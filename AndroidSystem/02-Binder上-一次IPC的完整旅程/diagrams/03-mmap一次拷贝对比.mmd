@@ -1,0 +1,11 @@
+flowchart TD
+    subgraph TRAD["传统 IPC：两次拷贝"]
+        direction LR
+        T1["发送方用户空间"] ==>|"copy_from_user"| T2["内核缓冲区"] ==>|"copy_to_user"| T3["接收方用户空间"]
+    end
+    subgraph BINDER["Binder：一次拷贝"]
+        direction LR
+        B1["发送方用户空间"] ==>|"copy_from_user（唯一一次）"| B2["内核缓冲区<br/>＝接收方 mmap 映射的物理页"]
+        B2 -.->|"同一份物理内存<br/>接收方直接读取"| B3["接收方用户空间"]
+    end
+    TRAD ~~~ BINDER

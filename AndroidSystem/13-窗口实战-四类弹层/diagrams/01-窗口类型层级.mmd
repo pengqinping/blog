@@ -1,0 +1,11 @@
+flowchart TD
+    subgraph R1["type 分段（10 篇层级模型的实战面）"]
+        direction LR
+        T1["应用窗口 1~99<br/>Activity（token 来自 ActivityRecord）"] --> T2["子窗口 1000~1999<br/>PopupWindow 等（依附父 token）"]
+        T2 --> T3["系统窗口 2000+<br/>Toast / TYPE_APPLICATION_OVERLAY / 输入法"]
+    end
+    subgraph R2["层级规则"]
+        direction LR
+        Z1["应用窗口段 21000~29999"] --> Z2["系统窗口更高段<br/>永远盖在应用之上"]
+    end
+    R1 --> R2
